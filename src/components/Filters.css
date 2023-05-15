@@ -1,3 +1,8 @@
+  *{
+    box-sizing: border-box;
+    padding: 2px;
+    /* margin: 0; */
+} 
 .filter-container{
     display: flex;
     flex-direction: column;
@@ -12,11 +17,14 @@
     gap:12rem;
     
 }
-#clear-btn{
+ #clear-btn{
     border:none;
     background-color:white;
    text-decoration:underline ;
    cursor: pointer;
+}
+.price-main{
+    display:flex;
 }
 .price-range{
     display: flex;
