@@ -1,7 +1,10 @@
+import Filters from "./Filters";
+import Footer from "./Footer";
 import "./Header.css"
 
 export default function Header() {
   return (
+    <>
     <div className="header">
       <h2>MyShoppingSite</h2>
       <div className="search-container">
@@ -11,7 +14,7 @@ export default function Header() {
       <input type="text" placeholder="search" class="search-bar"/>
       </div>
       <div className="nav-icons">
-      <button id="login-btn">Login</button>
+      <button className="login-btn">Login</button>
       <svg
         width="28"
         height="26"
@@ -42,5 +45,7 @@ export default function Header() {
       <label>cart</label>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 }
