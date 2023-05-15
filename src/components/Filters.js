@@ -18,17 +18,19 @@ export default function Filters() {
 }
 function PriceSelector() {
   return (
-    <div>
+    <div className="price-container">
+    
+
         <h5>Price</h5>
         <div className="price-range">
         <label>50</label>
         <label>100</label>
         <label>150</label>
         </div>
-        <div>
+        
       <input type="range"/>
       </div>
-    </div>
+    
   );
 }
 
