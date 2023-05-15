@@ -1,19 +1,20 @@
-
 import Filters from "./components/Filters";
 
 import Header from "./components/Header";
 import Login from "./pages/Login";
-// import logo from "./logo.png";
+import logo from "./logo.png";
+import Mockman from "mockman-js";
 
 function App() {
   return (
     <div className="App">
-      <Header/>
+      <Mockman />
+      <Header />
       {/* <Filters/> */}
-     
+
       {/* <Login/> */}
-  
-      {/* <header className="App-header">
+
+      <header className="App-header">
         <img src={logo} alt="mockBee logo" width="180" height="180" />
         <h1 className="brand-title">
           Welcome to <span>mockBee!</span>
@@ -44,7 +45,7 @@ function App() {
             Contribute
           </a>
         </div>
-      </header> */}
+      </header>
     </div>
   );
 }
