@@ -8,7 +8,7 @@ import { v4 as uuid } from "uuid";
 export const products = [
   {
     _id: uuid(),
-    img: "https://s4sassy.com/ibaweb/pub/media/catalog/product/_/9/_9d1104-903407-min-fl-1477c_371_2.jpg",
+    img: "https://m.media-amazon.com/images/I/71o5VToIacL._UY741_.jpg",
     desc: "Bimba Floral Printed Indian Kurtis For Women Anarkali Kurti",
     original_price: 1000,
     price: 500,

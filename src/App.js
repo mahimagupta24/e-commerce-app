@@ -1,20 +1,29 @@
+import{Routes,Route} from "react-router-dom"
+
 import Filters from "./components/Filters";
 
-import Header from "./components/Header";
-import Login from "./pages/Login";
-import logo from "./logo.png";
-import Mockman from "mockman-js";
+// import Header from "./components/Header";
+ import Home from "./pages/HomePage";
+// import Login from "./pages/Login";
+// import logo from "./logo.png";
+ import Mockman from "mockman-js";
+import Products from "./pages/ProductPage";
 
 function App() {
   return (
     <div className="App">
-      <Mockman />
-      <Header />
+      {/* <Mockman /> */}
+      {/* <Header /> */}
+      <Home/>
+      {/* <Products/> */}
       {/* <Filters/> */}
 
       {/* <Login/> */}
+      <Routes>
+        <Route path="/products"element={<Products/>}></Route>
+      </Routes>
 
-      <header className="App-header">
+        {/* <header className="App-header"> 
         <img src={logo} alt="mockBee logo" width="180" height="180" />
         <h1 className="brand-title">
           Welcome to <span>mockBee!</span>
@@ -45,8 +54,8 @@ function App() {
             Contribute
           </a>
         </div>
-      </header>
-    </div>
+      </header> */}
+    </div> 
   );
 }
 
