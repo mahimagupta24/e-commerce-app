@@ -3,7 +3,7 @@ import "./Filters.css";
 import { ProductContext } from "../context/ProductContext";
 
 export default function Filters() {
-  const {  dispatch } = useContext(ProductContext);
+  const {  dispatch,selectedCategory} = useContext(ProductContext);
 
   return (
     <div className="filter-container">
@@ -33,12 +33,13 @@ function PriceSelector() {
   );
 }
 
-function CategorySelector() {
+function CategorySelector({selectedCategory}) {
+  
   return (
     <div>
       <h5>Category</h5>
       <div>
-        <input type="checkbox" />
+        <input type="checkbox"checked={selectedCategory}/>
         <label>Men clothing</label>
       </div>
       <div>

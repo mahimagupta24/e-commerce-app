@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../context/ProductContext";
+import Filters from "./Filters";
 export default function Products() {
   const { filteredProducts} = useContext(ProductContext);
   return (
@@ -16,7 +17,7 @@ export default function Products() {
           </div>
         )
       )}
-        
+      <Filters/>  
 </div>
   );
 }

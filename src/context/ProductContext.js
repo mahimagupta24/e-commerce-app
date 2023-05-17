@@ -1,12 +1,14 @@
 import { createContext, useState, useEffect, useReducer } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const ProductContext = createContext();
 
 export default function ProductProvider({ children }) {
+  const navigate = useNavigate()
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   // const [filteredProducts,setFilteredProducts]=useState([])
-  console.log(products);
+  // console.log(products);
 
   const loadProducts = async () => {
     try {
@@ -29,15 +31,17 @@ export default function ProductProvider({ children }) {
 
   const categoryHandler = (reqdCategoryName) => {
     setSelectedCategory(reqdCategoryName);
+    navigate("/products")
+   
   };
 
   const reducer = (state, action) => {
     switch (action.type) {
       case "SORT_ORDER_CHANGED":
-        products.sort((a, b) =>
+    products.sort((a, b) =>
           action.payload === "HTL" ? b.price - a.price : a.price - b.price
         );
-        return { ...state, sort: action.payload };
+        return { ...state,sort: action.payload };
       case "default":
         return state;
     }
@@ -60,7 +64,7 @@ export default function ProductProvider({ children }) {
         filteredProducts,
         categoryHandler,
         dispatch,
-        
+        selectedCategory
 
         // setFilteredProducts,
       }}

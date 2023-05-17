@@ -14,13 +14,13 @@ function App() {
     <div className="App">
       {/* <Mockman /> */}
       {/* <Header /> */}
-      <Home />
-      <Products/>
-      <Filters/>
+      {/* <Products /> */}
+      {/* <Filters /> */}
 
       {/* <Login/> */}
       <Routes>
-        <Route path="/products" element={<Products />}></Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
       </Routes>
 
       {/* <header className="App-header"> 
