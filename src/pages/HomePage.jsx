@@ -5,7 +5,7 @@ import { ProductContext } from "../context/ProductContext";
 export default function Home() {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
-  const { categoryHandler, products, setFilteredProducts } =
+  const { categoryHandler, products, setProducts } =
     useContext(ProductContext);
 
   const loadCategories = async () => {
@@ -27,7 +27,7 @@ export default function Home() {
   }, []);
   
   const clickHandler = () => {
-    setFilteredProducts(products);
+    setProducts(products);
     navigate("/products");
   };
   return (

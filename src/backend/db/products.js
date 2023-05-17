@@ -10,7 +10,7 @@ export const products = [
     _id: uuid(),
     img: "https://m.media-amazon.com/images/I/71o5VToIacL._UY741_.jpg",
     desc: "Bimba Floral Printed Indian Kurtis For Women Anarkali Kurti",
-    original_price: 1000,
+    original_price: 1100,
     price: 500,
     categoryName: "women",
     rating: 3.9,
