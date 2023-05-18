@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import Filters from "../components/Filters";
+import Header from "../components/Header";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
+  const [searchText, setSearchText] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [sortOrder, setSortOrder] = useState(null);
   const [selectedRating, setSelectedRating] = useState(null);
@@ -23,6 +25,10 @@ export default function Products() {
     loadProducts();
   }, []);
 
+  const searchHandler = (text) => {
+    setSearchText(text);
+  };
+
   const categoryHandler = (category) => {
     setSelectedCategory(category);
   };
@@ -34,12 +40,21 @@ export default function Products() {
   const ratingHandler = (rating) => {
     setSelectedRating(rating);
   };
+  const clearFiltersHandler = () => {
+    setSelectedCategory(null);
+    setSelectedRating(null);
+    setSortOrder(null);
+  };
 
-  const filteredProducts = selectedCategory
-    ? [...products].filter(
-        ({ categoryName }) => categoryName === selectedCategory
-      )
-    : products;
+  const searchedProducts =
+    searchText !== null
+      ? products.filter(({ name }) => name.includes(searchText))
+      : products;
+
+  const filteredProducts =
+    selectedCategory !== null
+      ? searchedProducts.filter(({ categoryName }) => categoryName === selectedCategory)
+      : searchedProducts;
 
   const sortedProducts =
     sortOrder !== null
@@ -49,13 +64,16 @@ export default function Products() {
       : filteredProducts;
 
   const productsRating = selectedRating
-    ? sortedProducts.filter(({ rating }) => rating === selectedRating)
+    ? sortedProducts.filter(({ rating }) => {
+        return rating >= parseFloat(selectedRating);
+      })
     : sortedProducts;
 
   return (
     <div>
+      <Header searchHandler={searchHandler}/>
       {/* {filteredProducts&&<div><h2>Products:</h2> */}
-      {filteredProducts.map(
+      {productsRating.map(
         ({ _id, img, desc, original_price, price, rating }) => (
           <div key={_id}>
             <img src={img} alt={desc} />
@@ -66,7 +84,13 @@ export default function Products() {
           </div>
         )
       )}
-      <Filters />
+      <Filters
+        sortHandler={sortHandler}
+        categoryHandler={categoryHandler}
+        ratingHandler={ratingHandler}
+        clearFiltersHandler={clearFiltersHandler}
+      />
+    
     </div>
   );
 }
