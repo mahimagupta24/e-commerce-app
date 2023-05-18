@@ -1,9 +1,8 @@
-import { useContext } from "react";
+
 import "./Filters.css";
-import { ProductContext } from "../context/ProductContext";
 
 export default function Filters() {
-  const {  dispatch,selectedCategory} = useContext(ProductContext);
+  
 
   return (
     <div className="filter-container">
@@ -14,7 +13,7 @@ export default function Filters() {
       <PriceSelector />
       <CategorySelector />
       <RatingSelector />
-      <SortOrderSelector onSortOrderChange={(sortOrder)=>dispatch({type:"SORT_ORDER_CHANGED",payload:sortOrder})} />
+      <SortOrderSelector />
     </div>
   );
 }
@@ -33,13 +32,13 @@ function PriceSelector() {
   );
 }
 
-function CategorySelector({selectedCategory}) {
+function CategorySelector() {
   
   return (
     <div>
       <h5>Category</h5>
       <div>
-        <input type="checkbox"checked={selectedCategory}/>
+        <input type="checkbox"/>
         <label>Men clothing</label>
       </div>
       <div>
@@ -77,7 +76,7 @@ function RatingSelector() {
   );
 }
 
-function SortOrderSelector({ onSortOrderChange }) {
+function SortOrderSelector() {
   return (
     <div>
       <h5>Sort by</h5>
@@ -85,8 +84,7 @@ function SortOrderSelector({ onSortOrderChange }) {
         <input
           type="radio"
           name="sort"
-          // checked={sort === "HTL"}
-          onChange={() =>onSortOrderChange("HTL")}
+          
             
         />
         <label>Price-high to low</label>
@@ -95,8 +93,6 @@ function SortOrderSelector({ onSortOrderChange }) {
         <input
           type="radio"
           name="sort"
-          // checked={sort === "LTH"}
-          onChange={() =>onSortOrderChange("LTH")}
             
         />
         <label>Price-low to high</label>
