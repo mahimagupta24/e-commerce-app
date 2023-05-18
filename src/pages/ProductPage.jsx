@@ -2,11 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../context/ProductContext";
 import Filters from "./Filters";
 export default function Products() {
-  const { filteredProducts} = useContext(ProductContext);
+  const { products} = useContext(ProductContext);
   return (
     <div>
      {/* {filteredProducts&&<div><h2>Products:</h2> */}
-      {filteredProducts.map(
+      {products.map(
         ({ _id, img, desc, original_price, price, rating }) => (
           <div key={_id}>
             <img src={img} alt={desc} />

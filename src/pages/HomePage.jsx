@@ -6,7 +6,6 @@ export default function Home() {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { categoryHandler, products, setProducts } = useContext(ProductContext);
 
   const loadCategories = async () => {
     try{
@@ -27,7 +26,10 @@ export default function Home() {
   }, []);
 
   const clickHandler = () => {
-    setProducts(products);
+    navigate("/products");
+  };
+
+  const categoryHandler =  ()=> {
     navigate("/products");
   };
   
@@ -40,7 +42,7 @@ export default function Home() {
             <div key={_id}>
               <h4>{categoryName} collection</h4>
               <p>{description}</p>
-              <button onClick={() => categoryHandler(categoryName)}>go </button>
+              <button onClick={categoryHandler}>go </button>
             </div>
           );
         })}
