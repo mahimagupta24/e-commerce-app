@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ProductContext } from "../context/ProductContext";
+import Footer from "../components/Footer.js"
+import Header from "../components/Header";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ export default function Home() {
   
     return (
       <div>
+        <Header/>
         {isLoading&&<p>Loading...</p>}
         {!isLoading &&categories.map((category) => {
           const { _id, categoryName, description } = category;
@@ -47,6 +49,7 @@ export default function Home() {
           );
         })}
         <button onClick={clickHandler}>Shop now</button>
+        <Footer/>
       </div>
     );
 }

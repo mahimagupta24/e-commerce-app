@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Filters from "./components/Filters";
 
-// import Header from "./components/Header";
+ import Header from "./components/Header";
 import Home from "./pages/HomePage";
 // import Login from "./pages/Login";
 // import logo from "./logo.png";
