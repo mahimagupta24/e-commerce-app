@@ -61,7 +61,7 @@ function RatingSelector({ratingHandler}) {
         <label>4 stars & above</label>
       </div>
       <div>
-        <input type="radio" name="rate" onChange={(e)=>ratingHandler(e.target.value)}/>
+        <input type="radio" name="rate"value="3" onChange={(e)=>ratingHandler(e.target.value)}/>
         <label>3 stars & above</label>
       </div>
       <div>
