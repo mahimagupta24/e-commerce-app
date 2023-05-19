@@ -10,7 +10,7 @@ export default function Filters({sortHandler,categoryHandler,ratingHandler,clear
         <h5>Filters</h5>
         <button onClick={clearFiltersHandler}id="clear-btn">Clear</button>
       </div>
-      <PriceSelector />
+      <PriceSelector/>
       <CategorySelector categoryHandler={categoryHandler}/>
       <RatingSelector ratingHandler={ratingHandler}/>
       <SortOrderSelector sortHandler={sortHandler}/>
@@ -27,7 +27,7 @@ function PriceSelector() {
         <label>1500</label>
       </div>
 
-      <input type="range" />
+      <input type="range"/>
     </div>
   );
 }
@@ -69,7 +69,7 @@ function RatingSelector({ratingHandler}) {
         <label>2 stars & above</label>
       </div>
       <div>
-        <input type="radio" name="rate" onChange={(e)=>ratingHandler(e.target.value)}/>
+        <input type="radio" name="rate" value="1" onChange={(e)=>ratingHandler(e.target.value)}/>
         <label>1 stars & above</label>
       </div>
     </div>

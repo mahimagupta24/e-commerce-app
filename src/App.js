@@ -8,11 +8,12 @@ import Home from "./pages/HomePage";
 // import logo from "./logo.png";
 import Mockman from "mockman-js";
 import Products from "./pages/ProductPage";
+import Login from "./pages/Login";
 
 function App() {
   return (
     <div className="App">
-      {/* <Mockman /> */}
+      <Mockman />
       {/* <Header /> */}
       {/* <Products /> */}
       {/* <Filters /> */}
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
+        <Route path ="/login"element={<Login/>}/>
       </Routes>
 
       {/* <header className="App-header"> 

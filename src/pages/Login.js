@@ -1,24 +1,26 @@
 import "./Auth.css";
+import { useState } from "react";
+import axios from "axios";
 export default function Login() {
+  const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
   return (
     <div className="test">
-        
-    <div className="login-container">
-      <div>
-    <h2 className="login-heading">Log In</h2>
-    </div>
-      <form className="details">
-        <div className="address">
-          <label>Email address</label>
-          <input type="email" placeholder="test@gmail.com" />
+      <div className="login-container">
+        <div>
+          <h2 className="login-heading">Log In</h2>
         </div>
-        <div className="password">
-          <label>Password</label>
-          <input type="password" placeholder="********" />
-        </div>
-        <button id="login-btn">Login</button>
-      </form>
-    </div>
+        <form className="details">
+          <div className="address">
+            <label>Email address</label>
+            <input type="email" placeholder="test@gmail.com" />
+          </div>
+          <div className="password">
+            <label>Password</label>
+            <input type="password" placeholder="********" />
+          </div>
+          <button id="login-btn">Login</button>
+        </form>
+      </div>
     </div>
   );
 }
