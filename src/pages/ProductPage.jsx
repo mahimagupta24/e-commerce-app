@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import Filters from "../components/Filters";
 import Header from "../components/Header";
-import "./Productpage.css"
+import "./Productpage.css";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const[selectedPrice,setSelectedPrice] = useState(null)
+  const [selectedPrice, setSelectedPrice] = useState(null);
   const [sortOrder, setSortOrder] = useState(null);
   const [selectedRating, setSelectedRating] = useState(null);
 
@@ -32,7 +32,9 @@ export default function Products() {
   };
 
   const categoryHandler = (category) => {
-    setSelectedCategory(category);
+    category === selectedCategory
+      ? setSelectedCategory(null)
+      : setSelectedCategory(category);
   };
 
   const sortHandler = (sortType) => {
@@ -43,9 +45,9 @@ export default function Products() {
     setSelectedRating(rating);
   };
 
-  const priceHandler = (price)=>{
-    setSelectedPrice(price)
-  }
+  const priceHandler = (price) => {
+    setSelectedPrice(price);
+  };
   const clearFiltersHandler = () => {
     setSelectedCategory(null);
     setSelectedRating(null);
@@ -57,13 +59,12 @@ export default function Products() {
       ? products.filter(({ name }) => name.includes(searchText))
       : products;
 
-  const filteredProducts =
-    selectedCategory !== null
-      ? searchedProducts.filter(({ categoryName }) => categoryName === selectedCategory)
-      : searchedProducts;
+  const filteredProducts = selectedCategory
+    ? searchedProducts.filter(
+        ({ categoryName }) => categoryName === selectedCategory
+      )
+    : searchedProducts;
 
-      
-      
   const sortedProducts =
     sortOrder !== null
       ? filteredProducts.sort((a, b) =>
@@ -79,12 +80,12 @@ export default function Products() {
 
   return (
     <div>
-      <Header searchHandler={searchHandler}/>
+      <Header searchHandler={searchHandler} />
       {/* {filteredProducts&&<div><h2>Products:</h2> */}
       {productsRating.map(
         ({ _id, img, desc, original_price, price, rating }) => (
-          <div className="product-card"key={_id}>
-            <img className="product-img"src={img} alt={desc} />
+          <div className="product-card" key={_id}>
+            <img className="product-img" src={img} alt={desc} />
             <h4>{desc}</h4>
             <p>Original Price: ${original_price}</p>
             <p>Price: ${price}</p>
@@ -96,10 +97,10 @@ export default function Products() {
         sortHandler={sortHandler}
         categoryHandler={categoryHandler}
         ratingHandler={ratingHandler}
-       
         clearFiltersHandler={clearFiltersHandler}
+        selectedCategory={selectedCategory}
+        selectedRating={selectedRating}
       />
-    
     </div>
   );
 }

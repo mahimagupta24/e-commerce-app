@@ -1,7 +1,7 @@
 
 import "./Filters.css";
 
-export default function Filters({sortHandler,categoryHandler,ratingHandler,clearFiltersHandler}) {
+export default function Filters({sortHandler,categoryHandler,ratingHandler,clearFiltersHandler,selectedCategory,selectedRating}) {
   
 
   return (
@@ -11,8 +11,8 @@ export default function Filters({sortHandler,categoryHandler,ratingHandler,clear
         <button onClick={clearFiltersHandler}id="clear-btn">Clear</button>
       </div>
       <PriceSelector/>
-      <CategorySelector categoryHandler={categoryHandler}/>
-      <RatingSelector ratingHandler={ratingHandler}/>
+      <CategorySelector categoryHandler={categoryHandler}selectedCategory={selectedCategory}/>
+      <RatingSelector ratingHandler={ratingHandler}selectedRating={selectedRating}/>
       <SortOrderSelector sortHandler={sortHandler}/>
     </div>
   );
@@ -32,44 +32,44 @@ function PriceSelector() {
   );
 }
 
-function CategorySelector({categoryHandler}) {
+function CategorySelector({categoryHandler,selectedCategory}) {
   
   return (
     <div>
       <h5>Category</h5>
       <div>
-        <input type="checkbox" value="men"onChange={(e)=>categoryHandler(e.target.value)}/>
+        <input type="checkbox" checked={selectedCategory==="men"}value="men"onChange={(e)=>categoryHandler(e.target.value)}/>
         <label>Men clothing</label>
       </div>
       <div>
-        <input type="checkbox" value="women"onChange={(e)=>categoryHandler(e.target.value)} />
+        <input type="checkbox"checked={selectedCategory==="women"} value="women"onChange={(e)=>categoryHandler(e.target.value)} />
         <label>Women clothing</label>
       </div>
       <div>
-        <input type="checkbox"value="kids"onChange={(e)=>categoryHandler(e.target.value)} />
+        <input type="checkbox" checked={selectedCategory==="kids"}value="kids" onChange={(e)=>categoryHandler(e.target.value)} />
         <label>kids clothing</label>
       </div>
     </div>
   );
 }
-function RatingSelector({ratingHandler}) {
+function RatingSelector({ratingHandler,selectedRating}) {
   return (
     <div>
       <h5>Rating</h5>
       <div>
-        <input type="radio" name="rate" value="4"onChange={(e)=>ratingHandler(e.target.value)}/>
+        <input type="radio" checked={selectedRating==="4"} name="rate" value="4"onChange={(e)=>ratingHandler(e.target.value)}/>
         <label>4 stars & above</label>
       </div>
       <div>
-        <input type="radio" name="rate"value="3" onChange={(e)=>ratingHandler(e.target.value)}/>
+        <input type="radio"checked={selectedRating==="3"} name="rate"value="3" onChange={(e)=>ratingHandler(e.target.value)}/>
         <label>3 stars & above</label>
       </div>
       <div>
-        <input type="radio" name="rate"value="2" onChange={(e)=>ratingHandler(e.target.value)}/>
+        <input type="radio" checked={selectedRating==="2"}name="rate"value="2" onChange={(e)=>ratingHandler(e.target.value)}/>
         <label>2 stars & above</label>
       </div>
       <div>
-        <input type="radio" name="rate" value="1" onChange={(e)=>ratingHandler(e.target.value)}/>
+        <input type="radio" checked={selectedRating==="1"}name="rate" value="1" onChange={(e)=>ratingHandler(e.target.value)}/>
         <label>1 stars & above</label>
       </div>
     </div>
