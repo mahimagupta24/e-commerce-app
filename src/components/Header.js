@@ -1,7 +1,10 @@
 
+import { useContext } from "react";
 import "./Header.css"
+import { ProductContext } from "../context/ProductContext";
 
-export default function Header({searchHandler}) {
+export default function Header() {
+  const{searchHandler}= useContext(ProductContext)
   return (
     <>
     <div className="header">
