@@ -1,23 +1,25 @@
 
+import { useContext } from "react";
 import "./Filters.css";
+import { ProductContext } from "../context/ProductContext";
 
-export default function Filters({sortHandler,categoryHandler,ratingHandler,clearFiltersHandler,selectedCategory,selectedRating}) {
+export default function Filters() {
   
-
+const {sortHandler,categoryHandler,ratingHandler,clearFiltersHandler,selectedCategories,selectedRating,priceHandler}= useContext(ProductContext)
   return (
     <div className="filter-container">
       <div className="filter-header">
         <h5>Filters</h5>
         <button onClick={clearFiltersHandler}id="clear-btn">Clear</button>
       </div>
-      <PriceSelector/>
-      <CategorySelector categoryHandler={categoryHandler}selectedCategory={selectedCategory}/>
+      <PriceSelector priceHandler={priceHandler}/>
+      <CategorySelector categoryHandler={categoryHandler}selectedCategories={selectedCategories}/>
       <RatingSelector ratingHandler={ratingHandler}selectedRating={selectedRating}/>
       <SortOrderSelector sortHandler={sortHandler}/>
     </div>
   );
 }
-function PriceSelector() {
+function PriceSelector({priceHandler}) {
   return (
     <div className="price-container">
       <h5>Price</h5>
@@ -27,26 +29,26 @@ function PriceSelector() {
         <label>1500</label>
       </div>
 
-      <input type="range"/>
+      <input type="range" min="500" max="1500"steps="500"onChange={(e)=>priceHandler(e.target.value)}/>
     </div>
   );
 }
 
-function CategorySelector({categoryHandler,selectedCategory}) {
+function CategorySelector({categoryHandler,selectedCategories}) {
   
   return (
     <div>
       <h5>Category</h5>
       <div>
-        <input type="checkbox" checked={selectedCategory==="men"}value="men"onChange={(e)=>categoryHandler(e.target.value)}/>
+        <input type="checkbox" checked={selectedCategories.includes("men")}value="men"onChange={(e)=>categoryHandler(e.target.value)}/>
         <label>Men clothing</label>
       </div>
       <div>
-        <input type="checkbox"checked={selectedCategory==="women"} value="women"onChange={(e)=>categoryHandler(e.target.value)} />
+        <input type="checkbox"checked={selectedCategories.includes("women")} value="women"onChange={(e)=>categoryHandler(e.target.value)} />
         <label>Women clothing</label>
       </div>
       <div>
-        <input type="checkbox" checked={selectedCategory==="kids"}value="kids" onChange={(e)=>categoryHandler(e.target.value)} />
+        <input type="checkbox" checked={selectedCategories.includes("kids")}value="kids" onChange={(e)=>categoryHandler(e.target.value)} />
         <label>kids clothing</label>
       </div>
     </div>

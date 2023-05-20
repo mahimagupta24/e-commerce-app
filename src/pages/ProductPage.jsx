@@ -1,15 +1,20 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Filters from "../components/Filters";
 import Header from "../components/Header";
 import "./Productpage.css";
+import { ProductContext } from "../context/ProductContext";
+import axios from "axios";
 
 export default function Products() {
+  const [cartProducts, setCartProducts] = useState([]);
+  const {
+    searchText,
+    selectedCategories,
+    sortOrder,
+    selectedRating,
+    selectedPrice,
+  } = useContext(ProductContext);
   const [products, setProducts] = useState([]);
-  const [searchText, setSearchText] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [selectedPrice, setSelectedPrice] = useState(null);
-  const [sortOrder, setSortOrder] = useState(null);
-  const [selectedRating, setSelectedRating] = useState(null);
 
   const loadProducts = async () => {
     try {
@@ -27,43 +32,17 @@ export default function Products() {
     loadProducts();
   }, []);
 
-  const searchHandler = (text) => {
-    setSearchText(text);
-  };
-
-  const categoryHandler = (category) => {
-    category === selectedCategory
-      ? setSelectedCategory(null)
-      : setSelectedCategory(category);
-  };
-
-  const sortHandler = (sortType) => {
-    setSortOrder(sortType);
-  };
-
-  const ratingHandler = (rating) => {
-    setSelectedRating(rating);
-  };
-
-  const priceHandler = (price) => {
-    setSelectedPrice(price);
-  };
-  const clearFiltersHandler = () => {
-    setSelectedCategory(null);
-    setSelectedRating(null);
-    setSortOrder(null);
-  };
-
   const searchedProducts =
     searchText !== null
       ? products.filter(({ name }) => name.includes(searchText))
       : products;
 
-  const filteredProducts = selectedCategory
-    ? searchedProducts.filter(
-        ({ categoryName }) => categoryName === selectedCategory
-      )
-    : searchedProducts;
+  const filteredProducts =
+    selectedCategories.length > 0
+      ? searchedProducts.filter(({ categoryName }) =>
+          selectedCategories.includes(categoryName)
+        )
+      : searchedProducts;
 
   const sortedProducts =
     sortOrder !== null
@@ -73,34 +52,57 @@ export default function Products() {
       : filteredProducts;
 
   const productsRating = selectedRating
-    ? sortedProducts.filter(({ rating }) => {
-        return rating >= parseFloat(selectedRating);
-      })
+    ? sortedProducts.filter(({ rating }) => rating >= selectedRating)
     : sortedProducts;
+
+  const filteredPriceProducts = selectedPrice
+    ? productsRating.filter(({ price }) => price <= selectedPrice)
+    : productsRating;
+
+  const handleAddToCart = (product) => {
+    setCartProducts((prevCartItems) => [...prevCartItems, product]);
+    addCartItems()
+  };
+  const addCartItems = (product) => {
+    const token =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0ODI4MzFlMC02ODUxLTQ1NGQtYTQyNC04ODJiMmJiNGE5MjkiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.dug-ofAz7IuYiDLCVZRVaaOl_TuUPoT-fxbUN9uKkvw";
+    axios
+      .post(
+        "/api/user/cart",
+{product},
+        {
+          headers: {
+            authorization: `bearer ${token}`,
+          },
+        }
+      )
+      .then((resp) => console.log(resp.data.cart))
+      .catch((e) => console.error(e));
+  };
+
+  
 
   return (
     <div>
-      <Header searchHandler={searchHandler} />
+      <Header />
       {/* {filteredProducts&&<div><h2>Products:</h2> */}
-      {productsRating.map(
-        ({ _id, img, desc, original_price, price, rating }) => (
+      {filteredPriceProducts.map((product) => {
+        const { _id, img, desc, original_price, price, rating } = product;
+        return (
           <div className="product-card" key={_id}>
             <img className="product-img" src={img} alt={desc} />
             <h4>{desc}</h4>
             <p>Original Price: ${original_price}</p>
             <p>Price: ${price}</p>
             <p>Rating: {rating}</p>
+            <button onClick={() => handleAddToCart(product)}>
+              Add to cart
+            </button>
           </div>
-        )
-      )}
-      <Filters
-        sortHandler={sortHandler}
-        categoryHandler={categoryHandler}
-        ratingHandler={ratingHandler}
-        clearFiltersHandler={clearFiltersHandler}
-        selectedCategory={selectedCategory}
-        selectedRating={selectedRating}
-      />
+        );
+      })}
+
+      <Filters />
     </div>
   );
 }
