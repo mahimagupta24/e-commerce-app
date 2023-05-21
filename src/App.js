@@ -6,7 +6,7 @@ import Header from "./components/Header";
 import Home from "./pages/HomePage";
 // import Login from "./pages/Login";
 // import logo from "./logo.png";
-import Mockman from "mockman-js";
+// import Mockman from "mockman-js";
 import Products from "./pages/ProductPage";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
@@ -14,7 +14,7 @@ import Cart from "./pages/Cart";
 function App() {
   return (
     <div className="App">
-      <Mockman />
+      {/* <Mockman /> */}
       {/* <Header /> */}
       {/* <Products /> */}
       {/* <Filters /> */}

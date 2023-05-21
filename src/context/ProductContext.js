@@ -9,6 +9,8 @@ export default function ProductProvider({ children }) {
   const [sortOrder, setSortOrder] = useState(null);
   const [selectedRating, setSelectedRating] = useState(null);
 
+  
+
   const searchHandler = (text) => {
     setSearchText(text);
   };
@@ -40,9 +42,11 @@ export default function ProductProvider({ children }) {
     setSelectedRating(null);
     setSortOrder(null);
   };
+  
   return (
     <ProductContext.Provider
       value={{
+        
         searchText,
         setSearchText,
         selectedCategories,

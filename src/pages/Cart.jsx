@@ -1,10 +1,12 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
+import { CartContext } from "../context/CartContext";
 
 export default function Cart() {
-  const [cartItems, setCartItems] = useState([]);
+  const { cartProducts ,setCartProducts} = useContext(CartContext);
+  console.log('cartProducts', cartProducts)
   const fetchCartDetails = () => {
-    const token=
+    const token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0ODI4MzFlMC02ODUxLTQ1NGQtYTQyNC04ODJiMmJiNGE5MjkiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.dug-ofAz7IuYiDLCVZRVaaOl_TuUPoT-fxbUN9uKkvw";
     axios
       .get("/api/user/cart", {
@@ -12,13 +14,22 @@ export default function Cart() {
           authorization: `bearer ${token}`,
         },
       })
-      .then((resp) => console.log(resp))
+      .then((resp) => setCartProducts(resp.data.cart))
       .catch((e) => console.error(e));
   };
 
   useEffect(() => {
-    fetchCartDetails();
+     fetchCartDetails();
   }, []);
 
-  return <div>cart</div>;
+  return (
+    <div>
+      {cartProducts.map((cart) => (
+        <div>
+          <img src ={cart.img} width="100"height="200"alt="clothes"/>
+          <p>Price:{cart.price}</p>
+        </div>
+      ))}
+    </div>
+  );
 }

@@ -4,10 +4,14 @@ import Header from "../components/Header";
 import "./Productpage.css";
 import { ProductContext } from "../context/ProductContext";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
+//  import { useNavigate } from "react-router-dom";
 
 export default function Products() {
-  const [cartProducts, setCartProducts] = useState([]);
+const {setCartProducts} = useContext(CartContext)
   const {
+   
     searchText,
     selectedCategories,
     sortOrder,
@@ -59,28 +63,26 @@ export default function Products() {
     ? productsRating.filter(({ price }) => price <= selectedPrice)
     : productsRating;
 
-  const handleAddToCart = (product) => {
-    setCartProducts((prevCartItems) => [...prevCartItems, product]);
-    addCartItems()
-  };
+  
   const addCartItems = (product) => {
     const token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0ODI4MzFlMC02ODUxLTQ1NGQtYTQyNC04ODJiMmJiNGE5MjkiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.dug-ofAz7IuYiDLCVZRVaaOl_TuUPoT-fxbUN9uKkvw";
     axios
       .post(
         "/api/user/cart",
-{product},
+        { product },
         {
           headers: {
             authorization: `bearer ${token}`,
           },
         }
       )
-      .then((resp) => console.log(resp.data.cart))
+      .then((resp) => {
+        console.log("cart", resp.data.cart);
+        setCartProducts(resp.data.cart);
+      })
       .catch((e) => console.error(e));
   };
-
-  
 
   return (
     <div>
@@ -95,9 +97,7 @@ export default function Products() {
             <p>Original Price: ${original_price}</p>
             <p>Price: ${price}</p>
             <p>Rating: {rating}</p>
-            <button onClick={() => handleAddToCart(product)}>
-              Add to cart
-            </button>
+            <button onClick={() => addCartItems(product)}>Add to cart</button>
           </div>
         );
       })}
