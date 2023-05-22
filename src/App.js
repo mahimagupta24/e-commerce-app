@@ -10,6 +10,7 @@ import Home from "./pages/HomePage";
 import Products from "./pages/ProductPage";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
+import Wishlist from "./pages/Wishlist";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/wishlist" element={<Wishlist />} />
       </Routes>
 
       {/* <header className="App-header"> 

@@ -4,14 +4,15 @@ import Header from "../components/Header";
 import "./Productpage.css";
 import { ProductContext } from "../context/ProductContext";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
+import { WishlistContext } from "../context/WishlistContext";
+import { Link } from "react-router-dom";
 //  import { useNavigate } from "react-router-dom";
 
 export default function Products() {
-const {setCartProducts} = useContext(CartContext)
+  const { setCartProducts, cartProducts } = useContext(CartContext);
+  const { dispatch, state } = useContext(WishlistContext);
   const {
-   
     searchText,
     selectedCategories,
     sortOrder,
@@ -63,8 +64,7 @@ const {setCartProducts} = useContext(CartContext)
     ? productsRating.filter(({ price }) => price <= selectedPrice)
     : productsRating;
 
-  
-  const addCartItems = (product) => {
+  const handleAddCartItems = (product) => {
     const token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0ODI4MzFlMC02ODUxLTQ1NGQtYTQyNC04ODJiMmJiNGE5MjkiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.dug-ofAz7IuYiDLCVZRVaaOl_TuUPoT-fxbUN9uKkvw";
     axios
@@ -78,8 +78,27 @@ const {setCartProducts} = useContext(CartContext)
         }
       )
       .then((resp) => {
-        console.log("cart", resp.data.cart);
         setCartProducts(resp.data.cart);
+      })
+      .catch((e) => console.error(e));
+  };
+
+  const handleAddWishlistItems = (product) => {
+    const token =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0ODI4MzFlMC02ODUxLTQ1NGQtYTQyNC04ODJiMmJiNGE5MjkiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.dug-ofAz7IuYiDLCVZRVaaOl_TuUPoT-fxbUN9uKkvw";
+    axios
+      .post(
+        "/api/user/wishlist",
+        { product },
+        {
+          headers: {
+            authorization: `bearer ${token}`,
+          },
+        }
+      )
+      .then((resp) => {
+        console.log("wishlist", resp.data.wishlist);
+        dispatch({ type: "LOAD_WISHLIST", payload: resp.data.wishlist });
       })
       .catch((e) => console.error(e));
   };
@@ -90,6 +109,12 @@ const {setCartProducts} = useContext(CartContext)
       {/* {filteredProducts&&<div><h2>Products:</h2> */}
       {filteredPriceProducts.map((product) => {
         const { _id, img, desc, original_price, price, rating } = product;
+        const isCartProductPresent = cartProducts.some(
+          (cartProduct) => cartProduct._id === product._id
+        );
+        const isWishlistProductPresent = state.wishListProducts.some(
+          (wishListProduct) => wishListProduct._id === product._id
+        );
         return (
           <div className="product-card" key={_id}>
             <img className="product-img" src={img} alt={desc} />
@@ -97,7 +122,24 @@ const {setCartProducts} = useContext(CartContext)
             <p>Original Price: ${original_price}</p>
             <p>Price: ${price}</p>
             <p>Rating: {rating}</p>
-            <button onClick={() => addCartItems(product)}>Add to cart</button>
+            {isCartProductPresent ? (
+              <Link to="/cart">
+                <button>Go to cart</button>
+              </Link>
+            ) : (
+              <button onClick={() => handleAddCartItems(product)}>
+                Add to cart
+              </button>
+            )}
+            {isWishlistProductPresent ? (
+              <Link to="/wishlist">
+                <button>Go to wishlist</button>
+              </Link>
+            ) : (
+              <button onClick={() => handleAddWishlistItems(product)}>
+                Add to wishlist
+              </button>
+            )}
           </div>
         );
       })}
