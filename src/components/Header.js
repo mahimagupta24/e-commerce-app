@@ -2,9 +2,12 @@ import { useContext } from "react";
 import "./Header.css";
 import { ProductContext } from "../context/ProductContext";
 import {Link} from "react-router-dom";
+import { CartContext } from "../context/CartContext";
 
 export default function Header() {
-  const { searchHandler, cartProducts } = useContext(ProductContext);
+  const { searchHandler } = useContext(ProductContext);
+  const {cartProducts}=useContext(CartContext)
+  
 
   return (
     <>
@@ -32,6 +35,7 @@ export default function Header() {
         </div>
         <div className="nav-icons">
           <button className="login-btn">Login</button>
+          <Link to ="/wishlist">
           <svg
             width="28"
             height="26"
@@ -47,8 +51,10 @@ export default function Header() {
               stroke-linejoin="round"
             />
           </svg>
+          </Link>
           <Link to="/cart">
             {" "}
+
             <svg
               width="28"
               height="25"
