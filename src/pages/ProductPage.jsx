@@ -124,19 +124,19 @@ export default function Products() {
             <p>Rating: {rating}</p>
             {isCartProductPresent ? (
               <Link to="/cart">
-                <button>Go to cart</button>
+                <button className="cart-btn">Go to cart</button>
               </Link>
             ) : (
-              <button onClick={() => handleAddCartItems(product)}>
+              <button className="cart-btn"onClick={() => handleAddCartItems(product)}>
                 Add to cart
               </button>
             )}
             {isWishlistProductPresent ? (
               <Link to="/wishlist">
-                <button>Go to wishlist</button>
+                <button className="wishlist-btn">Go to wishlist</button>
               </Link>
             ) : (
-              <button onClick={() => handleAddWishlistItems(product)}>
+              <button className="wishlist-btn"onClick={() => handleAddWishlistItems(product)}>
                 Add to wishlist
               </button>
             )}
