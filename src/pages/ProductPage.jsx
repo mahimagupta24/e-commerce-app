@@ -83,10 +83,11 @@ export default function Products() {
       .catch((e) => console.error(e));
   };
 
-  const handleAddWishlistItems = (product) => {
+  const handleAddWishlistItems = async(product) => {
     const token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0ODI4MzFlMC02ODUxLTQ1NGQtYTQyNC04ODJiMmJiNGE5MjkiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.dug-ofAz7IuYiDLCVZRVaaOl_TuUPoT-fxbUN9uKkvw";
-    axios
+   try{
+      const resp= await axios
       .post(
         "/api/user/wishlist",
         { product },
@@ -96,11 +97,11 @@ export default function Products() {
           },
         }
       )
-      .then((resp) => {
         console.log("wishlist", resp.data.wishlist);
         dispatch({ type: "LOAD_WISHLIST", payload: resp.data.wishlist });
-      })
-      .catch((e) => console.error(e));
+   }catch(e){
+    console.error(e)
+   }
   };
 
   return (
