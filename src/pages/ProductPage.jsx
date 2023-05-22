@@ -13,11 +13,7 @@ export default function Products() {
   const { setCartProducts, cartProducts, } = useContext(CartContext);
   const { dispatch, state } = useContext(WishlistContext);
   const {
-    searchText,
-    selectedCategories,
-    sortOrder,
-    selectedRating,
-    selectedPrice,
+    state:productState
   } = useContext(ProductContext);
   const [products, setProducts] = useState([]);
 
@@ -38,30 +34,30 @@ export default function Products() {
   }, []);
 
   const searchedProducts =
-    searchText !== null
-      ? products.filter(({ name }) => name.includes(searchText))
+    productState.searchText !== null
+      ? products.filter(({ name }) => name.includes(productState.searchText))
       : products;
 
   const filteredProducts =
-    selectedCategories.length > 0
+   productState.selectedCategories.length > 0
       ? searchedProducts.filter(({ categoryName }) =>
-          selectedCategories.includes(categoryName)
+          productState.selectedCategories.includes(categoryName)
         )
       : searchedProducts;
 
   const sortedProducts =
-    sortOrder !== null
+    productState.sortOrder !== null
       ? filteredProducts.sort((a, b) =>
-          sortOrder === "HTL" ? b.price - a.price : a.price - b.price
+          productState.sortOrder === "HTL" ? b.price - a.price : a.price - b.price
         )
       : filteredProducts;
 
-  const productsRating = selectedRating
-    ? sortedProducts.filter(({ rating }) => rating >= selectedRating)
+  const productsRating = productState.selectedRating
+    ? sortedProducts.filter(({ rating }) => rating >= productState.selectedRating)
     : sortedProducts;
 
-  const filteredPriceProducts = selectedPrice
-    ? productsRating.filter(({ price }) => price <= selectedPrice)
+  const filteredPriceProducts = productState.selectedPrice
+    ? productsRating.filter(({ price }) => price <= productState.selectedPrice)
     : productsRating;
 
   const handleAddCartItems = (product) => {
