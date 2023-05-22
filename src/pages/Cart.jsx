@@ -3,7 +3,7 @@ import { useContext, useEffect } from "react";
 import { CartContext } from "../context/CartContext";
 
 export default function Cart() {
-  const { cartProducts, setCartProducts } = useContext(CartContext);
+  const { cartProducts, setCartProducts} = useContext(CartContext);
   const fetchCartDetails = () => {
     const token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0ODI4MzFlMC02ODUxLTQ1NGQtYTQyNC04ODJiMmJiNGE5MjkiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.dug-ofAz7IuYiDLCVZRVaaOl_TuUPoT-fxbUN9uKkvw";
@@ -35,7 +35,6 @@ export default function Cart() {
       })
       .catch((e) => console.error(e));
   };
-
   const increaseQuantityHandler = (productId) => {
     const token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0ODI4MzFlMC02ODUxLTQ1NGQtYTQyNC04ODJiMmJiNGE5MjkiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.dug-ofAz7IuYiDLCVZRVaaOl_TuUPoT-fxbUN9uKkvw";
@@ -60,6 +59,7 @@ export default function Cart() {
       .catch((e) => console.error(e));
   };
 
+ 
   const decreaseQuantityHandler = (productId) => {
     const token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0ODI4MzFlMC02ODUxLTQ1NGQtYTQyNC04ODJiMmJiNGE5MjkiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.dug-ofAz7IuYiDLCVZRVaaOl_TuUPoT-fxbUN9uKkvw";

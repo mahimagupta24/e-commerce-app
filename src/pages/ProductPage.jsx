@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 //  import { useNavigate } from "react-router-dom";
 
 export default function Products() {
-  const { setCartProducts, cartProducts } = useContext(CartContext);
+  const { setCartProducts, cartProducts, } = useContext(CartContext);
   const { dispatch, state } = useContext(WishlistContext);
   const {
     searchText,
