@@ -4,9 +4,12 @@ import { ProductContext } from "../context/ProductContext";
 import {Link} from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 
+import  { AuthContext } from "../context/AuthContext";
+
 export default function Header() {
   const { searchHandler } = useContext(ProductContext);
   const {cartProducts}=useContext(CartContext)
+  const{loginHandler}=useContext(AuthContext)
   
 
   return (
@@ -34,7 +37,7 @@ export default function Header() {
           />
         </div>
         <div className="nav-icons">
-          <button className="login-btn">Login</button>
+          <button onClick={loginHandler}className="login-btn">Login</button>
           <Link to ="/wishlist">
           <svg
             width="28"
