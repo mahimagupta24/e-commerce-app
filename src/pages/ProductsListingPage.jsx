@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import Filters from "../components/Filters";
 import Header from "../components/Header";
-import "./Productpage.css";
+import "./ProductsListingpage.css";
 import { ProductContext } from "../context/ProductContext";
 import axios from "axios";
 import { CartContext } from "../context/CartContext";
@@ -10,8 +10,8 @@ import { Link } from "react-router-dom";
 //  import { useNavigate } from "react-router-dom";
 
 export default function Products() {
-  const { setCartProducts, cartProducts, } = useContext(CartContext);
-  const { dispatch, state } = useContext(WishlistContext);
+  const { handleAddCartItems, cartProducts, } = useContext(CartContext);
+  const { handleAddWishlistItems, state } = useContext(WishlistContext);
   const {
     state:productState
   } = useContext(ProductContext);
@@ -60,46 +60,9 @@ export default function Products() {
     ? productsRating.filter(({ price }) => price <= productState.selectedPrice)
     : productsRating;
 
-  const handleAddCartItems = (product) => {
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0ODI4MzFlMC02ODUxLTQ1NGQtYTQyNC04ODJiMmJiNGE5MjkiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.dug-ofAz7IuYiDLCVZRVaaOl_TuUPoT-fxbUN9uKkvw";
-    axios
-      .post(
-        "/api/user/cart",
-        { product },
-        {
-          headers: {
-            authorization: `bearer ${token}`,
-          },
-        }
-      )
-      .then((resp) => {
-        setCartProducts(resp.data.cart);
-      })
-      .catch((e) => console.error(e));
-  };
-
-  const handleAddWishlistItems = async(product) => {
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0ODI4MzFlMC02ODUxLTQ1NGQtYTQyNC04ODJiMmJiNGE5MjkiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.dug-ofAz7IuYiDLCVZRVaaOl_TuUPoT-fxbUN9uKkvw";
-   try{
-      const resp= await axios
-      .post(
-        "/api/user/wishlist",
-        { product },
-        {
-          headers: {
-            authorization: `bearer ${token}`,
-          },
-        }
-      )
-        console.log("wishlist", resp.data.wishlist);
-        dispatch({ type: "LOAD_WISHLIST", payload: resp.data.wishlist });
-   }catch(e){
-    console.error(e)
-   }
-  };
-
+  
+  
+ 
   return (
     <div>
       <Header />
@@ -112,8 +75,9 @@ export default function Products() {
         const isWishlistProductPresent = state.wishListProducts.some(
           (wishListProduct) => wishListProduct._id === product._id
         );
+       
         return (
-          <div className="product-card" key={_id}>
+         <Link to ={`/product/${_id}`}> <div className="product-card" key={_id}>
             <img className="product-img" src={img} alt={desc} />
             <h4>{desc}</h4>
             <p>Original Price: ${original_price}</p>
@@ -138,6 +102,7 @@ export default function Products() {
               </button>
             )}
           </div>
+          </Link>
         );
       })}
 

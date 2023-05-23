@@ -7,10 +7,11 @@ import Home from "./pages/HomePage";
 // import Login from "./pages/Login";
 // import logo from "./logo.png";
 // import Mockman from "mockman-js";
-import Products from "./pages/ProductPage";
+import Products from "./pages/ProductsListingPage";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
+        <Route path ="/product/:productId" element={<ProductDetailsPage/>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/wishlist" element={<Wishlist />} />

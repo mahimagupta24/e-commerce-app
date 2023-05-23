@@ -35,7 +35,7 @@ export default function Cart() {
       })
       .catch((e) => console.error(e));
   };
-  const increaseQuantityHandler = (productId) => {
+  const changeQuantityHandler = (productId,actionType) => {
     const token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0ODI4MzFlMC02ODUxLTQ1NGQtYTQyNC04ODJiMmJiNGE5MjkiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.dug-ofAz7IuYiDLCVZRVaaOl_TuUPoT-fxbUN9uKkvw";
     axios
@@ -43,7 +43,7 @@ export default function Cart() {
         `/api/user/cart/${productId}`,
         {
           action: {
-            type: "increment",
+            type: actionType,
           },
         },
         {
@@ -60,28 +60,7 @@ export default function Cart() {
   };
 
  
-  const decreaseQuantityHandler = (productId) => {
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0ODI4MzFlMC02ODUxLTQ1NGQtYTQyNC04ODJiMmJiNGE5MjkiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.dug-ofAz7IuYiDLCVZRVaaOl_TuUPoT-fxbUN9uKkvw";
-    axios
-      .post(
-        `/api/user/cart/${productId}`,
-        {
-          action: {
-            type: "decrement",
-          },
-        },
-        {
-          headers: {
-            authorization: `bearer ${token}`,
-          },
-        }
-      )
-      .then((resp) => {
-        setCartProducts(resp.data.cart);
-      })
-      .catch((e) => console.error(e));
-  };
+  
   return (
     <div>
       {cartProducts.map((cart) => {
@@ -92,9 +71,9 @@ export default function Cart() {
           <button onClick={() => removeCartHandler(cart._id)}>
             Remove from cart
           </button>
-          <button onClick={() => decreaseQuantityHandler(cart._id)}>-</button>
+          <button onClick={() => changeQuantityHandler(cart._id,"decrement")}>-</button>
           {cart.qty}
-          <button onClick={() => increaseQuantityHandler(cart._id)}>+</button>
+          <button onClick={() => changeQuantityHandler(cart._id,"increment")}>+</button>
         </div>
 })}
     </div>
