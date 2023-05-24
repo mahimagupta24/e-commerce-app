@@ -77,12 +77,14 @@ export default function Products() {
         );
        
         return (
-         <Link to ={`/product/${_id}`}> <div className="product-card" key={_id}>
+          <div>
+       <Link  to ={`/product/${_id}`}><div className="product-card" key={_id}></div></Link>  
             <img className="product-img" src={img} alt={desc} />
             <h4>{desc}</h4>
             <p>Original Price: ${original_price}</p>
             <p>Price: ${price}</p>
             <p>Rating: {rating}</p>
+            
             {isCartProductPresent ? (
               <Link to="/cart">
                 <button className="cart-btn">Go to cart</button>
@@ -101,10 +103,12 @@ export default function Products() {
                 Add to wishlist
               </button>
             )}
-          </div>
-          </Link>
-        );
+            </div>
+        
+        )
+      
       })}
+
 
       <Filters />
     </div>

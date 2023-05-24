@@ -1,9 +1,26 @@
 import { useContext } from "react";
 import { WishlistContext } from "../context/WishlistContext";
+import axios from "axios";
+import { CartContext } from "../context/CartContext";
 
 export default function Wishlist() {
-  const { state } = useContext(WishlistContext);
+  const { state,dispatch } = useContext(WishlistContext);
+  const { handleAddCartItems } = useContext(CartContext);
   // console.log(state.wishListProducts);
+  const removeWishlistHandler = async(productId) => {
+    const token =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0ODI4MzFlMC02ODUxLTQ1NGQtYTQyNC04ODJiMmJiNGE5MjkiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.dug-ofAz7IuYiDLCVZRVaaOl_TuUPoT-fxbUN9uKkvw";
+    try {
+     const resp= await axios.delete(`/api/user/wishlist/${productId}`, {
+        headers: {
+          authorization: `bearer ${token}`,
+        },
+      });
+      dispatch({ type: "LOAD_WISHLIST", payload: resp.data.wishlist });
+    } catch (e) {
+      console.error(e);
+    }
+  };
   return (
     <div>
       {state.wishListProducts.map((product) => (
@@ -11,6 +28,9 @@ export default function Wishlist() {
           <img src={product.img} height="200" width="100" />
           <p>{product.name}</p>
           <p>Price:{product.price}</p>
+        
+          <button onClick={()=>removeWishlistHandler(product._id)}>remove from wishlist</button>
+
         </div>
       ))}
     </div>

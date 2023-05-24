@@ -16,9 +16,9 @@ const loginHandler = async()=>{
       })
 const data=await resp.json()
 console.log(data.encodedToken)
- localStorage.setItem('foundUser',data.encodedToken)
+ localStorage.setItem('token',data.encodedToken)
  localStorage.setItem('user',data.foundUser.email)
- localStorage.setItem('user',data.foundUser.password)
+ localStorage.setItem('password',data.foundUser.password)
     }catch(e){
         console.error(e)
     }

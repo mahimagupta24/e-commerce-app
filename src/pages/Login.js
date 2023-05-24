@@ -1,7 +1,8 @@
 import "./Auth.css";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
+// import {Link, useLocation, useNavigate} from "react-router-dom"
 
 export default function Login() {
   const {loginHandler} = useContext(AuthContext)
@@ -10,10 +11,21 @@ export default function Login() {
     email: "adarshbalika@gmail.com",
     password: "adarshbalika",
   };
+  // const navigate = useNavigate()
+  // const location = useLocation()
+  // const token = localStorage.getItem("token")
   const onSubmitHandler=(e)=>{
     e.preventDefault()
     loginHandler(loginDetails.email,loginDetails.password)
   }
+
+  const onTestLogin = () => {
+      setLoginDetails({
+        email: fixedLoginDetails.email,
+        password: fixedLoginDetails.password,
+      });
+    };
+  
   return (
     <div className="test">
       <div className="login-container">
@@ -31,12 +43,7 @@ export default function Login() {
             <input type="password" placeholder="********"value={loginDetails.password}onChange={(e)=>setLoginDetails({...loginDetails
             ,password:e.target.value})} />
           </div>
-          <button onClick={() =>
-                setLoginDetails({
-                  email: fixedLoginDetails.email,
-                  password: fixedLoginDetails.password,
-                })
-              }id="login-btn">Login</button>
+         <button type="submit"required={true}onClick={onTestLogin}id="login-btn">Login</button>
         </form>
       </div>
     </div>
