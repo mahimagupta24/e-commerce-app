@@ -3,7 +3,6 @@ import Filters from "../components/Filters";
 import Header from "../components/Header";
 import "./ProductsListingpage.css";
 import { ProductContext } from "../context/ProductContext";
-import axios from "axios";
 import { CartContext } from "../context/CartContext";
 import { WishlistContext } from "../context/WishlistContext";
 import { Link } from "react-router-dom";
@@ -78,7 +77,7 @@ export default function Products() {
        
         return (
           <div>
-       <Link  to ={`/product/${_id}`}><div className="product-card" key={_id}></div></Link>  
+       <Link key={_id} to ={`/product/${_id}`}><div className="product-card" key={_id}></div></Link>  
             <img className="product-img" src={img} alt={desc} />
             <h4>{desc}</h4>
             <p>Original Price: ${original_price}</p>

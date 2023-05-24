@@ -1,8 +1,10 @@
-import { createContext } from "react";
+import { useState,createContext } from "react";
+
 
 export const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
+  const [token, setToken] = useState("");
     // const localStorageToken =JSON.parse(localStorage.getItem('loginItems'))
 const loginHandler = async()=>{
     try{
@@ -16,6 +18,7 @@ const loginHandler = async()=>{
       })
 const data=await resp.json()
 console.log(data.encodedToken)
+setToken(data.encodedToken)
  localStorage.setItem('token',data.encodedToken)
  localStorage.setItem('user',data.foundUser.email)
  localStorage.setItem('password',data.foundUser.password)
@@ -24,5 +27,5 @@ console.log(data.encodedToken)
     }
 }
 
-  return <AuthContext.Provider value={{loginHandler}}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{loginHandler,token}}>{children}</AuthContext.Provider>;
 }
