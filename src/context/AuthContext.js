@@ -5,6 +5,7 @@ export const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
   const [token, setToken] = useState("");
+  console.log(token)
     // const localStorageToken =JSON.parse(localStorage.getItem('loginItems'))
 const loginHandler = async()=>{
     try{

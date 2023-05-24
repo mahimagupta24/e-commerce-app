@@ -1,10 +1,12 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import axios from "axios";
+import { AuthContext } from "./AuthContext";
 
 export const CartContext = createContext()
 
 export default function CartProvider({children}){
     const [cartProducts,setCartProducts]=useState([]);
+    // const {token} = useContext(AuthContext)
    
     const handleAddCartItems = (product) => {
         const token =
