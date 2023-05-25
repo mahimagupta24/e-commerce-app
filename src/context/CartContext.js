@@ -6,6 +6,7 @@ export const CartContext = createContext()
 
 export default function CartProvider({children}){
     const [cartProducts,setCartProducts]=useState([]);
+    
     // const {token,loginHandler} = useContext(AuthContext)
    
     const handleAddCartItems = async(product) => {

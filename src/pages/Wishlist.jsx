@@ -2,10 +2,11 @@ import { useContext } from "react";
 import { WishlistContext } from "../context/WishlistContext";
 import axios from "axios";
 import { CartContext } from "../context/CartContext";
+import {Link} from  "react-router-dom"
 
 export default function Wishlist() {
   const { state,dispatch } = useContext(WishlistContext);
-  const { handleAddCartItems } = useContext(CartContext);
+  const {cartProducts, handleAddCartItems } = useContext(CartContext);
   // console.log(state.wishListProducts);
   const removeWishlistHandler = async(productId) => {
     const token =
@@ -23,16 +24,28 @@ export default function Wishlist() {
   };
   return (
     <div>
-      {state.wishListProducts.map((product) => (
-        <div key={product._id}>
+      {state.wishListProducts.map((product) => {
+
+        const isCartProductPresent = cartProducts.some(
+          (cartProduct) => cartProduct._id === product._id
+        )
+       return <div key={product._id}>
           <img src={product.img} height="200" width="100" />
           <p>{product.name}</p>
           <p>Price:{product.price}</p>
         
           <button onClick={()=>removeWishlistHandler(product._id)}>remove from wishlist</button>
-
+          {isCartProductPresent ? (
+              <Link to="/cart">
+                <button className="cart-btn">Go to cart</button>
+              </Link>
+            ) : (
+              <button className="cart-btn"onClick={() => handleAddCartItems(product)}>
+                Move to cart
+              </button>
+            )}
         </div>
-      ))}
+})}
     </div>
   );
 }

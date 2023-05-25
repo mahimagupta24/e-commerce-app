@@ -34,8 +34,8 @@ export default function Home() {
     navigate("/products");
   };
 
-   const categoryHandler =  (categoryName)=> {
-    dispatch({type:"SET_SELECTED_CATEGORY",payload:categoryName})
+   const categoryHandler =  ()=> {
+    // dispatch({type:"SET_SELECTED_CATEGORY",payload:categoryName})
     navigate("/products");
    }
   
@@ -50,7 +50,7 @@ export default function Home() {
             <div key={_id}>
               <h4>{categoryName} collection</h4>
               <p>{description}</p>
-              <button onClick={()=>categoryHandler(category)}>go </button>
+              <button onClick={()=>categoryHandler()}>go </button>
             </div>
           );
         })}

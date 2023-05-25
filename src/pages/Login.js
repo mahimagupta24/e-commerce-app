@@ -18,7 +18,7 @@ export default function Login() {
   const onSubmitHandler=(e)=>{
     console.log('submit')
     e.preventDefault()
-     loginHandler()
+     
    
   }
 
@@ -28,7 +28,7 @@ export default function Login() {
         email: fixedLoginDetails.email,
         password: fixedLoginDetails.password,
       });
-      
+      loginHandler()
     };
   
   return (
@@ -48,7 +48,8 @@ export default function Login() {
             <input type="password" placeholder="********"value={loginDetails.password}onChange={(e)=>setLoginDetails({...loginDetails
             ,password:e.target.value})} />
           </div>
-         <button type="submit"required={true}onClick={onTestLogin}id="login-btn">Login</button>
+          <button type="submit">Login</button>
+         <button type="submit"required={true}onClick={onTestLogin}id="login-btn">Login as a guest</button>
         </form>
       </div>
     </div>
