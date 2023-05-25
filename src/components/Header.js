@@ -7,7 +7,7 @@ import { CartContext } from "../context/CartContext";
 import  { AuthContext } from "../context/AuthContext";
 
 export default function Header() {
-  const { searchHandler } = useContext(ProductContext);
+  const { state,dispatch } = useContext(ProductContext);
   const {cartProducts}=useContext(CartContext)
   const{loginHandler}=useContext(AuthContext)
   
@@ -31,7 +31,7 @@ export default function Header() {
           </svg>
           <input
             type="text"
-            onChange={(e) => searchHandler(e.target.value)}
+            onChange={(e) => dispatch({type:"SET_SEARCH_TEXT",payload:e.target.value})}
             placeholder="search"
             class="search-bar"
           />

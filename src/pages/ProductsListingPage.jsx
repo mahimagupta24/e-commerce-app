@@ -67,7 +67,7 @@ export default function Products() {
       <Header />
       {/* {filteredProducts&&<div><h2>Products:</h2> */}
       {filteredPriceProducts.map((product) => {
-        const { _id, img, desc, original_price, price, rating } = product;
+        const { _id, img,  original_price, price, rating,name } = product;
         const isCartProductPresent = cartProducts.some(
           (cartProduct) => cartProduct._id === product._id
         );
@@ -76,10 +76,10 @@ export default function Products() {
         );
        
         return (
-          <div>
-       <Link key={_id} to ={`/product/${_id}`}><div className="product-card" key={_id}></div></Link>  
-            <img className="product-img" src={img} alt={desc} />
-            <h4>{desc}</h4>
+          <div key={_id}>
+       <Link  to ={`/product/${_id}`}><div className="product-card" key={_id}></div></Link>  
+            <img className="product-img" src={img} alt={name} />
+            <h4>{name}</h4>
             <p>Original Price: ${original_price}</p>
             <p>Price: ${price}</p>
             <p>Rating: {rating}</p>
