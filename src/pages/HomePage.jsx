@@ -2,11 +2,15 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer.js"
 import Header from "../components/Header";
+import { ProductContext } from "../context/ProductContext.js";
 
 export default function Home() {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
+  const[selectedCategories,setSelectedCategories]=useState([])
   const [isLoading, setIsLoading] = useState(true);
+  const{dispatch}=useContext(ProductContext)
+  
 
   const loadCategories = async () => {
     try{
@@ -30,9 +34,11 @@ export default function Home() {
     navigate("/products");
   };
 
-  const categoryHandler =  ()=> {
+   const categoryHandler =  (categoryName)=> {
+    dispatch({type:"SET_SELECTED_CATEGORY",payload:categoryName})
     navigate("/products");
-  };
+   }
+  
   
     return (
       <div>
@@ -44,7 +50,7 @@ export default function Home() {
             <div key={_id}>
               <h4>{categoryName} collection</h4>
               <p>{description}</p>
-              <button onClick={categoryHandler}>go </button>
+              <button onClick={()=>categoryHandler(category)}>go </button>
             </div>
           );
         })}

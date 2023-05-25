@@ -8,6 +8,7 @@ const productReducer = (state, action) => {
       return { ...state, searchText: action.payload };
     case "SET_SELECTED_CATEGORY":
       return { ...state, selectedCategories: action.payload };
+     
     case "SET_SELECTED_PRICE":
       return { ...state, selectedPrice: action.payload };
     case "SET_SELECTED_RATING":
@@ -16,10 +17,12 @@ const productReducer = (state, action) => {
       return { ...state, sortOrder: action.payload };
     case "CLEAR_FILTERS":
       return {
-        ...state,selectedCategories: [], // Reset the selected categories array
+        ...state,
+        
+        selectedCategories: [], // Reset the selected categories array
         selectedPrice: null, // Reset the selected price
         selectedRating: null, // Reset the selected rating
-        sortOrder: null
+        sortOrder: null,
       };
     default:
       return state;
@@ -34,7 +37,6 @@ export default function ProductProvider({ children }) {
     selectedRating: null,
     sortOrder: null,
   });
-  
 
   // const categoryHandler = (categoryName) => {
   //   if (state.selectedCategories.includes(categoryName)) {
@@ -46,13 +48,11 @@ export default function ProductProvider({ children }) {
   //   }
   // };
 
-
-  
-
   return (
     <ProductContext.Provider
       value={{
-        state,dispatch
+        state,
+        dispatch,
       }}
     >
       {children}

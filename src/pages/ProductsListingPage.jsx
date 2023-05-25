@@ -38,7 +38,7 @@ export default function Products() {
       : products;
 
   const filteredProducts =
-   productState.selectedCategories.length > 0
+   productState?.selectedCategories?.length > 0
       ? searchedProducts.filter(({ categoryName }) =>
           productState.selectedCategories.includes(categoryName)
         )
