@@ -1,23 +1,24 @@
 import "./Auth.css";
-import { useContext, useEffect, useState } from "react";
-import axios from "axios";
+import { useContext, useState } from "react";
+
 import { AuthContext } from "../context/AuthContext";
- import {Link, useLocation, useNavigate} from "react-router-dom"
+ import {Link, useLocation} from "react-router-dom"
 
 export default function Login() {
   const {loginHandler} = useContext(AuthContext)
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
+  
   const fixedLoginDetails = {
     email: "adarshbalika@gmail.com",
     password: "adarshbalika",
   };
-   const navigate = useNavigate()
+
   // const location = useLocation()
   // const token = localStorage.getItem("token")
   const onSubmitHandler=(e)=>{
     console.log('submit')
     e.preventDefault()
-    loginHandler(loginDetails.email,loginDetails.password)
+     loginHandler()
    
   }
 
@@ -27,6 +28,7 @@ export default function Login() {
         email: fixedLoginDetails.email,
         password: fixedLoginDetails.password,
       });
+      
     };
   
   return (
@@ -35,7 +37,7 @@ export default function Login() {
         <div>
           <h2 className="login-heading">Log In</h2>
         </div>
-        <form className="details" onSubmit={onSubmitHandler}>
+        <form className="details"onSubmit={onSubmitHandler} >
           <div className="address">
             <label>Email address</label>
             <input type="email" placeholder="test@gmail.com" value={loginDetails.email}onChange={(e)=>setLoginDetails({...loginDetails

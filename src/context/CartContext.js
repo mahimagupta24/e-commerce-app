@@ -21,7 +21,6 @@ export default function CartProvider({children}){
         })
         if(response.status===201){
           const data= await response.json()
-          console.log(data)
           setCartProducts(data.cart)
         }
         }catch(e){

@@ -33,7 +33,7 @@ export default function Header() {
             type="text"
             onChange={(e) => dispatch({type:"SET_SEARCH_TEXT",payload:e.target.value})}
             placeholder="search"
-            class="search-bar"
+            className="search-bar"
           />
         </div>
         <div className="nav-icons">
