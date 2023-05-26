@@ -1,16 +1,15 @@
 import { useContext } from "react";
 import "./Header.css";
 import { ProductContext } from "../context/ProductContext";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 
-import  { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
 
 export default function Header() {
-  const { state,dispatch } = useContext(ProductContext);
-  const {cartProducts}=useContext(CartContext)
-  const{loginHandler}=useContext(AuthContext)
-  
+  const { state, dispatch } = useContext(ProductContext);
+  const { cartProducts } = useContext(CartContext);
+  const { logOutHandler, isLoggedIn } = useContext(AuthContext);
 
   return (
     <>
@@ -31,33 +30,42 @@ export default function Header() {
           </svg>
           <input
             type="text"
-            onChange={(e) => dispatch({type:"SET_SEARCH_TEXT",payload:e.target.value})}
+            onChange={(e) =>
+              dispatch({ type: "SET_SEARCH_TEXT", payload: e.target.value })
+            }
             placeholder="search"
             className="search-bar"
           />
         </div>
         <div className="nav-icons">
-          <button onClick={loginHandler}className="login-btn">Login</button>
-          <Link to ="/wishlist">
-          <svg
-            width="28"
-            height="26"
-            viewBox="0 0 28 26"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M7.75 1.75C4.29875 1.75 1.5 4.52 1.5 7.9375C1.5 10.6962 2.59375 17.2437 13.36 23.8625C13.5529 23.9798 13.7743 24.0419 14 24.0419C14.2257 24.0419 14.4471 23.9798 14.64 23.8625C25.4063 17.2437 26.5 10.6962 26.5 7.9375C26.5 4.52 23.7013 1.75 20.25 1.75C16.7988 1.75 14 5.5 14 5.5C14 5.5 11.2013 1.75 7.75 1.75Z"
-              stroke="#9A9A9A"
-              stroke-width="2.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
+          {isLoggedIn ? (
+            <Link to="/">
+              <button onClick={logOutHandler}>Log out</button>
+            </Link>
+          ) : (
+            <Link to="/login">
+              <button className="login-btn">Login</button>
+            </Link>
+          )}
+          <Link to="/wishlist">
+            <svg
+              width="28"
+              height="26"
+              viewBox="0 0 28 26"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.75 1.75C4.29875 1.75 1.5 4.52 1.5 7.9375C1.5 10.6962 2.59375 17.2437 13.36 23.8625C13.5529 23.9798 13.7743 24.0419 14 24.0419C14.2257 24.0419 14.4471 23.9798 14.64 23.8625C25.4063 17.2437 26.5 10.6962 26.5 7.9375C26.5 4.52 23.7013 1.75 20.25 1.75C16.7988 1.75 14 5.5 14 5.5C14 5.5 11.2013 1.75 7.75 1.75Z"
+                stroke="#9A9A9A"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
           </Link>
           <Link to="/cart">
             {" "}
-
             <svg
               width="28"
               height="25"

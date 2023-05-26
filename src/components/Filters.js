@@ -65,17 +65,21 @@ function PriceSelector({ onPriceChange }) {
 }
 
 function CategorySelector({ onCategoryChange, state }) {
-  const handleCategoryChange = (category, isChecked) => {
-    let updatedCategories;
+   const handleCategoryChange = (categoryName) => {
+ const updatedCategories=state.selectedCategories.includes(categoryName)?
+state.selectedCategories.filter((cat)=>cat!==categoryName):[...state.selectedCategories,categoryName]
+ onCategoryChange(updatedCategories)
+}
+  //   let updatedCategories;
 
-    if (isChecked) {
-      updatedCategories = [...state.selectedCategories, category];
-    } else {
-      updatedCategories = state.selectedCategories.filter((cat) => cat !== category);
-    }
-
-    onCategoryChange(updatedCategories);
-  };
+  //   if (isChecked) {
+  //     updatedCategories = [...state.selectedCategories, category];
+  //   } else {
+  //     updatedCategories = state.selectedCategories.filter((cat) => cat !== category);
+  //   }
+  //   onCategoryChange(updatedCategories);
+    
+  // };
   return (
     <div>
       <h5>Category</h5>
@@ -84,7 +88,7 @@ function CategorySelector({ onCategoryChange, state }) {
           type="checkbox"
           checked={state.selectedCategories.includes("men")}
           value="men"
-          onChange={(e)=>handleCategoryChange("men",e.target.checked)}
+          onChange={()=>handleCategoryChange("men")}
         />
         <label>Men clothing</label>
       </div>
@@ -93,7 +97,7 @@ function CategorySelector({ onCategoryChange, state }) {
           type="checkbox"
           checked={state.selectedCategories.includes("women")}
           value="women"
-          onChange={(e)=>handleCategoryChange("women",e.target.checked)}
+          onChange={()=>handleCategoryChange("women")}
         />
         <label>Women clothing</label>
       </div>
@@ -102,7 +106,7 @@ function CategorySelector({ onCategoryChange, state }) {
           type="checkbox"
           checked={state.selectedCategories.includes("kids")}
           value="kids"
-          onChange={(e)=>handleCategoryChange("kids",e.target.checked)}
+          onChange={()=>handleCategoryChange("kids")}
         />
         <label>kids clothing</label>
       </div>

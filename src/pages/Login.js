@@ -2,24 +2,22 @@ import "./Auth.css";
 import { useContext, useState } from "react";
 
 import { AuthContext } from "../context/AuthContext";
- import {Link, useLocation} from "react-router-dom"
+ import {Link, useLocation, useNavigate} from "react-router-dom"
 
 export default function Login() {
-  const {loginHandler} = useContext(AuthContext)
+  const {loginHandler,logOutHandler,isLoggenIn} = useContext(AuthContext)
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
   
   const fixedLoginDetails = {
     email: "adarshbalika@gmail.com",
     password: "adarshbalika",
   };
-
-  // const location = useLocation()
+const navigate=useNavigate()
+  const location = useLocation()
   // const token = localStorage.getItem("token")
   const onSubmitHandler=(e)=>{
     console.log('submit')
     e.preventDefault()
-     
-   
   }
 
   const onTestLogin = () => {
@@ -27,10 +25,10 @@ export default function Login() {
       setLoginDetails({
         email: fixedLoginDetails.email,
         password: fixedLoginDetails.password,
-      });
+      })
       loginHandler()
-    };
-  
+    }
+      
   return (
     <div className="test">
       <div className="login-container">
@@ -48,7 +46,8 @@ export default function Login() {
             <input type="password" placeholder="********"value={loginDetails.password}onChange={(e)=>setLoginDetails({...loginDetails
             ,password:e.target.value})} />
           </div>
-          <button type="submit">Login</button>
+          {isLoggenIn ?<button onClick={logOutHandler}></button>:
+          <button type="submit" required={true}>Login</button>}
          <button type="submit"required={true}onClick={onTestLogin}id="login-btn">Login as a guest</button>
         </form>
       </div>

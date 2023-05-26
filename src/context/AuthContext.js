@@ -6,7 +6,9 @@ export const AuthContext = createContext();
 export default function AuthProvider({ children }) {
   const navigate = useNavigate();
   const [token, setToken] = useState("");
+  const[isLoggedIn,setIsLoggedIn]= useState(false)
   console.log(token);
+
 
   const loginHandler = async () => {
     try {
@@ -23,19 +25,24 @@ export default function AuthProvider({ children }) {
 
         console.log(data.encodedToken);
         setToken(data.encodedToken);
+        setIsLoggedIn(true)
 
         localStorage.setItem("token", data.encodedToken);
         localStorage.setItem("user", data.foundUser.email);
         localStorage.setItem("password", data.foundUser.password);
-        navigate("/products");
+         navigate("/products");
       }
     } catch (e) {
       console.error(e);
     }
   };
 
+   const logOutHandler = ()=>{
+    setIsLoggedIn(false)
+   }
+  
   return (
-    <AuthContext.Provider value={{ loginHandler, token }}>
+    <AuthContext.Provider value={{ loginHandler, logOutHandler,token ,isLoggedIn}}>
       {children}
     </AuthContext.Provider>
   );
