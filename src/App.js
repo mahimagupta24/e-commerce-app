@@ -13,8 +13,15 @@ import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import RequiresAuth from "./components/RequiresAuth";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "./context/AuthContext";
 
 function App() {
+  const { checkUserStatus } = useContext(AuthContext);
+
+  useEffect(() => {
+    checkUserStatus();
+  }, []);
   return (
     <div className="App">
       {/* <Mockman /> */}
@@ -26,10 +33,17 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
-        <Route path ="/product/:productId" element={<ProductDetailsPage/>}/>
+        <Route path="/product/:productId" element={<ProductDetailsPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/wishlist" element={<RequiresAuth><Wishlist /></RequiresAuth>} />
+        <Route
+          path="/wishlist"
+          element={
+            <RequiresAuth>
+              <Wishlist />
+            </RequiresAuth>
+          }
+        />
       </Routes>
 
       {/* <header className="App-header"> 

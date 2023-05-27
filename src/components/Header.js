@@ -9,8 +9,10 @@ import { AuthContext } from "../context/AuthContext";
 export default function Header() {
   const { state, dispatch } = useContext(ProductContext);
   const { cartProducts } = useContext(CartContext);
-  const { logOutHandler, isLoggedIn } = useContext(AuthContext);
+  const { logOutHandler, token } = useContext(AuthContext);
 
+  const isLoggedIn = token.length !== 0;
+  
   return (
     <>
       <div className="header">

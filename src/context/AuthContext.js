@@ -41,8 +41,15 @@ export default function AuthProvider({ children }) {
     setIsLoggedIn(false)
    }
   
+   const checkUserStatus = ()=>{
+    const encodedToken=localStorage.getItem("token",token)
+    if(encodedToken){
+      setToken(encodedToken)
+    }
+   }
+
   return (
-    <AuthContext.Provider value={{ loginHandler, logOutHandler,token ,isLoggedIn}}>
+    <AuthContext.Provider value={{ checkUserStatus,loginHandler, logOutHandler,token ,isLoggedIn}}>
       {children}
     </AuthContext.Provider>
   );
