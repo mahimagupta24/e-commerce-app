@@ -42,7 +42,7 @@ export default function Header() {
         <div className="nav-icons">
           {isLoggedIn ? (
             <Link to="/">
-              <button onClick={logOutHandler}>Log out</button>
+              <button onClick={()=>logOutHandler()}>Log out</button>
             </Link>
           ) : (
             <Link to="/login">

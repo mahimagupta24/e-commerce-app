@@ -38,7 +38,8 @@ export default function AuthProvider({ children }) {
   };
 
    const logOutHandler = ()=>{
-    setIsLoggedIn(false)
+    localStorage.removeItem("token",token)
+    setToken("")
    }
   
    const checkUserStatus = ()=>{
