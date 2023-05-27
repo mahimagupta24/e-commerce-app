@@ -27,7 +27,7 @@ export default function Filters() {
         onCategoryChange={(categories) =>
           dispatch({ type: "SET_SELECTED_CATEGORY", payload: categories })
         }
-        state={state}
+       
       />
       <RatingSelector
         state={state}
@@ -64,7 +64,8 @@ function PriceSelector({ onPriceChange }) {
   );
 }
 
-function CategorySelector({ onCategoryChange, state }) {
+function CategorySelector({ onCategoryChange}) {
+ const {state} = useContext(ProductContext);
    const handleCategoryChange = (categoryName) => {
  const updatedCategories=state.selectedCategories.includes(categoryName)?
 state.selectedCategories.filter((cat)=>cat!==categoryName):[...state.selectedCategories,categoryName]
