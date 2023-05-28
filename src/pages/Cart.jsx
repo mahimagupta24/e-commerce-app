@@ -4,6 +4,7 @@ import { CartContext } from "../context/CartContext";
 import { WishlistContext } from "../context/WishlistContext";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import Price from "./Price";
 export default function Cart() {
   const { cartProducts, setCartProducts } = useContext(CartContext);
   const { state, handleAddWishlistItems } = useContext(WishlistContext);
@@ -65,31 +66,30 @@ export default function Cart() {
       .catch((e) => console.error(e));
   };
 
-  const totalPrice = cartProducts.reduce((acc, curr) => acc + curr.price, 0);
-  console.log(totalPrice);
-
+  
   return (
     <div>
-      {cartProducts.map((cart) => {
+
+      {cartProducts.map((product) => {
         const isWishlistProductPresent = state.wishListProducts.some(
-          (wishListProduct) => wishListProduct._id === cart._id
+          (wishListProduct) => wishListProduct._id === product._id
         );
         return (
-          <div key={cart._id}>
-            <img src={cart.img} width="100" height="200" alt="clothes" />
-            <p>Name:{cart.name}</p>
-            <p>Price:{cart.price}</p>
-            <button onClick={() => removeCartHandler(cart._id)}>
+          <div key={product._id}>
+            <img src={product.img} width="100" height="200" alt="clothes" />
+            <p>Name:{product.name}</p>
+            <p>Price:{product.price}</p>
+            <button onClick={() => removeCartHandler(product._id)}>
               Remove from cart
             </button>
             <button
-              onClick={() => changeQuantityHandler(cart._id, "decrement")}
+              onClick={() => changeQuantityHandler(product._id, "decrement")}
             >
               -
             </button>
-            {cart.qty}
+            {product.qty}
             <button
-              onClick={() => changeQuantityHandler(cart._id, "increment")}
+              onClick={() => changeQuantityHandler(product._id, "increment")}
             >
               +
             </button>
@@ -100,7 +100,7 @@ export default function Cart() {
             ) : (
               <button
                 className="wishlist-btn"
-                onClick={() => handleAddWishlistItems(cart)}
+                onClick={() => handleAddWishlistItems(product)}
               >
                 Add to wishlist
               </button>
@@ -108,6 +108,8 @@ export default function Cart() {
           </div>
         );
       })}
+       <Price/>
     </div>
+   
   );
 }
