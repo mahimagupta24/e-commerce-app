@@ -1,10 +1,11 @@
 import { useState, createContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
   const navigate = useNavigate();
+  const location = useLocation()
   const [token, setToken] = useState("");
   const[isLoggedIn,setIsLoggedIn]= useState(false)
   console.log(token);
@@ -49,8 +50,9 @@ export default function AuthProvider({ children }) {
     }
    }
 
+  
   return (
-    <AuthContext.Provider value={{ checkUserStatus,loginHandler, logOutHandler,token ,isLoggedIn}}>
+    <AuthContext.Provider value={{checkUserStatus,loginHandler, logOutHandler,token ,isLoggedIn}}>
       {children}
     </AuthContext.Provider>
   );

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate,Link} from "react-router-dom";
+import { useNavigate,Link, useLocation} from "react-router-dom";
 import Footer from "../components/Footer.js"
 import Header from "../components/Header";
 import { ProductContext } from "../context/ProductContext.js";
@@ -7,6 +7,7 @@ import { ProductContext } from "../context/ProductContext.js";
 export default function Home() {
   const{dispatch}=useContext(ProductContext)
   const navigate = useNavigate();
+  // const location = useLocation()
   const [categories, setCategories] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
@@ -64,6 +65,8 @@ export default function Home() {
               <h4>{categoryName} collection</h4>
               <p>{description}</p>
               <Link to="/products" onClick={()=>dispatch({type:"SET_SELECTED_CATEGORY",payload:[categoryName]})}>go </Link>
+
+              {/* <Link to={{pathname:"/products",state:{from:location.pathname}}} onClick={()=>dispatch({type:"SET_SELECTED_CATEGORY",payload:[categoryName]})}>go </Link> */}
             </div>
           );
         })}

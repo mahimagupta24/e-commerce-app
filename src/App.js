@@ -17,7 +17,7 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "./context/AuthContext";
 
 function App() {
-  const { checkUserStatus } = useContext(AuthContext);
+  const {checkUserStatus} = useContext(AuthContext);
 
   useEffect(() => {
     checkUserStatus();
@@ -34,13 +34,13 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/product/:productId" element={<ProductDetailsPage />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login  />} />
         <Route path="/cart" element={<Cart />} />
         <Route
           path="/wishlist"
           element={
             <RequiresAuth>
-              <Wishlist />
+              <Wishlist/>
             </RequiresAuth>
           }
         />
