@@ -7,7 +7,7 @@ import { AuthContext } from "../context/AuthContext";
 import Price from "./Price";
 export default function Cart() {
   const { cartProducts, setCartProducts } = useContext(CartContext);
-  const { state, handleAddWishlistItems } = useContext(WishlistContext);
+  const { isWishlistProductPresent, handleAddWishlistItems } = useContext(WishlistContext);
   // const { loginHandler } = useContext(AuthContext);
 
   const fetchCartDetails = () => {
@@ -72,10 +72,8 @@ export default function Cart() {
 
       {cartProducts.map((product) => {
 
-        const isWishlistProductPresent = state.wishListProducts.some(
-          (wishListProduct) => wishListProduct._id === product._id
-        );
-        
+       
+
         return (
           <div key={product._id}>
             <img src={product.img} width="100" height="200" alt="clothes" />

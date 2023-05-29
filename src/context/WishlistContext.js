@@ -1,6 +1,7 @@
-import { createContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 import axios
  from "axios";
+import { ProductContext } from "./ProductContext";
 export const WishlistContext = createContext();
 const initialState = {
   wishListProducts: [],
@@ -15,6 +16,7 @@ const reducer = (state, action) => {
   }
 };
 export default function WishlistProvider({ children }) {
+  const {product}=useContext(ProductContext)
     const [state,dispatch] = useReducer(reducer,initialState)
     const handleAddWishlistItems = async(product) => {
       const token =
@@ -36,5 +38,10 @@ export default function WishlistProvider({ children }) {
       console.error(e)
      }
     };
-  return <WishlistContext.Provider value={{state,dispatch,handleAddWishlistItems}}>{children}</WishlistContext.Provider>;
+
+    const isWishlistProductPresent = state.wishListProducts.some(
+      (wishListProduct) => wishListProduct?._id === product?._id
+    );
+
+  return <WishlistContext.Provider value={{isWishlistProductPresent, state,dispatch,handleAddWishlistItems}}>{children}</WishlistContext.Provider>;
 }
