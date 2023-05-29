@@ -71,9 +71,11 @@ export default function Cart() {
     <div>
 
       {cartProducts.map((product) => {
+
         const isWishlistProductPresent = state.wishListProducts.some(
           (wishListProduct) => wishListProduct._id === product._id
         );
+        
         return (
           <div key={product._id}>
             <img src={product.img} width="100" height="200" alt="clothes" />

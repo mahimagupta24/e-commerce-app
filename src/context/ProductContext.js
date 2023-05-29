@@ -29,6 +29,7 @@ const productReducer = (state, action) => {
 };
 
 export default function ProductProvider({ children }) {
+  const [product, setProduct] = useState(null);
   const [products, setProducts] = useState([]);
   const [state, dispatch] = useReducer(productReducer, {
     searchText: "",
@@ -52,6 +53,8 @@ export default function ProductProvider({ children }) {
   useEffect(() => {
     loadProducts();
   }, []);
+
+  
 
   const searchedProducts =
     state.searchText !== null
@@ -95,6 +98,7 @@ export default function ProductProvider({ children }) {
       value={{
         state,
         dispatch,
+        product,setProduct,
         filteredPriceProducts
       }}
     >
