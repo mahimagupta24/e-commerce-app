@@ -47,8 +47,8 @@ const navigate=useNavigate()
             <input type="password" placeholder="********"value={loginDetails.password}onChange={(e)=>setLoginDetails({...loginDetails
             ,password:e.target.value})} />
           </div>
-          {isLoggenIn ?<button onClick={logOutHandler}></button>:
-          <button type="submit" required={true}>Login</button>}
+          {isLoggenIn &&<button onClick={logOutHandler}></button>}
+           {/* <button type="submit" required={true}>Login</button> */}
          <button type="submit"required={true}onClick={onTestLogin}id="login-btn">Login as a guest</button>
     <p>Dont have an account <Link to ="/signup">sign-up</Link></p>
         </form>

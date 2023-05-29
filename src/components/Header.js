@@ -82,7 +82,7 @@ export default function Header() {
             </svg>
           </Link>
           <label>cart</label>
-          <label>{`${cartProducts.length}`}</label>
+          <label>{token&&`${cartProducts.length}`}</label>
         </div>
       </div>
     </>
