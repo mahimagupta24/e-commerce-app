@@ -15,11 +15,15 @@ export default function Price(){
     const grandTotal = totalPrice-discount
     console.log(grandTotal)
 
+    const checkoutHandler = ()=>{
+      navigate("/address")
+    }
+
     return <div>
         <button onClick ={()=>setDiscount(55)}>Apply coupon</button>
       <p>Total items:{cartProducts.length}</p>
       <p>discount:{discount}</p>
       <p>Total Price:{grandTotal}</p> 
-      {/* <button onClick={checkoutHandler}>Checkout</button> */}
+      <button onClick={checkoutHandler}>Checkout</button>
     </div>
 }

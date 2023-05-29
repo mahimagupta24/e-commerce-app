@@ -11,8 +11,13 @@ export default function Address() {
   ]);
   return (
     <div>
-      {address.map((add) => (
-        <div>{add.name}</div>
+      {address.map(({name,phoneNo,pincode,home_address}) => (
+        <div><p>{name}</p>
+        <p>{phoneNo}</p>
+        <p>{pincode}</p>
+        <p>{home_address}</p>
+        <button>Place order</button>
+        </div>
       ))}
     </div>
   );
