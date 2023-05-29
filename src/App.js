@@ -6,7 +6,7 @@ import Header from "./components/Header";
 import Home from "./pages/HomePage";
 // import Login from "./pages/Login";
 // import logo from "./logo.png";
-// import Mockman from "mockman-js";
+//  import Mockman from "mockman-js";
 import Products from "./pages/ProductsListingPage";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
@@ -16,6 +16,7 @@ import RequiresAuth from "./components/RequiresAuth";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "./context/AuthContext";
  import Address from "./pages/Address";
+import SignUp from "./pages/SignUp";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         <Route path="/login" element={<Login  />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/address"element={<Address/>}/>
+        <Route path ="/signup"element={<SignUp/>}/>
         <Route
           path="/wishlist"
           element={

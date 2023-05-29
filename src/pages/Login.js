@@ -18,6 +18,7 @@ const navigate=useNavigate()
   const onSubmitHandler=(e)=>{
     console.log('submit')
     e.preventDefault()
+    loginHandler()
   }
 
   const onTestLogin = () => {
@@ -26,7 +27,7 @@ const navigate=useNavigate()
         email: fixedLoginDetails.email,
         password: fixedLoginDetails.password,
       })
-      loginHandler()
+      
     }
       
   return (
@@ -49,6 +50,7 @@ const navigate=useNavigate()
           {isLoggenIn ?<button onClick={logOutHandler}></button>:
           <button type="submit" required={true}>Login</button>}
          <button type="submit"required={true}onClick={onTestLogin}id="login-btn">Login as a guest</button>
+    <p>Dont have an account <Link to ="/signup">sign-up</Link></p>
         </form>
       </div>
     </div>

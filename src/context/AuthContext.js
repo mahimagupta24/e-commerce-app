@@ -1,15 +1,14 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation();
   const [token, setToken] = useState("");
-  const[isLoggedIn,setIsLoggedIn]= useState(false)
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   console.log(token);
-
 
   const loginHandler = async () => {
     try {
@@ -26,33 +25,61 @@ export default function AuthProvider({ children }) {
 
         console.log(data.encodedToken);
         setToken(data.encodedToken);
-        setIsLoggedIn(true)
+        // setIsLoggedIn(true);
 
         localStorage.setItem("token", data.encodedToken);
         localStorage.setItem("user", data.foundUser.email);
         localStorage.setItem("password", data.foundUser.password);
-         navigate("/products");
+        navigate("/products");
       }
     } catch (e) {
       console.error(e);
     }
   };
 
-   const logOutHandler = ()=>{
-    localStorage.removeItem("token",token)
-    setToken("")
-   }
-  
-   const checkUserStatus = ()=>{
-    const encodedToken=localStorage.getItem("token",token)
-    if(encodedToken){
-      setToken(encodedToken)
-    }
-   }
+  const logOutHandler = () => {
+    localStorage.removeItem("token", token);
+    setToken("");
+  };
 
-  
+  const checkUserStatus = () => {
+    const encodedToken = localStorage.getItem("token", token);
+    if (encodedToken) {
+      setToken(encodedToken);
+    }
+  };
+
+  const signUpHandler = async () => {
+    try {
+      const response = await fetch("api/auth/signup", {
+        method: "POST",
+        body: JSON.stringify({
+          email: "",
+          password: "",
+          someUserAttribute1: "",
+          someUserAttribute2: "",
+        }),
+      })
+      if(response.status===200){
+        const data = await response.json();
+        console.log(data)
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+ 
   return (
-    <AuthContext.Provider value={{checkUserStatus,loginHandler, logOutHandler,token ,isLoggedIn}}>
+    <AuthContext.Provider
+      value={{
+        signUpHandler,
+        checkUserStatus,
+        loginHandler,
+        logOutHandler,
+        token,
+        // isLoggedIn,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
