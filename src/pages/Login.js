@@ -33,7 +33,7 @@ const navigate=useNavigate()
     <div className="test">
       <div className="login-container">
         <div>
-          <h2 className="login-heading">Log In</h2>
+          <h2 className="login-heading">Sign In</h2>
         </div>
         <form className="details"onSubmit={onSubmitHandler} >
           <div className="address">

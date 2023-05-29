@@ -15,6 +15,8 @@ import ProductDetailsPage from "./pages/ProductDetailsPage";
 import RequiresAuth from "./components/RequiresAuth";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "./context/AuthContext";
+ import Address from "./pages/Address";
+
 
 function App() {
   const {checkUserStatus} = useContext(AuthContext);
@@ -36,6 +38,7 @@ function App() {
         <Route path="/product/:productId" element={<ProductDetailsPage />} />
         <Route path="/login" element={<Login  />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/address"element={<Address/>}/>
         <Route
           path="/wishlist"
           element={
