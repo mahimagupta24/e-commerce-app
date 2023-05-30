@@ -8,7 +8,7 @@ const productReducer = (state, action) => {
       return { ...state, searchText: action.payload };
     case "SET_SELECTED_CATEGORY":
       return { ...state, selectedCategories: action.payload };
-   
+
     case "SET_SELECTED_PRICE":
       return { ...state, selectedPrice: action.payload };
     case "SET_SELECTED_RATING":
@@ -54,15 +54,13 @@ export default function ProductProvider({ children }) {
     loadProducts();
   }, []);
 
-  
-
   const searchedProducts =
     state.searchText !== null
       ? products.filter(({ name }) => name.includes(state.searchText))
       : products;
 
   const filteredProducts =
-   state?.selectedCategories?.length > 0
+    state?.selectedCategories?.length > 0
       ? searchedProducts.filter(({ categoryName }) =>
           state.selectedCategories.includes(categoryName)
         )
@@ -98,8 +96,9 @@ export default function ProductProvider({ children }) {
       value={{
         state,
         dispatch,
-        product,setProduct,
-        filteredPriceProducts
+        product,
+        setProduct,
+        filteredPriceProducts,
       }}
     >
       {children}

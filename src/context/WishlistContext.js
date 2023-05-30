@@ -16,8 +16,9 @@ const reducer = (state, action) => {
   }
 };
 export default function WishlistProvider({ children }) {
-  const {product}=useContext(ProductContext)
+  
     const [state,dispatch] = useReducer(reducer,initialState)
+
     const handleAddWishlistItems = async(product) => {
       const token =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0ODI4MzFlMC02ODUxLTQ1NGQtYTQyNC04ODJiMmJiNGE5MjkiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.dug-ofAz7IuYiDLCVZRVaaOl_TuUPoT-fxbUN9uKkvw";
@@ -39,8 +40,8 @@ export default function WishlistProvider({ children }) {
      }
     };
 
-    const isWishlistProductPresent = state.wishListProducts.some(
-      (wishListProduct) => wishListProduct?._id === product?._id
+    const isWishlistProductPresent =(id)=> state.wishListProducts.some(
+      (wishListProduct) => wishListProduct?._id ===id
     );
 
   return <WishlistContext.Provider value={{isWishlistProductPresent, state,dispatch,handleAddWishlistItems}}>{children}</WishlistContext.Provider>;

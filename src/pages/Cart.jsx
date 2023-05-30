@@ -93,7 +93,7 @@ export default function Cart() {
             >
               +
             </button>
-            {isWishlistProductPresent ? (
+            {isWishlistProductPresent(product._id)? (
               <Link to="/wishlist">
                 <button className="wishlist-btn">Go to wishlist</button>
               </Link>

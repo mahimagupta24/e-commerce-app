@@ -9,8 +9,11 @@ import { Link } from "react-router-dom";
 //  import { useNavigate } from "react-router-dom";
 
 export default function Products() {
-  const { handleAddCartItems, cartProducts } = useContext(CartContext);
-  const { handleAddWishlistItems, state } = useContext(WishlistContext);
+  const { handleAddCartItems, cartProducts, isCartProductPresent } =
+    useContext(CartContext);
+  console.log("cart", cartProducts);
+  const { handleAddWishlistItems, isWishlistProductPresent } =
+    useContext(WishlistContext);
   const { filteredPriceProducts } = useContext(ProductContext);
 
   return (
@@ -19,13 +22,9 @@ export default function Products() {
       {/* {filteredProducts&&<div><h2>Products:</h2> */}
       {filteredPriceProducts.map((product) => {
         const { _id, img, original_price, price, rating, name } = product;
-        const isCartProductPresent = cartProducts.some(
-          (cartProduct) => cartProduct._id === product._id
-        );
-        const isWishlistProductPresent = state.wishListProducts.some(
-          (wishListProduct) => wishListProduct._id === product._id
-        );
-
+        // const isCartProductPresent = cartProducts.some(
+        //   (cartProduct) => cartProduct?._id === product?._id
+        // );
         return (
           <div key={_id}>
             <Link to={`/product/${_id}`}>
@@ -37,7 +36,7 @@ export default function Products() {
             <p>Price: ${price}</p>
             <p>Rating: {rating}</p>
 
-            {isCartProductPresent ? (
+            {isCartProductPresent(_id) ? (
               <Link to="/cart">
                 <button className="cart-btn">Go to cart</button>
               </Link>
@@ -49,7 +48,7 @@ export default function Products() {
                 Add to cart
               </button>
             )}
-            {isWishlistProductPresent ? (
+            {isWishlistProductPresent(_id) ? (
               <Link to="/wishlist">
                 <button className="wishlist-btn">Go to wishlist</button>
               </Link>
