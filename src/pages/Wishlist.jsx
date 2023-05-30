@@ -35,7 +35,7 @@ export default function Wishlist() {
           <p>Price:{product.price}</p>
         
           <button onClick={()=>removeWishlistHandler(product._id)}>remove from wishlist</button>
-          {isCartProductPresent ? (
+          {isCartProductPresent(product._id)? (
               <Link to="/cart">
                 <button className="cart-btn">Go to cart</button>
               </Link>
