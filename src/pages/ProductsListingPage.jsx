@@ -5,16 +5,21 @@ import "./ProductsListingpage.css";
 import { ProductContext } from "../context/ProductContext";
 import { CartContext } from "../context/CartContext";
 import { WishlistContext } from "../context/WishlistContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import RequiresAuth from "../components/RequiresAuth";
+import { AuthContext } from "../context/AuthContext";
+
 //  import { useNavigate } from "react-router-dom";
 
 export default function Products() {
-  const { handleAddCartItems, cartProducts, isCartProductPresent } =
+  const navigate = useNavigate();
+  const { addCartItems, cartProducts, isCartProductPresent } =
     useContext(CartContext);
   console.log("cart", cartProducts);
   const { handleAddWishlistItems, isWishlistProductPresent } =
     useContext(WishlistContext);
   const { filteredPriceProducts } = useContext(ProductContext);
+  const { isLoggedIn } = useContext(AuthContext);
 
   return (
     <div>
@@ -25,6 +30,11 @@ export default function Products() {
         // const isCartProductPresent = cartProducts.some(
         //   (cartProduct) => cartProduct?._id === product?._id
         // );
+
+        const handleAddCartItems = (product) => {
+          isLoggedIn ? addCartItems(product) : navigate("/login");
+        };
+
         return (
           <div key={_id}>
             <Link to={`/product/${_id}`}>
