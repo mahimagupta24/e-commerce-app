@@ -9,9 +9,9 @@ import { AuthContext } from "../context/AuthContext";
 export default function Header() {
   const { state, dispatch } = useContext(ProductContext);
   const { cartProducts } = useContext(CartContext);
-  const { logOutHandler, token } = useContext(AuthContext);
+  const { logOutHandler, token,isLoggedIn } = useContext(AuthContext);
 
-  const isLoggedIn = token.length !== 0;
+ 
   
   return (
     <>

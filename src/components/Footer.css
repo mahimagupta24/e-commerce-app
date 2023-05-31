@@ -7,7 +7,7 @@
 
     align-items: center;
     text-align: center;
-    position: fixed;
+    position: relative;
   bottom: 0;
   width: 100%;
   background-color: #f2f2f2;
