@@ -49,6 +49,7 @@ export default function AuthProvider({ children }) {
     }
   };
 
+  const isLoggedIn = token.length !== 0;
   const signUpHandler = async () => {
     try {
       const response = await fetch("api/auth/signup", {
@@ -77,7 +78,7 @@ export default function AuthProvider({ children }) {
         loginHandler,
         logOutHandler,
         token,
-        // isLoggedIn,
+         isLoggedIn,
       }}
     >
       {children}
