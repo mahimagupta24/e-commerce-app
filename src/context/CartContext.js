@@ -11,7 +11,7 @@ export default function CartProvider({ children }) {
 
   // const {token,loginHandler} = useContext(AuthContext)
 
-  const handleAddCartItems = async (product) => {
+  const addCartItems = async (product) => {
     // loginHandler()
     const token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0ODI4MzFlMC02ODUxLTQ1NGQtYTQyNC04ODJiMmJiNGE5MjkiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.dug-ofAz7IuYiDLCVZRVaaOl_TuUPoT-fxbUN9uKkvw";
@@ -53,9 +53,11 @@ export default function CartProvider({ children }) {
     return cartProducts.some((cartProduct) => cartProduct?._id === id)
   }
 
+  
+  
   return (
     <CartContext.Provider
-      value={{ cartProducts, setCartProducts, handleAddCartItems,isCartProductPresent }}
+      value={{ cartProducts, setCartProducts, addCartItems,isCartProductPresent }}
     >
       {children}
     </CartContext.Provider>
