@@ -1,10 +1,6 @@
-*{
-  overflow-x: hidden;
 
-}
 
-ul{
-  
+.product-card{ 
     display:grid;
     grid-template-columns: repeat(4,200px) ;
     grid-column-gap: 16px;
@@ -12,19 +8,16 @@ ul{
 grid-row-gap: 0.5rem;
   /* flex-wrap:wrap; */
   gap:2rem; 
-  left:450px;
+  left:450px; 
   position: relative;
   
   bottom:0px;
-    /* border:2px solid black rgb(240, 245, 240);
-    box-shadow: rgba(90, 90, 90, 0.35) 0px 5px 15px;
-    width:15rem;
-border-radius: 10px; */
-   /* display: flex; */
-/* grid-row: 1/2; */
 
 }
 
+.prodcut-list{
+    list-style: none;
+}
 li{
     border: 1px solid black;
     list-style: none;
@@ -35,13 +28,16 @@ li{
     height: 10rem;
     object-fit: contain;
 }
-/* .products-list{
-    display: flex;
-} */
+
 
 .cart-btn{
     display:flex
 }
-.wishlist-btn{
-    display:flex;
+.wishlist-icon{
+   cursor: pointer;
+    color:grey;
+    margin-top:0px;
+}
+.wishlist{
+    color:red
 }
