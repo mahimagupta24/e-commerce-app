@@ -6,7 +6,7 @@ import {Link} from  "react-router-dom"
 
 export default function Wishlist() {
   const { state,dispatch } = useContext(WishlistContext);
-  const {isCartProductPresent, handleAddCartItems } = useContext(CartContext);
+  const {isCartProductPresent, addCartItems } = useContext(CartContext);
   // console.log(state.wishListProducts);
   const removeWishlistHandler = async(productId) => {
     const token =
@@ -24,6 +24,7 @@ export default function Wishlist() {
   };
   return (
     <div>
+      
       {state.wishListProducts.map((product) => {
 
         // const isCartProductPresent = cartProducts.some(
@@ -40,7 +41,7 @@ export default function Wishlist() {
                 <button className="cart-btn">Go to cart</button>
               </Link>
             ) : (
-              <button className="cart-btn"onClick={() => handleAddCartItems(product)}>
+              <button className="cart-btn"onClick={() => addCartItems(product)}>
                 Move to cart
               </button>
             )}

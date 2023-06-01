@@ -4,9 +4,10 @@ import { WishlistContext } from "../context/WishlistContext";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
+import "./ProductDetailsPage.css"
 
 export default function ProductDetailsPage() {
-  const { handleAddWishlistItems } = useContext(WishlistContext);
+  const { handleAddWishlistItems,isWishlistProductPresent } = useContext(WishlistContext);
   const { cartProducts,handleAddCartItems,isCartProductPresent } = useContext(CartContext);
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
@@ -32,8 +33,11 @@ export default function ProductDetailsPage() {
   return (
     <div>
       <Header/>
+
       <h1>Product Details</h1>
-      <img src={product?.img} />
+      <div className="product-list">
+      <img src={product?.img}alt="clothes" width="100" height="200"/>
+      
       <p>{product?.desc}</p>
       <p>{product?.original_price}</p>
       <p>{product?.price}</p>
@@ -42,11 +46,12 @@ export default function ProductDetailsPage() {
                 <button className="cart-btn">Go to cart</button>
               </Link>
             ) : (
-              <button className="cart-btn"onClick={() => handleAddCartItems(product)}>
+              <button onClick={() => handleAddCartItems(product)}>
                 Add to cart
               </button>
             )}
-      <button onClick={()=>handleAddWishlistItems(product)}>Add to wishlist</button>
+            
+    </div>
     </div>
   );
 }

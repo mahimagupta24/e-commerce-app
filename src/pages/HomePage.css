@@ -2,14 +2,11 @@
 
 .main-container{
     display: flex;
-    /* flex-direction: column; */
     justify-content: space-evenly;
     gap: 2rem;
-    /* border: 1px solid; */
+    
 } 
 .category-card{
     list-style: none;
-    border:1px solid;
-    /* /* display: flex; */
     text-align: center;
 }

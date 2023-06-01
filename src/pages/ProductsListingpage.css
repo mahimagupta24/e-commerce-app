@@ -4,22 +4,19 @@
     display:grid;
     grid-template-columns: repeat(4,200px) ;
     grid-column-gap: 16px;
-
-grid-row-gap: 0.5rem;
-  /* flex-wrap:wrap; */
   gap:2rem; 
   left:450px; 
   position: relative;
   
-  bottom:0px;
 
 }
 
-.prodcut-list{
+.product-list{
     list-style: none;
 }
 li{
-    border: 1px solid black;
+ box-shadow: rgba(90, 90, 90, 0.35) 0px 5px 15px;
+ border-radius:0.5rem;
     list-style: none;
     top:15rem;
 }
@@ -31,12 +28,22 @@ li{
 
 
 .cart-btn{
-    display:flex
+    /* width:50%; */
+     margin-bottom:2rem;
+     margin-left:3rem;
+    background-color: grey;
+    color:white;
+    padding:2px;
+    border-radius:2px;
+    font-weight: 500;
 }
 .wishlist-icon{
    cursor: pointer;
     color:grey;
     margin-top:0px;
+}
+.product-desc{
+    text-align: center;
 }
 .wishlist{
     color:red

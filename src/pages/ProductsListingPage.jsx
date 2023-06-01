@@ -27,14 +27,12 @@ export default function Products() {
       <div>
         <Filters />
       </div>
-      {/* {filteredProducts&&<div><h2>Products:</h2> */}
+    
       <ul className="product-card">
-        {/* <div className="product-card"> */}
+      
         {filteredPriceProducts.map((product) => {
           const { _id, img, original_price, price, rating, name } = product;
-          // const isCartProductPresent = cartProducts.some(
-          //   (cartProduct) => cartProduct?._id === product?._id
-          // );
+          ;
 
           const handleAddCartItems = (product) => {
             isLoggedIn ? addCartItems(product) : navigate("/login");
@@ -50,7 +48,6 @@ export default function Products() {
                   <span className="wishlist">
                     <i className="fa fa-heart"></i>
                   </span>
-                  {/* <button className="wishlist-btn">Go to wishlist</button> */}
                 </Link>
               ) : (
                 <span
@@ -67,10 +64,12 @@ export default function Products() {
                 alt={name}
                 onClick={() => handleProductClick(_id)}
               />
+              <div className="product-desc">
               <h4>{name}</h4>
               <p>Original Price: ${original_price}</p>
               <p>Price: ${price}</p>
               <p>Rating: {rating}</p>
+              </div>
 
               {isCartProductPresent(_id) ? (
                 <Link to="/cart">
@@ -87,7 +86,6 @@ export default function Products() {
             </li>
           );
         })}
-        {/* </div> */}
       </ul>
     </div>
   );
