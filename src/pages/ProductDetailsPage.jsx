@@ -5,6 +5,7 @@ import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import "./ProductDetailsPage.css";
+import { ProductContext } from "../context/ProductContext";
 
 export default function ProductDetailsPage() {
   const { handleAddWishlistItems, isWishlistProductPresent } =
@@ -12,7 +13,7 @@ export default function ProductDetailsPage() {
   const { handleAddCartItems, isCartProductPresent } =
     useContext(CartContext);
   const { productId } = useParams();
-  const [product, setProduct] = useState(null);
+  const {product, setProduct} = useContext(ProductContext);
   const getProductDetails = async () => {
     try {
       const resp = await fetch(`/api/products/${productId}`);
