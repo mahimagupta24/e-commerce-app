@@ -89,11 +89,15 @@ export default function Cart() {
                 </span>
               )}
               <div>
-              <img src={product.img} alt="clothes" width="100"height="200" />
+              <img className="product-img"src={product.img} alt="clothes" width="100"height="200" />
               </div>
               <div className="product-desc">
-                <p>Name:{product.name}</p>
-                <p>Price:{product.price}</p>
+                <p>{product.name}</p>
+                <p className="price">
+                    <span > ₹{product.price}</span>
+                    <span className="original-price">₹{product.original_price}</span>
+                  </p>
+                
               </div>
               <button
                 className="cart-btn"
