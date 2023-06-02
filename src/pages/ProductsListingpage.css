@@ -57,11 +57,10 @@ li{
 .price {
     margin-left:4rem;
     display: flex;
-    gap: 12px;
+    gap: 1px;
     
   }
 .original-price{
-        
         text-decoration: line-through;
         color: grey;
     
