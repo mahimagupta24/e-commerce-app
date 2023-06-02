@@ -71,7 +71,7 @@ export default function Cart() {
   return (
     <div className="container">
       <ul className="cart-card">
-        {cartProducts.map((product) => {
+        {cartProducts.length >0&&cartProducts.map((product) => {
           return (
             <li className="cart-list" key={product._id}>
               {isWishlistProductPresent(product._id) ? (
@@ -125,9 +125,12 @@ export default function Cart() {
             </li>
           );
         })}
+       
       </ul>
+      {cartProducts.length>0&&<Price />}
+      
+      {cartProducts.length===0&&<h1 style={{color:'grey'}}>Your cart is empty😑</h1>}
 
-      <Price />
     </div>
   );
 }

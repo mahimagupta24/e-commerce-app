@@ -25,7 +25,7 @@ export default function Wishlist() {
   };
   return (
     <ul className="product-card">
-      {state.wishListProducts.map((product) => {
+      {state.wishListProducts.length>0&&state.wishListProducts.map((product) => {
         return (
           <li className="product-list" key={product._id}>
             <span
@@ -54,6 +54,9 @@ export default function Wishlist() {
           </li>
         );
       })}
+      {state.wishListProducts.length===0&& <h1>Your wishlist is empty😑</h1>}
     </ul>
+
   );
+  
 }
