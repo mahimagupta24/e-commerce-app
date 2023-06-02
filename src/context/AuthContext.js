@@ -22,10 +22,8 @@ export default function AuthProvider({ children }) {
       });
       if (resp.status === 200) {
         const data = await resp.json();
-
-        console.log(data.encodedToken);
         setToken(data.encodedToken);
-        // setIsLoggedIn(true);
+        
 
         localStorage.setItem("token", data.encodedToken);
         localStorage.setItem("user", data.foundUser.email);

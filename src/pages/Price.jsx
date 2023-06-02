@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import { CartContext } from "../context/CartContext"
 import { useNavigate } from "react-router-dom"
-
+import "./Price.css"
 
 export default function Price(){
   
@@ -19,7 +19,7 @@ export default function Price(){
       navigate("/address")
     }
 
-    return <div>
+    return <div className="price-card">
         <button onClick ={()=>setDiscount(55)}>Apply coupon</button>
       <p>Total items:{cartProducts.length}</p>
       <p>discount:{discount}</p>

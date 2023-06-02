@@ -3,11 +3,13 @@ import { useContext, useEffect } from "react";
 import { CartContext } from "../context/CartContext";
 import { WishlistContext } from "../context/WishlistContext";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
 import Price from "./Price";
+import "./Cart.css";
+
 export default function Cart() {
   const { cartProducts, setCartProducts } = useContext(CartContext);
-  const { isWishlistProductPresent, handleAddWishlistItems } = useContext(WishlistContext);
+  const { isWishlistProductPresent, handleAddWishlistItems } =
+    useContext(WishlistContext);
   // const { loginHandler } = useContext(AuthContext);
 
   const fetchCartDetails = () => {
@@ -66,50 +68,62 @@ export default function Cart() {
       .catch((e) => console.error(e));
   };
 
-  
   return (
-    <div>
-
-      {cartProducts.map((product) => {
-
-       
-
-        return (
-          <div key={product._id}>
-            <img src={product.img} width="100" height="200" alt="clothes" />
-            <p>Name:{product.name}</p>
-            <p>Price:{product.price}</p>
-            <button onClick={() => removeCartHandler(product._id)}>
-              Remove from cart
-            </button>
-            <button
-              onClick={() => changeQuantityHandler(product._id, "decrement")}
-            >
-              -
-            </button>
-            {product.qty}
-            <button
-              onClick={() => changeQuantityHandler(product._id, "increment")}
-            >
-              +
-            </button>
-            {isWishlistProductPresent(product._id)? (
-              <Link to="/wishlist">
-                <button className="wishlist-btn">Go to wishlist</button>
-              </Link>
-            ) : (
+    <div className="container">
+      <ul className="cart-card">
+        {cartProducts.map((product) => {
+          return (
+            <li className="cart-list" key={product._id}>
+              {isWishlistProductPresent(product._id) ? (
+                <Link to="/wishlist">
+                  <span className="wishlist">
+                    <i className="fa fa-heart"></i>
+                  </span>
+                </Link>
+              ) : (
+                <span
+                  className="wishlist-icon"
+                  onClick={() => handleAddWishlistItems(product)}
+                >
+                  <i className="fa fa-heart"></i>
+                </span>
+              )}
+              <div>
+              <img src={product.img} alt="clothes" width="100"height="200" />
+              </div>
+              <div className="product-desc">
+                <p>Name:{product.name}</p>
+                <p>Price:{product.price}</p>
+              </div>
               <button
-                className="wishlist-btn"
-                onClick={() => handleAddWishlistItems(product)}
+                className="cart-btn"
+                onClick={() => removeCartHandler(product._id)}
               >
-                Add to wishlist
+                Remove from cart
               </button>
-            )}
-          </div>
-        );
-      })}
-       <Price/>
+              <div className="qty-btn">
+                <button
+                  onClick={() =>
+                    changeQuantityHandler(product._id, "decrement")
+                  }
+                >
+                  <i className="fa fa-minus"></i>
+                </button>
+                <span className="qty"> {product.qty}</span>
+                <button
+                  onClick={() =>
+                    changeQuantityHandler(product._id, "increment")
+                  }
+                >
+                  <i className="fa fa-plus"></i>
+                </button>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+
+      <Price />
     </div>
-   
   );
 }

@@ -1,11 +1,12 @@
 
-
+.product-container{
+    display: flex;
+}
 .product-card{ 
     display:grid;
-    grid-template-columns: repeat(4,200px) ;
+    grid-template-columns: repeat(5,200px) ;
     grid-column-gap: 16px;
   gap:2rem; 
-  left:450px; 
   position: relative;
   
 

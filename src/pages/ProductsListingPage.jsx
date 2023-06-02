@@ -23,7 +23,9 @@ export default function Products() {
 
   return (
     <div>
+  
       <Header />
+        <div className="product-container">
       <div>
         <Filters />
       </div>
@@ -87,6 +89,7 @@ export default function Products() {
           );
         })}
       </ul>
+    </div>
     </div>
   );
 }

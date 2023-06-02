@@ -6,7 +6,7 @@ import Header from "./components/Header";
 import Home from "./pages/HomePage";
 // import Login from "./pages/Login";
 // import logo from "./logo.png";
-//  import Mockman from "mockman-js";
+  // import Mockman from "mockman-js";
 import Products from "./pages/ProductsListingPage";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";

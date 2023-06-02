@@ -31,10 +31,13 @@ export default function ProductDetailsPage() {
   //   (cartProduct) => cartProduct?._id === product?._id
   // );
   return (
-    <div>
+   <div>
       <Header/>
-
+      
+      <div className="product-card">
+        <div className="card-heading">
       <h1>Product Details</h1>
+      </div>
       <div className="product-list">
       <img src={product?.img}alt="clothes" width="100" height="200"/>
       
@@ -51,6 +54,7 @@ export default function ProductDetailsPage() {
               </button>
             )}
             
+    </div>
     </div>
     </div>
   );

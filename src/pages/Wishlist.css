@@ -1,0 +1,37 @@
+
+ 
+.product-card{ 
+  display:grid;
+  grid-template-columns: repeat(5,200px) ;
+  grid-column-gap: 16px;
+gap:2rem; 
+position: relative;
+}
+.product-list{
+  list-style: none;
+}
+li{
+box-shadow: rgba(90, 90, 90, 0.35) 0px 5px 15px;
+border-radius:0.5rem;
+  list-style: none;
+  top:15rem;
+}
+.cart-btn{
+   margin-bottom:2rem;
+   margin-left:3rem;
+  background-color: grey;
+  color:white;
+  padding:2px;
+  
+}
+.btn{
+  margin-bottom:2rem;
+  margin-left:3rem;
+ background-color: grey;
+ color:white;
+ padding:2px;
+ 
+}
+.product-desc{
+  text-align: center;
+}
