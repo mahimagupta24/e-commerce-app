@@ -23,73 +23,74 @@ export default function Products() {
 
   return (
     <div>
-  
       <Header />
-        <div className="product-container">
-      <div>
-        <Filters />
-      </div>
-    
-      <ul className="product-card">
-      
-        {filteredPriceProducts.map((product) => {
-          const { _id, img, original_price, price, rating, name } = product;
-          ;
+      <div className="product-container">
+        <div>
+          <Filters />
+        </div>
 
-          const handleAddCartItems = (product) => {
-            isLoggedIn ? addCartItems(product) : navigate("/login");
-          };
+        <ul className="product-card">
+          {filteredPriceProducts.map((product) => {
+            const { _id, img, original_price, price, rating, name } = product;
+            const handleAddCartItems = (product) => {
+              isLoggedIn ? addCartItems(product) : navigate("/login");
+            };
 
-          const handleProductClick = (id) => {
-            navigate(`/product/${id}`);
-          };
-          return (
-            <li className="products-list" key={_id}>
-              {isWishlistProductPresent(_id) ? (
-                <Link to="/wishlist">
-                  <span className="wishlist">
+            const handleProductClick = (id) => {
+              navigate(`/product/${id}`);
+            };
+            return (
+              <li className="products-list" key={_id}>
+                {isWishlistProductPresent(_id) ? (
+                  <Link to="/wishlist">
+                    <span className="wishlist">
+                      <i className="fa fa-heart"></i>
+                    </span>
+                  </Link>
+                ) : (
+                  <span
+                    className="wishlist-icon"
+                    onClick={() => handleAddWishlistItems(product)}
+                  >
                     <i className="fa fa-heart"></i>
                   </span>
-                </Link>
-              ) : (
-                <span
-                  className="wishlist-icon"
-                  onClick={() => handleAddWishlistItems(product)}
-                >
-                  <i className="fa fa-heart"></i>
-                </span>
-              )}
+                )}
 
-              <img
-                className="product-img"
-                src={img}
-                alt={name}
-                onClick={() => handleProductClick(_id)}
-              />
-              <div className="product-desc">
-              <h4>{name}</h4>
-              <p>Original Price: ${original_price}</p>
-              <p>Price: ${price}</p>
-              <p>Rating: {rating}<i className="fa fa-star"></i></p>
-              </div>
+                <img
+                  className="product-img"
+                  src={img}
+                  alt={name}
+                  onClick={() => handleProductClick(_id)}
+                />
+                <div className="product-desc">
+                  <h4>{name}</h4>
+                  <p>Original Price: ${original_price}</p>
+                  <p>Price: ${price}</p>
+                  <p>
+                    Rating: {rating}
+                    <span className="star">
+                      <i className="fa fa-star"></i>
+                    </span>
+                  </p>
+                </div>
 
-              {isCartProductPresent(_id) ? (
-                <Link to="/cart">
-                  <button className="cart-btn">Go to cart</button>
-                </Link>
-              ) : (
-                <button
-                  className="cart-btn"
-                  onClick={() => handleAddCartItems(product)}
-                >
-                  Add to cart
-                </button>
-              )}
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+                {isCartProductPresent(_id) ? (
+                  <Link to="/cart">
+                    <button className="cart-btn">Go to cart</button>
+                  </Link>
+                ) : (
+                  <button
+                    className="cart-btn"
+                    onClick={() => handleAddCartItems(product)}
+                  >
+                    Add to cart
+                  </button>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 }
