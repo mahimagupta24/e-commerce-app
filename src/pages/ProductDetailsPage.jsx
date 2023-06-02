@@ -38,9 +38,10 @@ export default function ProductDetailsPage() {
         <div className="product-card">
           <img src={product?.img} alt="clothes" />
           <div className="desc">
+          <p><b>{product?.name}</b></p>
           <p>{product?.desc}</p>
-          <p>{product?.original_price}</p>
-          <p>{product?.price}</p>
+          <p className="curr-price"><span>₹{product?.price}</span><span className="original-price">₹{product?.original_price}</span></p>
+         
           <p>{product?.rating} <i className="fa fa-star"></i></p>
           {isCartProductPresent(product?._id) ? (
             <Link to="/cart">
