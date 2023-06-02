@@ -70,7 +70,7 @@ export default function Products() {
               <h4>{name}</h4>
               <p>Original Price: ${original_price}</p>
               <p>Price: ${price}</p>
-              <p>Rating: {rating}</p>
+              <p>Rating: {rating}<i className="fa fa-star"></i></p>
               </div>
 
               {isCartProductPresent(_id) ? (

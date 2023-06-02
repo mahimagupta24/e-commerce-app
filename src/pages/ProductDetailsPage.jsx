@@ -4,11 +4,13 @@ import { WishlistContext } from "../context/WishlistContext";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
-import "./ProductDetailsPage.css"
+import "./ProductDetailsPage.css";
 
 export default function ProductDetailsPage() {
-  const { handleAddWishlistItems,isWishlistProductPresent } = useContext(WishlistContext);
-  const { cartProducts,handleAddCartItems,isCartProductPresent } = useContext(CartContext);
+  const { handleAddWishlistItems, isWishlistProductPresent } =
+    useContext(WishlistContext);
+  const { handleAddCartItems, isCartProductPresent } =
+    useContext(CartContext);
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const getProductDetails = async () => {
@@ -27,35 +29,32 @@ export default function ProductDetailsPage() {
     getProductDetails();
   }, []);
 
-  // const isCartProductPresent = cartProducts.some(
-  //   (cartProduct) => cartProduct?._id === product?._id
-  // );
+  
   return (
-   <div>
-      <Header/>
-      
-      <div className="product-card">
-        <div className="card-heading">
-      <h1>Product Details</h1>
-      </div>
-      <div className="product-list">
-      <img src={product?.img}alt="clothes" width="100" height="200"/>
-      
-      <p>{product?.desc}</p>
-      <p>{product?.original_price}</p>
-      <p>{product?.price}</p>
-      {isCartProductPresent ? (
-              <Link to="/cart">
-                <button className="cart-btn">Go to cart</button>
-              </Link>
-            ) : (
-              <button onClick={() => handleAddCartItems(product)}>
-                Add to cart
-              </button>
-            )}
+    <div>
+      <Header />
+      <div className="main-card">
+        <h1>Product Details</h1>
+        <div className="product-card">
+          <img src={product?.img} alt="clothes" />
+          <div className="desc">
+          <p>{product?.desc}</p>
+          <p>{product?.original_price}</p>
+          <p>{product?.price}</p>
+          <p>{product?.rating} <i className="fa fa-star"></i></p>
+          {isCartProductPresent(product?._id) ? (
+            <Link to="/cart">
+              <button>Go to cart</button>
+            </Link>
+          ) : (
+            <button onClick={() => handleAddCartItems(product)}>
+              Add to cart
+            </button>
             
-    </div>
-    </div>
+          )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

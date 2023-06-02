@@ -3,16 +3,15 @@ import "./Header.css";
 import { ProductContext } from "../context/ProductContext";
 import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
-
+import { WishlistContext } from "../context/WishlistContext";
 import { AuthContext } from "../context/AuthContext";
 
 export default function Header() {
-  const { state, dispatch } = useContext(ProductContext);
+  const { dispatch } = useContext(ProductContext);
   const { cartProducts } = useContext(CartContext);
-  const { logOutHandler, token,isLoggedIn } = useContext(AuthContext);
+  const { state } = useContext(WishlistContext);
+  const { logOutHandler, token, isLoggedIn } = useContext(AuthContext);
 
- 
-  
   return (
     <>
       <div className="header">
@@ -42,11 +41,11 @@ export default function Header() {
         <div className="nav-icons">
           {isLoggedIn ? (
             <Link to="/">
-              <button onClick={()=>logOutHandler()}>Log out</button>
+              <button onClick={() => logOutHandler()}>Log out</button>
             </Link>
           ) : (
             <Link to="/login">
-              <button className="login-btn">Login</button>
+              <button>Login</button>
             </Link>
           )}
           <Link to="/wishlist">
@@ -57,7 +56,6 @@ export default function Header() {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              
               <path
                 d="M7.75 1.75C4.29875 1.75 1.5 4.52 1.5 7.9375C1.5 10.6962 2.59375 17.2437 13.36 23.8625C13.5529 23.9798 13.7743 24.0419 14 24.0419C14.2257 24.0419 14.4471 23.9798 14.64 23.8625C25.4063 17.2437 26.5 10.6962 26.5 7.9375C26.5 4.52 23.7013 1.75 20.25 1.75C16.7988 1.75 14 5.5 14 5.5C14 5.5 11.2013 1.75 7.75 1.75Z"
                 stroke="#9A9A9A"
@@ -66,9 +64,9 @@ export default function Header() {
                 stroke-linejoin="round"
               />
             </svg>
+            <span className="notification">{state.wishListProducts.length>0&&state.wishListProducts.length}</span>
           </Link>
           <Link to="/cart">
-            {" "}
             <svg
               width="28"
               height="25"
@@ -83,7 +81,7 @@ export default function Header() {
             </svg>
           </Link>
           <label>cart</label>
-          <label>{token&&`${cartProducts.length}`}</label>
+          <label>{token && `${cartProducts.length}`}</label>
         </div>
       </div>
     </>

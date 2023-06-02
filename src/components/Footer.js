@@ -2,7 +2,7 @@ import "./Footer.css"
 
 export default function Footer(){
     return<footer className="footer-main">
-        <p>Made by Mahima Gupta</p>
+        <p className="name">Made by Mahima Gupta</p>
         <div className="footer-links">
             
          <i className="fa fa-twitter"><a className="link" href="https://twitter.com/MahimaG56804266"></a></i>

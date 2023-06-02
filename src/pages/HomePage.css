@@ -9,4 +9,5 @@
 .category-card{
     list-style: none;
     text-align: center;
+    cursor: pointer;
 }

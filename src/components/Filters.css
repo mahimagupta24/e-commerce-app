@@ -6,12 +6,10 @@
 .filter-container{
   top:67px;
     display: flex;
-    /* flex-grow:1; */
     flex-direction: column;
     border-right:1px solid black;
     width:20%;
      height:100%; 
-     /* position:fixed; */
      /* bottom: 0; */
     /* position: fixed; */
 
