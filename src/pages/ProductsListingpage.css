@@ -30,6 +30,7 @@ li{
 
 
 .cart-btn{
+    width:50%;
     cursor: pointer;
      margin-bottom:2rem;
      margin-left:3rem;
@@ -52,4 +53,16 @@ li{
 }
 .star{
     color:grey;
+}
+.price {
+    margin-left:4rem;
+    display: flex;
+    gap: 12px;
+    
+  }
+.original-price{
+        
+        text-decoration: line-through;
+        color: grey;
+    
 }

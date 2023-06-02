@@ -64,8 +64,11 @@ export default function Products() {
                 />
                 <div className="product-desc">
                   <h4>{name}</h4>
-                  <p>Original Price: ${original_price}</p>
-                  <p>Price: ${price}</p>
+                   <p className="price">
+                    <span > ₹{price}</span>
+                    <span className="original-price">₹{original_price}</span>
+                  </p>
+
                   <p>
                     Rating: {rating}
                     <span className="star">
