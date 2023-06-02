@@ -13,3 +13,10 @@
   background-color: #f2f2f2;
   padding: 10px;
 }
+.footer-links{
+  display: block;
+ 
+}
+.link{
+  margin-right:20px;
+}
