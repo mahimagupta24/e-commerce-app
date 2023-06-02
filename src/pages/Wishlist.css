@@ -1,21 +1,21 @@
 
- 
-.product-card{ 
+ .container{
   display:grid;
-  grid-template-columns: repeat(5,200px) ;
-  grid-column-gap: 16px;
-gap:2rem; 
-position: relative;
+  place-items: center;
+ }
+ .wishlist-card{ 
+  display:grid;
+  grid-gap:2px;  
+ 
 }
+
 .product-list{
   list-style: none;
+  margin-bottom:1rem;
+    box-shadow: rgba(90, 90, 90, 0.35) 0px 5px 15px;
+    border-radius:0.5rem;
 }
-li{
-box-shadow: rgba(90, 90, 90, 0.35) 0px 5px 15px;
-border-radius:0.5rem;
-  list-style: none;
-  top:15rem;
-}
+
 .cart-btn{
    margin-bottom:2rem;
    margin-left:3rem;

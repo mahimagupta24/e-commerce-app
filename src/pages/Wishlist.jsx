@@ -24,7 +24,9 @@ export default function Wishlist() {
     }
   };
   return (
-    <ul className="product-card">
+    <div className="container" >
+      <h1>My Wishlist</h1>
+    <ul className="wishlist-card">
       {state.wishListProducts.length>0&&state.wishListProducts.map((product) => {
         return (
           <li className="product-list" key={product._id}>
@@ -34,10 +36,14 @@ export default function Wishlist() {
             >
               <i className="fa fa-heart"></i>
             </span>
-            <img className="card-image" src={product.img} />
+            <img className="card-image" src={product.img}  alt="clothes" width="100"height="200"/>
             <div className="product-desc">
             <p>{product.name}</p>
-            <p>Price:{product.price}</p>
+            <p className="price">
+                    <span > ₹{product.price}</span>
+                    <span className="original-price">₹{product.original_price}</span>
+                  </p>
+           
             </div>
             {isCartProductPresent(product._id) ? (
               <Link to="/cart">
@@ -45,7 +51,7 @@ export default function Wishlist() {
               </Link>
             ) : (
               <button
-                className="cart-btn"
+              className="cart-btn"
                 onClick={() => addCartItems(product)}
               >
                 Move to cart
@@ -54,9 +60,11 @@ export default function Wishlist() {
           </li>
         );
       })}
+       </ul>
       {state.wishListProducts.length===0&& <h1>Your wishlist is empty😑</h1>}
-    </ul>
-
+      
+   
+    </div>
   );
   
 }
