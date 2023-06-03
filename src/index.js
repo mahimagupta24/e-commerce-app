@@ -20,11 +20,11 @@ ReactDOM.render(
         <CartProvider>
           <WishlistProvider>
             
-              {/* <AddressProvider> */}
+              <AddressProvider>
               <AuthProvider>
               <App />
               </AuthProvider>
-              {/* </AddressProvider> */}
+              </AddressProvider>
             
           </WishlistProvider>
         </CartProvider>
