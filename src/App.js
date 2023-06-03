@@ -17,6 +17,7 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "./context/AuthContext";
  import Address from "./pages/Address";
 import SignUp from "./pages/SignUp";
+import UserAddress from "./pages/UserAddress";
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/address"element={<Address/>}/>
         <Route path ="/signup"element={<SignUp/>}/>
+        <Route path ="/userAddress"element={<UserAddress/>}/>
         <Route
           path="/wishlist"
           element={
