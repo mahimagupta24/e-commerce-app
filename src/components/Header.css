@@ -29,4 +29,11 @@
     width:25%
 }
 .notification{
+    position: relative;
+    top:-15px;
+   
+    
+}
+.link-tag{
+    text-decoration: none;
 }
