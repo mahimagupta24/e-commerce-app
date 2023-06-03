@@ -81,15 +81,7 @@ export default function ProductProvider({ children }) {
     ? productsRating.filter(({ price }) => price <= state.selectedPrice)
     : productsRating;
 
-  // const categoryHandler = (categoryName) => {
-  //   if (selectedCategories.includes(categoryName)) {
-  //     setSelectedCategories(
-  //       selectedCategories.filter((category) => category !== categoryName)
-  //     );
-  //   } else {
-  //     setSelectedCategories([...selectedCategories, categoryName]);
-  //   }
-  // };
+  
 
   return (
     <ProductContext.Provider
