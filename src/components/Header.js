@@ -48,7 +48,7 @@ export default function Header() {
               <button>Login</button>
             </Link>
           )}
-          <Link to="/wishlist">
+          <Link className="link-tag"to="/wishlist">
             <svg
               width="28"
               height="26"
@@ -66,7 +66,7 @@ export default function Header() {
             </svg>
             <span className="notification">{state.wishListProducts.length>0&&state.wishListProducts.length}</span>
           </Link>
-          <Link to="/cart">
+          <Link className="link-tag"to="/cart">
             <svg
               width="28"
               height="25"
@@ -79,9 +79,10 @@ export default function Header() {
                 fill="#9A9A9A"
               />
             </svg>
+            <span className="notification">{cartProducts.length>0&&cartProducts.length}</span>
+
           </Link>
-          <label>cart</label>
-          <label>{token && `${cartProducts.length}`}</label>
+         
         </div>
       </div>
     </>
