@@ -70,6 +70,7 @@ export default function Cart() {
 
   return (
     <div className="container">
+      <h1>My Cart</h1>
       <ul className="cart-card">
         {cartProducts.length >0&&cartProducts.map((product) => {
           return (

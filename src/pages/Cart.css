@@ -1,5 +1,5 @@
 .container{
-    display:grid;
+    display:flex;
    place-items: center;
    /* grid-template-rows: repeat(2,1fr);
 grid-template-columns: repeat(2,1fr)
