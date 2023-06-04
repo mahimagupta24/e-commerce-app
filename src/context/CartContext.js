@@ -27,7 +27,7 @@ export default function CartProvider({ children }) {
         const data = await response.json();
         console.log(typeof data.cart);
         setCartProducts(data.cart);
-        
+
       }
     } catch (e) {
       console.error(e);

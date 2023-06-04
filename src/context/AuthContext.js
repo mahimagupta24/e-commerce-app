@@ -63,7 +63,7 @@ export default function AuthProvider({ children }) {
       if(response.status===201){
         const data = await response.json();
         setToken(data.encodedToken)
-        navigate("/products")
+        navigate("/login")
       }
     } catch (e) {
       console.log(e);
