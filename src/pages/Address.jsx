@@ -13,7 +13,6 @@ export default function Address() {
   const clickEditHandler = (addressId) => {
     setEditingAddressId(addressId)
     setShowAddress(true)
-    dispatch({type:"EDIT_ADDRESS",payload:addressId})
     console.log(addressId)
   };
   const clickAddHandler = () => {
@@ -27,9 +26,10 @@ export default function Address() {
 
   return (
     <div>
+      
       <h1 className="heading">Account</h1>
       {state.addresses.map((address) => (
-        <div className="address-container">
+        <div className="address-container"key={address.id}>
           <div className="address-main">
             <div className="address-details">
               <p>

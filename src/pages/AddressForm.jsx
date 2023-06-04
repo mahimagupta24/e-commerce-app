@@ -6,7 +6,6 @@ export default function UserAddress({ onSave, editingAddressId }) {
   const { dispatch, state } = useContext(AddressContext);
   const getAddress = state.addresses.find(({ id }) => id === editingAddressId);
 
-  
   const [address, setAddress] = useState(
     editingAddressId !== null
       ? getAddress
@@ -23,7 +22,9 @@ export default function UserAddress({ onSave, editingAddressId }) {
   );
 
   const handleSaveAddress = (address) => {
-    dispatch({ type: "ADD_ADDRESS", payload: address });
+    editingAddressId
+      ? dispatch({ type: "EDIT_ADDRESS", payload:address })
+      : dispatch({ type: "ADD_ADDRESS", payload: address });
     onSave();
   };
 
@@ -32,41 +33,47 @@ export default function UserAddress({ onSave, editingAddressId }) {
     <div className="input-container">
       {editingAddressId === null ? <h4>Add address</h4> : <h4>Edit address</h4>}
       <form onSubmit={submitHandler} className="details">
-        <input className="input-field"
+        <input
+          className="input-field"
           type="text"
           placeholder="Enter Name"
-          value={getAddress?.fullName}
+          value={address.fullName}
           onChange={(e) => setAddress({ ...address, fullName: e.target.value })}
         />
-        <input  className="input-field"
+        <input
+          className="input-field"
           placeholder="Enter House No,road,colony"
-          value={getAddress?.home_address}
+          value={address.home_address}
           onChange={(e) =>
             setAddress({ ...address, home_address: e.target.value })
           }
         />
-        <input  className="input-field"
+        <input
+          className="input-field"
           type="text"
-          value={getAddress?.state}
+          value={address.state}
           placeholder="Enter State"
           onChange={(e) => setAddress({ ...address, state: e.target.value })}
         />
-        <input className="input-field"
+        <input
+          className="input-field"
           type="text"
-          value={getAddress?.country}
+          value={address.country}
           placeholder="Enter Country"
           onChange={(e) => setAddress({ ...address, country: e.target.value })}
         />
-        <input className="input-field"
+        <input
+          className="input-field"
           type="number"
           placeholder="Enter Postal Code"
-          value={getAddress?.pincode}
+          value={address.pincode}
           onChange={(e) => setAddress({ ...address, pincode: e.target.value })}
         />
-        <input className="input-field"
+        <input
+          className="input-field"
           type="number"
           placeholder="Enter Mobile no."
-          value={getAddress?.phoneNo}
+          value={address.phoneNo}
           onChange={(e) => setAddress({ ...address, phoneNo: e.target.value })}
         />
         <button onClick={() => handleSaveAddress(address)} type="submit">

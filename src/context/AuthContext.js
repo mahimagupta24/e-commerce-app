@@ -7,7 +7,7 @@ export default function AuthProvider({ children }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [token, setToken] = useState("");
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
   console.log(token);
 
   const loginHandler = async () => {
@@ -48,20 +48,22 @@ export default function AuthProvider({ children }) {
   };
 
   const isLoggedIn = token.length !== 0;
-  const signUpHandler = async () => {
+
+  const signUpHandler = async ({email,password,firstName,lastName}) => {
     try {
       const response = await fetch("api/auth/signup", {
         method: "POST",
         body: JSON.stringify({
-          email: "",
-          password: "",
-          someUserAttribute1: "",
-          someUserAttribute2: "",
+          email,
+          password,
+          firstName,
+          lastName
         }),
       })
-      if(response.status===200){
+      if(response.status===201){
         const data = await response.json();
         console.log(data)
+        navigate("/products")
       }
     } catch (e) {
       console.log(e);

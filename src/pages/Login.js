@@ -27,7 +27,7 @@ const navigate=useNavigate()
         email: fixedLoginDetails.email,
         password: fixedLoginDetails.password,
       })
-      
+
     }
       
   return (
@@ -48,7 +48,7 @@ const navigate=useNavigate()
             ,password:e.target.value})} />
           </div>
           {isLoggenIn &&<button onClick={logOutHandler}></button>}
-           {/* <button type="submit" required={true}>Login</button> */}
+           <button type="submit" required={true}>Login</button>
          <button type="submit"required={true}onClick={onTestLogin}id="login-btn">Login as a guest</button>
     <p>Dont have an account <Link to ="/signup">sign-up</Link></p>
         </form>

@@ -8,15 +8,12 @@ const addressReducer = (state, action) => {
       return { ...state, addresses: [...state.addresses, action.payload] };
 
     case "EDIT_ADDRESS":
-      const updatedAddress = action.payload
-      const newAddresses =[...state.addresses]
-      console.log("initial",newAddresses)
-      const index= newAddresses.findIndex(({id})=>id===updatedAddress.id)
-    
-      newAddresses[index] = updatedAddress
-      console.log("index",index)
-      console.log("after",newAddresses)
-      return {...state,addresses:newAddresses}
+      const updatedAddress = action.payload;
+      const newAddresses = state.addresses.map((address) =>
+        address.id === updatedAddress.id ? updatedAddress : address
+      );
+
+      return { ...state, addresses: newAddresses };
 
     case "REMOVE_ADDRESS":
       console.log("Case matched", action.payload);

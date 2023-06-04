@@ -3,17 +3,12 @@ import { AuthContext } from "../context/AuthContext";
 
 export default function SignUp() {
   const { signUpHandler } = useContext(AuthContext);
-  const [signupDetails, setSignUpDetails] = useState({
-    name: "",
-    password: "",
-    firstName: "",
-    lastName: "",
-  });
+  const [signupDetails, setSignUpDetails] = useState({});
 
   const onSubmitHandler = (e) => {
-    console.log('signup')
+    console.log("signup");
     e.preventDefault();
-    signUpHandler();
+   
   };
   return (
     <div>
@@ -48,7 +43,9 @@ export default function SignUp() {
               setSignUpDetails({ ...signupDetails, lastName: e.target.value })
             }
           />
-          <button type="submit">create account</button>
+          <button type="submit" onClick={() => signUpHandler(signupDetails)}>
+            create account
+          </button>
         </form>
       </div>
     </div>
