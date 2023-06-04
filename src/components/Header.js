@@ -1,13 +1,14 @@
 import { useContext } from "react";
 import "./Header.css";
 import { ProductContext } from "../context/ProductContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import { WishlistContext } from "../context/WishlistContext";
 import { AuthContext } from "../context/AuthContext";
 
 export default function Header() {
-  const { dispatch } = useContext(ProductContext);
+  const navigate = useNavigate()
+  const { state:productState,dispatch } = useContext(ProductContext);
   const { cartProducts } = useContext(CartContext);
   const { state } = useContext(WishlistContext);
   const { logOutHandler, token, isLoggedIn } = useContext(AuthContext);
@@ -31,9 +32,14 @@ export default function Header() {
           </svg>
           <input
             type="text"
-            onChange={(e) =>
+            value={productState.searchText}
+            onChange={(e) =>{
               dispatch({ type: "SET_SEARCH_TEXT", payload: e.target.value })
+              navigate("/products")
             }
+           
+            }
+    
             placeholder="search"
             className="search-bar"
           />
@@ -59,9 +65,9 @@ export default function Header() {
               <path
                 d="M7.75 1.75C4.29875 1.75 1.5 4.52 1.5 7.9375C1.5 10.6962 2.59375 17.2437 13.36 23.8625C13.5529 23.9798 13.7743 24.0419 14 24.0419C14.2257 24.0419 14.4471 23.9798 14.64 23.8625C25.4063 17.2437 26.5 10.6962 26.5 7.9375C26.5 4.52 23.7013 1.75 20.25 1.75C16.7988 1.75 14 5.5 14 5.5C14 5.5 11.2013 1.75 7.75 1.75Z"
                 stroke="#9A9A9A"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
             <span className="notification">{state.wishListProducts.length>0&&state.wishListProducts.length}</span>

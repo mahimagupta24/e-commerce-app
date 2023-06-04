@@ -12,9 +12,7 @@ export default function Login() {
     email: "adarshbalika@gmail.com",
     password: "adarshbalika",
   };
-const navigate=useNavigate()
-  const location = useLocation()
-  // const token = localStorage.getItem("token")
+
   const onSubmitHandler=(e)=>{
     console.log('submit')
     e.preventDefault()

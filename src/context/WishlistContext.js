@@ -10,6 +10,8 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "LOAD_WISHLIST":
       return { ...state, wishListProducts: action.payload };
+      case"CLEAR_WISHLIST":
+      return initialState;
     default:
       return state;
   }
@@ -17,7 +19,7 @@ const reducer = (state, action) => {
 export default function WishlistProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const handleAddWishlistItems = async (product) => {
+  const addWishlistItems = async (product) => {
     const token = localStorage.getItem("token");
     // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0ODI4MzFlMC02ODUxLTQ1NGQtYTQyNC04ODJiMmJiNGE5MjkiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.dug-ofAz7IuYiDLCVZRVaaOl_TuUPoT-fxbUN9uKkvw";
     try {
@@ -50,7 +52,7 @@ export default function WishlistProvider({ children }) {
         isWishlistProductPresent,
         state,
         dispatch,
-        handleAddWishlistItems,
+        addWishlistItems,
       }}
     >
       {children}

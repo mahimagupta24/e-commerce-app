@@ -24,9 +24,7 @@ export default function Address() {
     dispatch({ type: "REMOVE_ADDRESS", payload: id });
   };
 
-  const clickPlaceOrderHandler = ()=>{
-    "Your order has been placed successfully"
-  }
+  
   return (
     <div>
       
@@ -48,7 +46,7 @@ export default function Address() {
               <p>{address.home_address}</p>
               <p>{address.state}</p>
               <p>{address.country}</p>
-              <button onClick={()=>clickPlaceOrderHandler()}className="place-order-btn">Place order</button>
+              <button className="place-order-btn">Place order</button>
               <button onClick={()=>clickEditHandler(address.id)}>Edit</button>
               <button onClick={clickAddHandler}>Add addresss</button>
               <button onClick={() => removeAddressHandler(address.id)}>

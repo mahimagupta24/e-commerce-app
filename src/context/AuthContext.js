@@ -1,16 +1,19 @@
-import { useState, createContext, useEffect } from "react";
+import { useState, createContext, useEffect, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { CartContext } from "./CartContext";
+import { WishlistContext } from "./WishlistContext";
 
 export const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
   const navigate = useNavigate();
-  const location = useLocation();
+  const { setCartProducts } = useContext(CartContext);
+  const { dispatch } = useContext(WishlistContext);
   const [token, setToken] = useState("");
-  
+
   console.log(token);
 
-  const loginHandler = async ({email,password}) => {
+  const loginHandler = async ({ email, password }) => {
     try {
       const creds = {
         email,
@@ -23,7 +26,6 @@ export default function AuthProvider({ children }) {
       if (resp.status === 200) {
         const data = await resp.json();
         setToken(data.encodedToken);
-        
 
         localStorage.setItem("token", data.encodedToken);
         localStorage.setItem("user", data.foundUser.email);
@@ -36,8 +38,10 @@ export default function AuthProvider({ children }) {
   };
 
   const logOutHandler = () => {
-    localStorage.removeItem("token", token);
+    localStorage.removeItem("token");
     setToken("");
+    setCartProducts([]);
+    dispatch({ type: "CLEAR_WISHLIST" });
   };
 
   const checkUserStatus = () => {
@@ -49,7 +53,7 @@ export default function AuthProvider({ children }) {
 
   const isLoggedIn = token.length !== 0;
 
-  const signUpHandler = async ({email,password,firstName,lastName}) => {
+  const signUpHandler = async ({ email, password, firstName, lastName }) => {
     try {
       const response = await fetch("api/auth/signup", {
         method: "POST",
@@ -57,19 +61,20 @@ export default function AuthProvider({ children }) {
           email,
           password,
           firstName,
-          lastName
+          lastName,
         }),
-      })
-      if(response.status===201){
+      });
+      if (response.status === 201) {
         const data = await response.json();
-        setToken(data.encodedToken)
-        navigate("/login")
+        console.log(data);
+        setToken(data.encodedToken);
+        navigate("/login");
       }
     } catch (e) {
       console.log(e);
     }
   };
- 
+
   return (
     <AuthContext.Provider
       value={{
@@ -78,7 +83,7 @@ export default function AuthProvider({ children }) {
         loginHandler,
         logOutHandler,
         token,
-         isLoggedIn,
+        isLoggedIn,
       }}
     >
       {children}

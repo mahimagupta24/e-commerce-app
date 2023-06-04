@@ -8,6 +8,7 @@ export default function SignUp() {
   const onSubmitHandler = (e) => {
     console.log("signup");
     e.preventDefault();
+    signUpHandler(signupDetails)
    
   };
   return (

@@ -16,11 +16,14 @@ export default function Products() {
   const { addCartItems, cartProducts, isCartProductPresent } =
     useContext(CartContext);
   console.log("cart", cartProducts);
-  const { handleAddWishlistItems, isWishlistProductPresent } =
+  const { addWishlistItems, isWishlistProductPresent } =
     useContext(WishlistContext);
   const { filteredPriceProducts } = useContext(ProductContext);
   const { isLoggedIn } = useContext(AuthContext);
 
+  const handleProductClick = (id) => {
+    navigate(`/product/${id}`);
+  };
   return (
     <div>
       <Header />
@@ -32,13 +35,15 @@ export default function Products() {
         <ul className="product-card">
           {filteredPriceProducts.map((product) => {
             const { _id, img, original_price, price, rating, name } = product;
+
             const handleAddCartItems = (product) => {
               isLoggedIn ? addCartItems(product) : navigate("/login");
             };
 
-            const handleProductClick = (id) => {
-              navigate(`/product/${id}`);
+            const handleAddWishlistItems = (product) => {
+              isLoggedIn ? addWishlistItems(product) : navigate("/login");
             };
+
             return (
               <li className="products-list" key={_id}>
                 {isWishlistProductPresent(_id) ? (
@@ -64,8 +69,8 @@ export default function Products() {
                 />
                 <div className="product-desc">
                   <h4>{name}</h4>
-                   <p className="price">
-                    <span > ₹{price}</span>
+                  <p className="price">
+                    <span> ₹{price}</span>
                     <span className="original-price">₹{original_price}</span>
                   </p>
 

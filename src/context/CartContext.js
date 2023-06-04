@@ -1,7 +1,5 @@
-import { createContext, useContext, useState } from "react";
-import axios from "axios";
-import { AuthContext } from "./AuthContext";
-import { ProductContext } from "./ProductContext";
+import { createContext, useState } from "react";
+
 
 export const CartContext = createContext();
 
@@ -25,7 +23,7 @@ export default function CartProvider({ children }) {
       });
       if (response.status === 201) {
         const data = await response.json();
-        console.log(typeof data.cart);
+
         setCartProducts(data.cart);
 
       }
@@ -33,20 +31,6 @@ export default function CartProvider({ children }) {
       console.error(e);
     }
 
-    // axios
-    //   .post(
-    //     "/api/user/cart",
-    //     { product },
-    //     {
-    //       headers: {
-    //         authorization: `bearer ${token}`,
-    //       },
-    //     }
-    //   )
-    //   .then((resp) => {
-    //     setCartProducts(resp.data.cart);
-    //   })
-    //   .catch((e) => console.error(e));
   };
 
   const isCartProductPresent = (id)=>{
