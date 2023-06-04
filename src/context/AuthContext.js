@@ -10,11 +10,11 @@ export default function AuthProvider({ children }) {
   
   console.log(token);
 
-  const loginHandler = async () => {
+  const loginHandler = async ({email,password}) => {
     try {
       const creds = {
-        email: "adarshbalika@gmail.com",
-        password: "adarshbalika",
+        email,
+        password,
       };
       const resp = await fetch("/api/auth/login", {
         method: "POST",
@@ -62,7 +62,7 @@ export default function AuthProvider({ children }) {
       })
       if(response.status===201){
         const data = await response.json();
-        console.log(data)
+        setToken(data.encodedToken)
         navigate("/products")
       }
     } catch (e) {

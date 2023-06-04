@@ -18,7 +18,7 @@ const navigate=useNavigate()
   const onSubmitHandler=(e)=>{
     console.log('submit')
     e.preventDefault()
-    loginHandler()
+    loginHandler(loginDetails)
   }
 
   const onTestLogin = () => {
