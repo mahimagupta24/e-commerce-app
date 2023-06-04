@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import "./Address.css";
 import { useNavigate } from "react-router-dom";
 import { AddressContext } from "../context/AddressContext";
-import UserAddress from "./UserAddress";
+import UserAddress from "./AddressForm";
 
 export default function Address() {
   const { state, dispatch } = useContext(AddressContext);

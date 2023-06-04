@@ -6,7 +6,7 @@ import Header from "./components/Header";
 import Home from "./pages/HomePage";
 // import Login from "./pages/Login";
 // import logo from "./logo.png";
-  // import Mockman from "mockman-js";
+// import Mockman from "mockman-js";
 import Products from "./pages/ProductsListingPage";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
@@ -15,13 +15,11 @@ import ProductDetailsPage from "./pages/ProductDetailsPage";
 import RequiresAuth from "./components/RequiresAuth";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "./context/AuthContext";
- import Address from "./pages/Address";
+import Address from "./pages/Address";
 import SignUp from "./pages/SignUp";
-import UserAddress from "./pages/UserAddress";
-
 
 function App() {
-  const {checkUserStatus} = useContext(AuthContext);
+  const { checkUserStatus } = useContext(AuthContext);
 
   useEffect(() => {
     checkUserStatus();
@@ -38,16 +36,16 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/product/:productId" element={<ProductDetailsPage />} />
-        <Route path="/login" element={<Login  />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/address"element={<Address/>}/>
-        <Route path ="/signup"element={<SignUp/>}/>
-        <Route path ="/userAddress"element={<UserAddress/>}/>
+        <Route path="/address" element={<Address />} />
+        <Route path="/signup" element={<SignUp />} />
+
         <Route
           path="/wishlist"
           element={
             <RequiresAuth>
-              <Wishlist/>
+              <Wishlist />
             </RequiresAuth>
           }
         />

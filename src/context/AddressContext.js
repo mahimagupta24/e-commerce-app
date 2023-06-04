@@ -10,12 +10,13 @@ const addressReducer = (state, action) => {
     case "EDIT_ADDRESS":
       const updatedAddress = action.payload
       const newAddresses =[...state.addresses]
+      console.log("initial",newAddresses)
       const index= newAddresses.findIndex(({id})=>id===updatedAddress.id)
-     
+    
       newAddresses[index] = updatedAddress
-      console.log(index)
-      console.log(newAddresses)
-      return {...state,newAddresses}
+      console.log("index",index)
+      console.log("after",newAddresses)
+      return {...state,addresses:newAddresses}
 
     case "REMOVE_ADDRESS":
       console.log("Case matched", action.payload);
