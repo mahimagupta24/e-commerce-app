@@ -27,7 +27,6 @@ export default function Filters() {
         onCategoryChange={(categories) =>
           dispatch({ type: "SET_SELECTED_CATEGORY", payload: categories })
         }
-       
       />
       <RatingSelector
         state={state}
@@ -54,6 +53,7 @@ function PriceSelector({ onPriceChange }) {
       </div>
 
       <input
+        style={{ accentColor: "grey", width: "60%" }}
         type="range"
         min="500"
         max="1500"
@@ -64,50 +64,42 @@ function PriceSelector({ onPriceChange }) {
   );
 }
 
-function CategorySelector({ onCategoryChange}) {
- const {state} = useContext(ProductContext);
-   const handleCategoryChange = (categoryName) => {
- const updatedCategories=state.selectedCategories.includes(categoryName)?
-state.selectedCategories.filter((cat)=>cat!==categoryName):[...state.selectedCategories,categoryName]
- onCategoryChange(updatedCategories)
-}
-  //   let updatedCategories;
-
-  //   if (isChecked) {
-  //     updatedCategories = [...state.selectedCategories, category];
-  //   } else {
-  //     updatedCategories = state.selectedCategories.filter((cat) => cat !== category);
-  //   }
-  //   onCategoryChange(updatedCategories);
-    
-  // };
+function CategorySelector({ onCategoryChange }) {
+  const { state } = useContext(ProductContext);
+  const handleCategoryChange = (categoryName) => {
+    const updatedCategories = state.selectedCategories.includes(categoryName)
+      ? state.selectedCategories.filter((cat) => cat !== categoryName)
+      : [...state.selectedCategories, categoryName];
+    onCategoryChange(updatedCategories);
+  };
+  
   return (
     <div>
       <h5>Category</h5>
       <div>
-        <input
+        <input  style={{ accentColor: "grey"}}
           type="checkbox"
           checked={state.selectedCategories.includes("men")}
           value="men"
-          onChange={()=>handleCategoryChange("men")}
+          onChange={() => handleCategoryChange("men")}
         />
         <label>Men clothing</label>
       </div>
       <div>
         <input
-          type="checkbox"
+          type="checkbox"  style={{ accentColor: "grey"}}
           checked={state.selectedCategories.includes("women")}
           value="women"
-          onChange={()=>handleCategoryChange("women")}
+          onChange={() => handleCategoryChange("women")}
         />
         <label>Women clothing</label>
       </div>
       <div>
         <input
-          type="checkbox"
+          type="checkbox" style={{ accentColor: "grey"}}
           checked={state.selectedCategories.includes("kids")}
           value="kids"
-          onChange={()=>handleCategoryChange("kids")}
+          onChange={() => handleCategoryChange("kids")}
         />
         <label>kids clothing</label>
       </div>
@@ -120,6 +112,7 @@ function RatingSelector({ onRatingChange, state }) {
       <h5>Rating</h5>
       <div>
         <input
+         style={{ accentColor: "grey"}}
           type="radio"
           checked={state.selectedRating === "4"}
           name="rate"
@@ -131,6 +124,7 @@ function RatingSelector({ onRatingChange, state }) {
       <div>
         <input
           type="radio"
+          style={{ accentColor: "grey"}}
           checked={state.selectedRating === "3"}
           name="rate"
           value="3"
@@ -140,6 +134,7 @@ function RatingSelector({ onRatingChange, state }) {
       </div>
       <div>
         <input
+         style={{ accentColor: "grey"}}
           type="radio"
           checked={state.selectedRating === "2"}
           name="rate"
@@ -151,6 +146,7 @@ function RatingSelector({ onRatingChange, state }) {
       <div>
         <input
           type="radio"
+          style={{ accentColor: "grey"}}
           checked={state.selectedRating === "1"}
           name="rate"
           value="1"
@@ -168,6 +164,7 @@ function SortOrderSelector({ onSortOrderChange }) {
       <h5>Sort by</h5>
       <div>
         <input
+         style={{ accentColor: "grey"}}
           type="radio"
           name="sort"
           value="HTL"
@@ -177,6 +174,7 @@ function SortOrderSelector({ onSortOrderChange }) {
       </div>
       <div>
         <input
+         style={{ accentColor: "grey"}}
           type="radio"
           name="sort"
           value="LTH"
