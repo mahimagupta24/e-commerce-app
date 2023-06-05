@@ -4,11 +4,12 @@ import axios from "axios";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 import "./Wishlist.css";
+import {toast} from "react-toastify"
 
 export default function Wishlist() {
   const { state, dispatch } = useContext(WishlistContext);
   const { isCartProductPresent, addCartItems } = useContext(CartContext);
-  // console.log(state.wishListProducts);
+
   const removeWishlistHandler = async (productId) => {
     const token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0ODI4MzFlMC02ODUxLTQ1NGQtYTQyNC04ODJiMmJiNGE5MjkiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.dug-ofAz7IuYiDLCVZRVaaOl_TuUPoT-fxbUN9uKkvw";
@@ -19,6 +20,7 @@ export default function Wishlist() {
         },
       });
       dispatch({ type: "LOAD_WISHLIST", payload: resp.data.wishlist });
+      toast.success("item removed from wishlist");
     } catch (e) {
       console.error(e);
     }

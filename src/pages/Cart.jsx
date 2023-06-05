@@ -1,4 +1,5 @@
 import axios from "axios";
+import {toast} from "react-toastify"
 import { useContext, useEffect } from "react";
 import { CartContext } from "../context/CartContext";
 import { WishlistContext } from "../context/WishlistContext";
@@ -8,9 +9,8 @@ import "./Cart.css";
 
 export default function Cart() {
   const { cartProducts, setCartProducts } = useContext(CartContext);
-  const { isWishlistProductPresent, handleAddWishlistItems } =
+  const { isWishlistProductPresent, addWishlistItems } =
     useContext(WishlistContext);
-  // const { loginHandler } = useContext(AuthContext);
 
   const fetchCartDetails = () => {
     const token = localStorage.getItem("token");
@@ -38,6 +38,7 @@ export default function Cart() {
       })
       .then((resp) => {
         setCartProducts(resp.data.cart);
+        toast.success("item removed from cart");
       })
       .catch((e) => console.error(e));
   };
@@ -82,7 +83,7 @@ export default function Cart() {
                 ) : (
                   <span
                     className="wishlist-icon"
-                    onClick={() => handleAddWishlistItems(product)}
+                    onClick={() => addWishlistItems(product)}
                   >
                     <i className="fa fa-heart"></i>
                   </span>
@@ -108,6 +109,7 @@ export default function Cart() {
                 <button
                   className="cart-btn"
                   onClick={() => removeCartHandler(product._id)}
+                
                 >
                   Remove from cart
                 </button>

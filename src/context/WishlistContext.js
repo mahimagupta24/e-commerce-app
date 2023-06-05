@@ -1,6 +1,6 @@
 import { createContext, useContext, useReducer } from "react";
 import axios from "axios";
-import { ProductContext } from "./ProductContext";
+import {toast} from"react-toastify"
 export const WishlistContext = createContext();
 const initialState = {
   wishListProducts: [],
@@ -35,6 +35,7 @@ export default function WishlistProvider({ children }) {
       if (resp.status === 201) {
         console.log("wishlist", resp.data.wishlist);
         dispatch({ type: "LOAD_WISHLIST", payload: resp.data.wishlist });
+        toast.success(`${product.name} added to wishlist!`);
       }
     } catch (e) {
       console.error(e);

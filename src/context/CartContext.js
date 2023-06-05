@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-
+import {toast} from "react-toastify"
 
 export const CartContext = createContext();
 
@@ -25,6 +25,7 @@ export default function CartProvider({ children }) {
         const data = await response.json();
 
         setCartProducts(data.cart);
+        toast.success(`${product.name} added to cart!`);
 
       }
     } catch (e) {
