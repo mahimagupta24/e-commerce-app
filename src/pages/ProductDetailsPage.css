@@ -3,10 +3,19 @@
     flex-direction: column;
     margin-left: 15rem;
   }
-  
+  .detail-card{
+    box-shadow: rgba(90, 90, 90, 0.35) 0px 5px 15px;
+    height:50vh;
+    width:30rem;
+    cursor: pointer;
+    display:grid;
+    grid-template-columns: repeat(5,200px) ;
+    grid-column-gap: 16px;
+  gap:2rem; 
+  position: relative;
+  }
   .card {
     display: flex;
-    
     width: 400px;
     border: 2px solid rgb(240, 245, 240);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);

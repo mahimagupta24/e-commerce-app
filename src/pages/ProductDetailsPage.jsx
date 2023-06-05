@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import "./ProductDetailsPage.css";
 import { ProductContext } from "../context/ProductContext";
+import Footer from "../components/Footer";
 
 export default function ProductDetailsPage() {
-  const { handleAddWishlistItems, isWishlistProductPresent } =
-    useContext(WishlistContext);
-  const { handleAddCartItems, isCartProductPresent } =
+  const {addWishlistItems,isWishlistProductPresent} = useContext(WishlistContext)
+  const { addCartItems, isCartProductPresent } =
     useContext(CartContext);
   const { productId } = useParams();
   const {product, setProduct} = useContext(ProductContext);
@@ -36,7 +36,7 @@ export default function ProductDetailsPage() {
       <Header />
       <div className="main-card">
         <h1>Product Details</h1>
-        <div className="product-card">
+        <div className="detail-card">
           <img src={product?.img} alt="clothes" />
           <div className="desc">
           <p><b>{product?.name}</b></p>
@@ -49,14 +49,29 @@ export default function ProductDetailsPage() {
               <button>Go to cart</button>
             </Link>
           ) : (
-            <button onClick={() => handleAddCartItems(product)}>
+            <button onClick={() =>addCartItems(product)}>
               Add to cart
             </button>
             
           )}
+          <div>
+           {isWishlistProductPresent(product?._id) ? (
+                  <Link to="/wishlist">
+                  <button>Go to wishlist</button>
+                  </Link>
+                ) : (
+                  <button
+                    
+                    onClick={() => addWishlistItems(product)}
+                  >
+                   Add to wishlist
+                  </button>
+                )}
+                </div>
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

@@ -6,10 +6,8 @@ import { ProductContext } from "../context/ProductContext";
 import { CartContext } from "../context/CartContext";
 import { WishlistContext } from "../context/WishlistContext";
 import { Link, useNavigate } from "react-router-dom";
-import RequiresAuth from "../components/RequiresAuth";
 import { AuthContext } from "../context/AuthContext";
 
-//  import { useNavigate } from "react-router-dom";
 
 export default function Products() {
   const navigate = useNavigate();

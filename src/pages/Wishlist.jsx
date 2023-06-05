@@ -42,7 +42,7 @@ export default function Wishlist() {
             >
               <i className="fa fa-heart"></i>
             </span>
-            <img className="card-image" src={product.img}  alt="clothes" width="100"height="200"/>
+            <img className="card-image" src={product.img}  alt="clothes" height="200"/>
             <div className="product-desc">
             <p>{product.name}</p>
             <p className="price">
