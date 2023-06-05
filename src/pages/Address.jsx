@@ -46,12 +46,15 @@ export default function Address() {
               <p>{address.home_address}</p>
               <p>{address.state}</p>
               <p>{address.country}</p>
+            
               <button className="place-order-btn">Place order</button>
-              <button onClick={()=>clickEditHandler(address.id)}>Edit</button>
-              <button onClick={clickAddHandler}>Add addresss</button>
-              <button onClick={() => removeAddressHandler(address.id)}>
+              <div className="buttons">
+              <button className="edit-btn" onClick={()=>clickEditHandler(address.id)}>Edit</button>
+              <button className="add-btn"onClick={clickAddHandler}>Add addresss</button>
+              <button className="remove-btn"onClick={() => removeAddressHandler(address.id)}>
                 Remove address
               </button>
+              </div>
             </div>
           </div>
         </div>

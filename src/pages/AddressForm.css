@@ -1,8 +1,44 @@
-.input-container{
+
+.address-form-container {
+    background: rgba(255, 255, 255, 0.75);
+    width: 100%;
+    position: absolute;
+    top: 5rem;
+    
+    height: 100%;
+    z-index: 2;
+    transition: background ease 0.3s;
+    
+  }
+  
+  .address-form-input {
+    border-radius: var(--border-sm);
+    border: 2px solid #dfdfdf;
+    font-size: 1rem;
+    padding: 0.3rem 1rem;
+    cursor: pointer;
+    width: 400px
+  }
+  
+  .address-form-input::placeholder {
+    font-size: 0.7rem;
+  }
+  
+  .address-form,
+  .address-form .form-input {
     display: flex;
     flex-direction: column;
-    border:1px solid black;
-    width:50vh;
-    justify-content: center;
-
-}
+    align-items: center;
+    gap: 1rem
+  }
+  
+  .address-form {
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: white;
+   
+    width:60vh
+  
+  }
+  
+  

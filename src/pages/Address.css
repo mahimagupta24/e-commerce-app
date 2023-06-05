@@ -3,13 +3,14 @@
 .address-container{
     display: flex;
     top:10rem;
-    /* justify-content: center; */
-    /* left:10rem; */
+    justify-content: center;
+    gap:3rem;
 }
 .heading{
     text-align: center;
 }
 .address-main{
+    margin-top:2rem;
     width:20rem;
     border:1px solid black;
   border-radius:0.5rem;
@@ -21,4 +22,15 @@ width: 90%;
 font-size: large;
 margin-bottom: 1rem;
 border-radius:8px
+}
+.buttons{
+    padding-bottom: 16px;
+    margin-bottom: 2px;
+
+}
+.edit-btn{
+    margin-right:8px;
+}
+.add-btn{
+    margin-right:8px;
 }
