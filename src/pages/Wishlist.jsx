@@ -5,6 +5,8 @@ import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 import "./Wishlist.css";
 import {toast} from "react-toastify"
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default function Wishlist() {
   const { state, dispatch } = useContext(WishlistContext);
@@ -26,7 +28,9 @@ export default function Wishlist() {
     }
   };
   return (
-    <div className="container" >
+    <div><Header/>
+    <div className="wishlist-container" >
+
       <h1>My Wishlist</h1>
     <ul className="wishlist-card">
       {state.wishListProducts.length>0&&state.wishListProducts.map((product) => {
@@ -65,7 +69,8 @@ export default function Wishlist() {
        </ul>
       {state.wishListProducts.length===0&& <h1>Your wishlist is empty😑</h1>}
       
-   
+      </div>
+      <Footer/>
     </div>
   );
   

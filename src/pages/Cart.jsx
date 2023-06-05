@@ -6,6 +6,8 @@ import { WishlistContext } from "../context/WishlistContext";
 import { Link } from "react-router-dom";
 import Price from "./Price";
 import "./Cart.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default function Cart() {
   const { cartProducts, setCartProducts } = useContext(CartContext);
@@ -67,7 +69,9 @@ export default function Cart() {
   };
 
   return (
+    <div><Header/>
     <div className="container">
+     
        <h1>My Cart</h1>
        
     <div className="cart-container">
@@ -144,6 +148,8 @@ export default function Cart() {
         <h1 style={{ color: "grey" }}>Your cart is empty😑</h1>
       )}
    </div>
+    </div>
+    <Footer/>
     </div>
   );
 }

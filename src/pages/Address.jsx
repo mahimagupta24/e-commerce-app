@@ -3,6 +3,8 @@ import "./Address.css";
 import { useNavigate } from "react-router-dom";
 import { AddressContext } from "../context/AddressContext";
 import UserAddress from "./AddressForm";
+import Header from "../components/Header"
+import Footer from "../components/Footer"
 
 export default function Address() {
   const { state, dispatch } = useContext(AddressContext);
@@ -25,10 +27,13 @@ export default function Address() {
   };
 
   return (
+    <div>
+    <Header/>
     <div className="address-main">
+      
       <h1>Checkout</h1>
       <div >
-        <input type="radio" name="address" />
+       
         {state.addresses.map((address) => (
           <div className="address-card" key={address.id}>
             <h2> {address.fullName}</h2>
@@ -69,5 +74,8 @@ export default function Address() {
         />
       )}
     </div>
+    <Footer/>
+    </div>
+
   );
 }

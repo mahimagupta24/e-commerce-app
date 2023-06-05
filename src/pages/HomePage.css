@@ -6,6 +6,10 @@
     gap: 2rem;
     
 } 
+
+.img{
+    margin-top:6rem;
+}
 .category-card{
     list-style: none;
     text-align: center;
