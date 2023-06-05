@@ -1,0 +1,15 @@
+.logout-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+}
+.logout-card{
+    border:1px solid black;
+    width:400px;
+    text-align: center;
+    margin-top: 3rem;
+}
+.logout-btn{
+    margin-bottom: 1rem;;
+}
