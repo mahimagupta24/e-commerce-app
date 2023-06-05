@@ -39,11 +39,13 @@ export default function Price() {
         </p>
         </div>
 
-      <div className="price-description">
-        <p>Total items:{qty}</p>
-        <p>discount:₹{discount}</p>
-        <p>Total Price:₹{grandTotal}</p>
-      </div>
+      {/* <div className="price-breakup">Total items:{qty}</div> */}
+      <div className="price-breakup">Total MRP ₹{totalPrice}</div>
+       
+        <div className="price-breakup">Discount -₹{discount}</div>
+      <div className="price-breakup">Delivery charges ₹FREE</div>
+
+        <div className="price-breakup">Total Price ₹{grandTotal}</div>
       <div>
         <button className="checkout-btn" onClick={checkoutHandler}>
           Checkout
