@@ -37,7 +37,7 @@ export default function ProductDetailsPage() {
       <div className="main-card">
         <h1>Product Details</h1>
         <div className="detail-card">
-          <img src={product?.img} alt="clothes" />
+          <img className="image"src={product?.img} alt="clothes" />
           <div className="desc">
           <p><b>{product?.name}</b></p>
           <p>{product?.desc}</p>
