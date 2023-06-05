@@ -1,6 +1,6 @@
 
 
-.address-container{
+/* .address-container{
     display: flex;
     top:10rem;
     justify-content: center;
@@ -16,21 +16,63 @@
   border-radius:0.5rem;
   text-align: center;
 }
-.place-order-btn{
-margin-left:12px;
-width: 90%;
-font-size: large;
-margin-bottom: 1rem;
-border-radius:8px
-}
+
 .buttons{
     padding-bottom: 16px;
     margin-bottom: 2px;
 
+} */
+.address-main{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
 }
+.address-card {
+    padding:8px;
+    display: flex;
+    border: 1px solid black;
+    border-radius: 2rem;
+    flex-direction: column;
+    
+  }
+  
+  .address-card-btn-container {
+    margin-top: 1.6rem;
+  }
+  .address-card-btn {
+    background-color: var(--background-color);
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1.8rem;
+  }
 .edit-btn{
-    margin-right:8px;
+    margin-left:8px;
+    cursor: pointer;
+    border:none;
+    background-color: white;
+
+}
+.remove-btn{
+    cursor: pointer;
+    border:none;
+    background-color: white;
 }
 .add-btn{
-    margin-right:8px;
+   
+    margin-top:24px;
+    font-size: large;
+    cursor: pointer;
+    border:1px solid black;
+    border-radius:12px;
+    padding:8px;
 }
+.place-order-btn{
+    margin-left:1rem;
+    font-size: large;
+    cursor: pointer;
+    border:1px solid black;
+    border-radius:12px;
+    padding:8px;
+  
+    }

@@ -34,11 +34,10 @@ export default function AddressProvider({ children }) {
       {
         id: 1,
         fullName: "Adarsh Balika",
-        phoneNo: 91023456,
-        pincode: 890172,
-        home_address: "1241 gole market,Jammu",
+        home_address: "W.No9,H.No.3, gole market,Jammu",
         state: "Jammu&Kashmir",
         country: "India",
+        pincode: 182101, 
       },
     ],
   });

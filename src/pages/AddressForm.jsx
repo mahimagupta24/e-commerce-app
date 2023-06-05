@@ -12,12 +12,11 @@ export default function UserAddress({ onSave, editingAddressId }) {
       : {
           id: state.addresses.length + 1,
           fullName: "",
-          phoneNo: "",
           pincode: "",
           home_address: "",
           state: "",
           country: "",
-          mobileNo: "",
+          phoneNo:""
         }
   );
 
