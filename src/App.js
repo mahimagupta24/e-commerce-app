@@ -17,6 +17,7 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "./context/AuthContext";
 import Address from "./pages/Address";
 import SignUp from "./pages/SignUp";
+import Logout from "./pages/Logout";
 
 function App() {
   const { checkUserStatus } = useContext(AuthContext);
@@ -33,6 +34,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/product/:productId" element={<ProductDetailsPage />} />
         <Route path="/login" element={<Login />} />
+        <Route path ="/logout"element={<Logout/>}/>
         <Route
           path="/cart"
           element={

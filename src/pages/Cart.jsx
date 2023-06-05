@@ -68,7 +68,10 @@ export default function Cart() {
 
   return (
     <div className="container">
-      <h1>My Cart</h1>
+       <h1>My Cart</h1>
+       
+    <div className="cart-container">
+   
       <ul className="cart-card">
         {cartProducts.length > 0 &&
           cartProducts.map((product) => {
@@ -134,11 +137,13 @@ export default function Cart() {
             );
           })}
       </ul>
+     
       {cartProducts.length > 0 && <Price />}
 
       {cartProducts.length === 0 && (
         <h1 style={{ color: "grey" }}>Your cart is empty😑</h1>
       )}
+   </div>
     </div>
   );
 }

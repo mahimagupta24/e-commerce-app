@@ -42,6 +42,7 @@ export default function AuthProvider({ children }) {
     setToken("");
     setCartProducts([]);
     dispatch({ type: "CLEAR_WISHLIST" });
+    navigate("/")
   };
 
   const checkUserStatus = () => {

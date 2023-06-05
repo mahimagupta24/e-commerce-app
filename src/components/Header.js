@@ -88,7 +88,8 @@ export default function Header() {
             <span className="notification">{cartProducts.length>0&&cartProducts.length}</span>
 
           </Link>
-         
+          {isLoggedIn ?
+         <Link to="/logout"><span className="address-icon"><i className="fa fa-user"></i></span></Link> : <Link to="/login"><span className="address-icon"><i className="fa fa-user"></i></span></Link>}
         </div>
       </div>
     </>

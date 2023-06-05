@@ -12,10 +12,11 @@ export default function SignUp() {
    
   };
   return (
-    <div>
-      <div>
-        <h2>SIGN UP</h2>
-        <form onSubmit={onSubmitHandler}>
+    <div className="auth-main">
+      <div className="auth-container">
+        <h2 className="auth-heading">SIGN UP</h2>
+        <form className="details"onSubmit={onSubmitHandler}>
+          <div className="address">
           <input
             type="email"
             placeholder="enter email"
@@ -23,6 +24,8 @@ export default function SignUp() {
               setSignUpDetails({ ...signupDetails, email: e.target.value })
             }
           />
+          </div>
+          <div className="password">
           <input
             type="password"
             placeholder="*********"
@@ -30,6 +33,7 @@ export default function SignUp() {
               setSignUpDetails({ ...signupDetails, password: e.target.value })
             }
           />
+          </div>
           <input
             type="text"
             placeholder="first name"
@@ -44,7 +48,7 @@ export default function SignUp() {
               setSignUpDetails({ ...signupDetails, lastName: e.target.value })
             }
           />
-          <button type="submit" onClick={() => signUpHandler(signupDetails)}>
+          <button className="account-btn"type="submit" onClick={() => signUpHandler(signupDetails)}>
             create account
           </button>
         </form>

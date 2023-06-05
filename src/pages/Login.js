@@ -29,10 +29,10 @@ export default function Login() {
     }
       
   return (
-    <div className="test">
-      <div className="login-container">
+    <div className="auth-main">
+      <div className="auth-container">
         <div>
-          <h2 className="login-heading">Sign In</h2>
+          <h2 className="auth-heading">Sign In</h2>
         </div>
         <form className="details"onSubmit={onSubmitHandler} >
           <div className="address">
@@ -45,7 +45,7 @@ export default function Login() {
             <input type="password" placeholder="********"value={loginDetails.password}onChange={(e)=>setLoginDetails({...loginDetails
             ,password:e.target.value})} />
           </div>
-          {isLoggenIn &&<button onClick={logOutHandler}></button>}
+          {/* {isLoggenIn &&<button onClick={logOutHandler}></button>} */}
            <button type="submit" required={true}>Login</button>
          <button type="submit"required={true}onClick={onTestLogin}id="login-btn">Login as a guest</button>
     <p>Dont have an account <Link to ="/signup">sign-up</Link></p>

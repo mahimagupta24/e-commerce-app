@@ -37,3 +37,11 @@
 .link-tag{
     text-decoration: none;
 }
+.address-icon{
+    position: relative;
+    font-size:1.5rem;
+    top:-3px;
+    cursor: pointer;
+    color:grey
+    
+}
