@@ -48,7 +48,7 @@ export default function SignUp() {
               setSignUpDetails({ ...signupDetails, lastName: e.target.value })
             }
           />
-          <button className="account-btn"type="submit" onClick={() => signUpHandler(signupDetails)}>
+          <button required={true}className="account-btn"type="submit" onClick={() => signUpHandler(signupDetails)}>
             create account
           </button>
         </form>
