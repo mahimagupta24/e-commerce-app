@@ -17,7 +17,7 @@ export default function Price() {
   console.log(totalPrice);
   
 
-  // const qty = cartProducts.reduce((acc, curr) => acc + curr.qty, 0);
+   const qty = cartProducts.reduce((acc, curr) => acc + curr.qty, 0);
   const grandTotal = totalPrice - discount;
   console.log(grandTotal);
 
@@ -40,7 +40,7 @@ export default function Price() {
         </p>
         </div>
 
-      <div className="price-breakup">{cartProducts.map(({_id,qty,name})=><div key={_id}><p>{qty}</p><p>{name}</p></div>)}</div>
+      <div className="price-breakup">Total items {qty}</div>
       <div className="price-breakup">Total MRP ₹{totalPrice}</div>
        
         <div className="price-breakup">Discount -₹{discount}</div>
