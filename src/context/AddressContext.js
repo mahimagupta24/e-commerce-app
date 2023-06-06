@@ -37,10 +37,12 @@ export default function AddressProvider({ children }) {
         home_address: "W.No9,H.No.3, gole market,Jammu",
         state: "Jammu&Kashmir",
         country: "India",
-        pincode: 182101, 
+        pincode: 182101,
       },
     ],
   });
+  // const address = state.addresses.map((address) => address);
+  
   return (
     <AddressContext.Provider value={{ state, dispatch }}>
       {children}

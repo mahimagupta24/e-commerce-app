@@ -25,17 +25,17 @@
 .address-main{
     display:flex;
     flex-direction:column;
-    align-items: center;
+    width:50vh;
+    margin-left:2rem;
 }
 .address-card {
-    padding:8px;
-    display: flex;
-    border: 1px solid black;
-    border-radius: 2rem;
-    flex-direction: column;
-    
+    border: 1px solid black; 
+    margin-bottom:0.5rem 
   }
-  
+ 
+  .radio-btn{
+margin:0
+  }
   .address-card-btn-container {
     margin-top: 1.6rem;
   }
