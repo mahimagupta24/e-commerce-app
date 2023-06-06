@@ -52,11 +52,22 @@ export default function CartProvider({ children }) {
     return cartProducts.some((cartProduct) => cartProduct?._id === id)
   }
 
+  const [discount, setDiscount] = useState(0);
+
+  const totalPrice = cartProducts.reduce(
+    (acc, curr) => acc + curr.price * curr.qty,
+    0
+  );
+  console.log(totalPrice);
+
   
+  const qty = cartProducts.reduce((acc, curr) => acc + curr.qty, 0);
+  const grandTotal = totalPrice - discount;
+  console.log(grandTotal);
   
   return (
     <CartContext.Provider
-      value={{ cartProducts, setCartProducts, addCartItems,isCartProductPresent ,removeCartHandler}}
+      value={{ cartProducts, setCartProducts, addCartItems,isCartProductPresent ,removeCartHandler,discount,setDiscount,qty,grandTotal,totalPrice}}
     >
       {children}
     </CartContext.Provider>

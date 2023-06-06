@@ -47,6 +47,7 @@ export default function Home() {
     <div>
       <Header />
       {isLoading && <p>Loading...</p>}
+      <h1 style={{textAlign:"center",marginBottom:"3rem"}}>Categories</h1>
       <ul className="main-container">
         {!isLoading &&
           categories.map((category) => {
@@ -77,8 +78,7 @@ export default function Home() {
            height="400px"
           width="100%"
           alt="fashion"
-        />
-       
+        /> 
       </div>
       <Footer />
     </div>

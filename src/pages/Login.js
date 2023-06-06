@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 
 import { AuthContext } from "../context/AuthContext";
  import {Link, useLocation, useNavigate} from "react-router-dom"
+import Header from "../components/Header";
 
 export default function Login() {
   const {loginHandler,logOutHandler,isLoggenIn} = useContext(AuthContext)
@@ -29,7 +30,10 @@ export default function Login() {
     }
       
   return (
+    <div>
+    <Header/>
     <div className="auth-main">
+      
       <div className="auth-container">
         <div>
           <h2 className="auth-heading">Sign In</h2>
@@ -51,6 +55,7 @@ export default function Login() {
     <p>Dont have an account <Link to ="/signup">sign-up</Link></p>
         </form>
       </div>
+    </div>
     </div>
   );
 }

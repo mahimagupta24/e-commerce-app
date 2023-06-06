@@ -2,6 +2,7 @@ import { createContext, useReducer } from "react";
 import axios from "axios";
 import {toast} from"react-toastify"
 export const WishlistContext = createContext();
+
 const initialState = {
   wishListProducts: [],
 };

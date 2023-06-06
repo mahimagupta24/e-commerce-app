@@ -67,7 +67,7 @@ export default function Wishlist() {
           <h1>Your wishlist is empty😑</h1>
         )}
       </div>
-      <Footer />
+     
     </div>
   );
 }

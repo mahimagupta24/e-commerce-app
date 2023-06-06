@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer,useState } from "react";
 
 export const AddressContext = createContext();
 
@@ -41,10 +41,15 @@ export default function AddressProvider({ children }) {
       },
     ],
   });
-  // const address = state.addresses.map((address) => address);
   
+  const [selectedAddress, setSelectedAddress] = useState(state.addresses[0]);
+
+  
+  //  const address= state.addresses.map((address) =>address.id===)
+  // console.log(address)
+
   return (
-    <AddressContext.Provider value={{ state, dispatch }}>
+    <AddressContext.Provider value={{ state, dispatch,selectedAddress,setSelectedAddress}}>
       {children}
     </AddressContext.Provider>
   );

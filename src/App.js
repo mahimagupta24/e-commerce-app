@@ -18,6 +18,7 @@ import { AuthContext } from "./context/AuthContext";
 import Address from "./pages/Address";
 import SignUp from "./pages/SignUp";
 import Logout from "./pages/Logout";
+import OrderSuccess from "./pages/OrderSuccess";
 
 function App() {
   const { checkUserStatus } = useContext(AuthContext);
@@ -28,13 +29,13 @@ function App() {
   return (
     <div className="App">
       {/* <Mockman /> */}
-     <ToastContainer/>
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/product/:productId" element={<ProductDetailsPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path ="/logout"element={<Logout/>}/>
+        <Route path="/logout" element={<Logout />} />
         <Route
           path="/cart"
           element={
@@ -45,7 +46,7 @@ function App() {
         />
         <Route path="/address" element={<Address />} />
         <Route path="/signup" element={<SignUp />} />
-
+        <Route path="/order" element={<OrderSuccess />} />
         <Route
           path="/wishlist"
           element={
@@ -55,8 +56,6 @@ function App() {
           }
         />
       </Routes>
-
-     
     </div>
   );
 }

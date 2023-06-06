@@ -6,20 +6,11 @@ import { toast } from "react-toastify";
 
 export default function Price() {
   const navigate = useNavigate();
-  const { cartProducts } = useContext(CartContext);
+  const { setDiscount,qty,totalPrice,discount,grandTotal } = useContext(CartContext);
 
-  const [discount, setDiscount] = useState(0);
-
-  const totalPrice = cartProducts.reduce(
-    (acc, curr) => acc + curr.price * curr.qty,
-    0
-  );
-  console.log(totalPrice);
+  
   
 
-   const qty = cartProducts.reduce((acc, curr) => acc + curr.qty, 0);
-  const grandTotal = totalPrice - discount;
-  console.log(grandTotal);
 
   const checkoutHandler = () => {
     navigate("/address");
@@ -49,7 +40,7 @@ export default function Price() {
         <div className="price-breakup">Total Price ₹{grandTotal}</div>
       <div>
         <button className="checkout-btn" onClick={checkoutHandler}>
-          Checkout
+          Place order
         </button>
       </div>
     </div>

@@ -5,12 +5,15 @@ import { AddressContext } from "../context/AddressContext";
 import UserAddress from "./AddressForm";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Price from "./Price";
+import { CartContext } from "../context/CartContext";
 
 export default function Address() {
-  const { state, dispatch } = useContext(AddressContext);
+  const { state, dispatch ,selectedAddress,setSelectedAddress} = useContext(AddressContext);
+  const{qty,discount,totalPrice,grandTotal}=useContext(CartContext)
   const [showAddress, setShowAddress] = useState(false);
   const [editingAddressId, setEditingAddressId] = useState();
-  const [selectedAddress, setSelectedAddress] = useState(state.addresses[0]);
+
   const clickEditHandler = (addressId) => {
     setEditingAddressId(addressId);
     setShowAddress(true);
@@ -24,56 +27,74 @@ export default function Address() {
   const removeAddressHandler = (id) => {
     dispatch({ type: "REMOVE_ADDRESS", payload: id });
   };
+  
 
   return (
-    <div>
-      <Header />
-      <h1 style={{ textAlign: "center" }}>Checkout</h1>
       <div className="address-main">
+        <h1>Checkout</h1>
+       <div className="address-details">
         <div>
-          {state.addresses.map((address) => (
-            <div className="address-card" key={address.id}>
+          {state.addresses.map((add) => (
+            <div className="address-card" key={add.id}>
               <div className="radio-btn">
                 <input
                   type="radio"
-                  checked={selectedAddress.id === address.id}
+                  checked={selectedAddress.id === add.id}
                   onChange={() => {
                     setSelectedAddress(
-                      state.addresses.find(({ id }) => id === address.id)
+                      state.addresses.find(({ id }) => id === add.id)
                     );
-                    console.log(selectedAddress);
+                  
                   }}
                 />
-                <h2> {address.fullName}</h2>
+                <h2> {add.fullName}</h2>
               </div>
+             
               <p>
-                {address.home_address},{address.state},{address.country},
-                {address.pincode}
+                {add.home_address},{add.state},{add.country},
+                {add.pincode}
               </p>
 
               <div className="address-card-btn-container">
                 <button
                   className="edit-btn"
-                  onClick={() => clickEditHandler(address.id)}
+                  onClick={() => clickEditHandler(add.id)}
                 >
                   Edit
                 </button>
                 <button
                   className="remove-btn"
-                  onClick={() => removeAddressHandler(address.id)}
+                  onClick={() => removeAddressHandler(add.id)}
                 >
                   Remove address
                 </button>
               </div>
             </div>
           ))}
-        </div>
-
-        <div>
+          
           <button className="add-btn" required={true} onClick={clickAddHandler}>
             <i className="fa fa-plus"></i> Add New addresss
           </button>
-          <button className="place-order-btn">Place order</button>
+        </div>
+
+        <div className="address-container">
+          <h1 className="price-breakup">Address summary</h1>
+        <div className="price-breakup">Total items {qty}</div>
+      <div className="price-breakup">Total MRP ₹{totalPrice}</div>
+       
+        <div className="price-breakup">Discount -₹{discount}</div>
+      <div className="price-breakup">Delivery charges ₹FREE</div>
+
+        <div className="price-breakup">Total Price ₹{grandTotal}</div>
+         <br></br>
+         <hr></hr>
+         <h2 className="price-breakup">Deliver to</h2>
+        <div className="price-breakup">{selectedAddress.fullName}</div>
+        <div className="price-breakup">{selectedAddress.home_address}</div>
+        
+        <button className="checkout-btn">
+          Place order
+        </button>
         </div>
         {showAddress && (
           <UserAddress
@@ -81,8 +102,12 @@ export default function Address() {
             editingAddressId={editingAddressId}
           />
         )}
+         </div>
+         
+        
       </div>
-      <Footer />
-    </div>
+     
+
+    
   );
 }

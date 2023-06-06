@@ -31,11 +31,10 @@ export default function Header() {
             />
           </svg>
           <input
-            type="text"
             value={productState.searchText}
             onChange={(e) =>{
               dispatch({ type: "SET_SEARCH_TEXT", payload: e.target.value })
-              navigate("/products")
+              
             }
            
             }

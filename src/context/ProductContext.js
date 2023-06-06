@@ -55,8 +55,8 @@ export default function ProductProvider({ children }) {
   }, []);
 
   const searchedProducts =
-    state.searchText !== null
-      ? products.filter(({ name }) => name.includes(state.searchText))
+    state.searchText !== ""
+      ? products.filter(({ name }) => name.toLowerCase().includes(state.searchText.toLowerCase()))
       : products;
 
   const filteredProducts =
