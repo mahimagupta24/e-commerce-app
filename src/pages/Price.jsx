@@ -40,7 +40,7 @@ export default function Price() {
         <div className="price-breakup">Total Price ₹{grandTotal}</div>
       <div>
         <button className="checkout-btn" onClick={checkoutHandler}>
-          Place order
+          Checkout
         </button>
       </div>
     </div>

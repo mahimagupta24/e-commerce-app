@@ -9,6 +9,7 @@ import Price from "./Price";
 import { CartContext } from "../context/CartContext";
 
 export default function Address() {
+  const navigate = useNavigate()
   const { state, dispatch ,selectedAddress,setSelectedAddress} = useContext(AddressContext);
   const{qty,discount,totalPrice,grandTotal}=useContext(CartContext)
   const [showAddress, setShowAddress] = useState(false);
@@ -92,7 +93,7 @@ export default function Address() {
         <div className="price-breakup">{selectedAddress.fullName}</div>
         <div className="price-breakup">{selectedAddress.home_address}</div>
         
-        <button className="checkout-btn">
+        <button className="checkout-btn" onClick={()=>navigate("/order")}>
           Place order
         </button>
         </div>
