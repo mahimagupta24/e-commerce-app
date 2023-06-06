@@ -73,12 +73,12 @@ export default function Home() {
       </ul>
       <div className="img"onClick={clickHandler}>
         <img 
-          src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/138b2b0c-b88e-4667-95dd-9f72b41e94d1.__CR0,0,1464,625_PT0_SX1464_V1___.jpg"
-           height="300px"
+          src="https://images.pexels.com/photos/3965545/pexels-photo-3965545.jpeg"
+           height="400px"
           width="100%"
           alt="fashion"
         />
-        
+       
       </div>
       <Footer />
     </div>

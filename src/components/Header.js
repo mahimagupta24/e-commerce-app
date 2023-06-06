@@ -16,7 +16,7 @@ export default function Header() {
   return (
     <>
       <div className="header">
-        <h2>MyShoppingSite</h2>
+        <h2>Fashion Emporium</h2>
         <div className="search-container">
           <svg
             width="19"

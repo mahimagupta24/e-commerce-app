@@ -5,9 +5,9 @@ export default function Footer(){
         <p className="name">Made by Mahima Gupta</p>
         <div className="footer-links">
             
-         <i className="fa fa-twitter"><a className="link" href="https://twitter.com/MahimaG56804266"></a></i>
-         <i className="fa fa-linkedin"><a  className="link"href="https://www.linkedin.com/in/mahimagupta2401/"></a></i>
-        <i className="fa fa-github"> <a className="link" href="https://github.com/mahimagupta24/"></a></i>
+        <a className="link" target="blank"href="https://twitter.com/MahimaG56804266"> <i className="fa fa-twitter"></i></a>
+         <a  className="link"target="blank"href="https://www.linkedin.com/in/mahimagupta2401/"><i className="fa fa-linkedin"></i></a>
+         <a className="link" target="blank"href="https://github.com/mahimagupta24/"><i className="fa fa-github"></i></a>
          </div>
          <p>© copyright 2023 </p>
         
