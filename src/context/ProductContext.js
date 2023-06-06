@@ -18,9 +18,9 @@ const productReducer = (state, action) => {
     case "CLEAR_FILTERS":
       return {
         ...state,
-        selectedCategories: [], // Reset the selected categories array
-        selectedPrice: null, // Reset the selected price
-        selectedRating: null, // Reset the selected rating
+        selectedCategories: [],
+        selectedPrice: null, 
+        selectedRating: null, 
         sortOrder: null,
       };
     default:

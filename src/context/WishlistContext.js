@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useReducer } from "react";
 import axios from "axios";
 import {toast} from"react-toastify"
 export const WishlistContext = createContext();
@@ -41,6 +41,20 @@ export default function WishlistProvider({ children }) {
       console.error(e);
     }
   };
+  const removeWishlistHandler = async (productId) => {
+    const token = localStorage.getItem("token")
+    try {
+      const resp = await axios.delete(`/api/user/wishlist/${productId}`, {
+        headers: {
+          authorization: `bearer ${token}`,
+        },
+      });
+      dispatch({ type: "LOAD_WISHLIST", payload: resp.data.wishlist });
+      toast.success("item removed from wishlist");
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   const isWishlistProductPresent = (id) =>
     state.wishListProducts.some(
@@ -54,6 +68,7 @@ export default function WishlistProvider({ children }) {
         state,
         dispatch,
         addWishlistItems,
+        removeWishlistHandler
       }}
     >
       {children}

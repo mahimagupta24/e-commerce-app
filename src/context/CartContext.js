@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import {toast} from "react-toastify"
+import axios from "axios";
 
 export const CartContext = createContext();
 
@@ -12,7 +13,6 @@ export default function CartProvider({ children }) {
   const addCartItems = async (product) => {
     // loginHandler()
     const token = localStorage.getItem("token")
-      // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0ODI4MzFlMC02ODUxLTQ1NGQtYTQyNC04ODJiMmJiNGE5MjkiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.dug-ofAz7IuYiDLCVZRVaaOl_TuUPoT-fxbUN9uKkvw";
     try {
       const response = await fetch("/api/user/cart", {
         method: "POST",
@@ -34,6 +34,20 @@ export default function CartProvider({ children }) {
 
   };
 
+  const removeCartHandler = (productId) => {
+    const token = localStorage.getItem("token");
+    axios
+      .delete(`/api/user/cart/${productId}`, {
+        headers: {
+          authorization: `bearer ${token}`,
+        },
+      })
+      .then((resp) => {
+        setCartProducts(resp.data.cart);
+        toast.success("item removed from cart");
+      })
+      .catch((e) => console.error(e));
+  };
   const isCartProductPresent = (id)=>{
     return cartProducts.some((cartProduct) => cartProduct?._id === id)
   }
@@ -42,7 +56,7 @@ export default function CartProvider({ children }) {
   
   return (
     <CartContext.Provider
-      value={{ cartProducts, setCartProducts, addCartItems,isCartProductPresent }}
+      value={{ cartProducts, setCartProducts, addCartItems,isCartProductPresent ,removeCartHandler}}
     >
       {children}
     </CartContext.Provider>
