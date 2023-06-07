@@ -2,7 +2,7 @@
     box-sizing: border-box;
     padding: 2px;
     /* margin: 0; */
-.filter-container{
+
   /* top:67px;
     display: flex;
     flex-direction: column;
@@ -12,7 +12,7 @@
      /* bottom: 0; */
     /* position: fixed; */
 
- }
+ 
 .filter-header{
     display:flex;
     gap:12rem;
