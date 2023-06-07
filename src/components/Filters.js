@@ -35,7 +35,7 @@ export default function Filters() {
         }
       />
       <SortOrderSelector
-        onSortOrderChange={(sortOrder) =>
+        state={state}onSortOrderChange={(sortOrder) =>
           dispatch({ type: "SET_SORT_ORDER", payload: sortOrder })
         }
       />
@@ -158,7 +158,7 @@ function RatingSelector({ onRatingChange, state }) {
   );
 }
 
-function SortOrderSelector({ onSortOrderChange }) {
+function SortOrderSelector({ onSortOrderChange,state }) {
   return (
     <div>
       <h5>Sort by</h5>
@@ -168,6 +168,7 @@ function SortOrderSelector({ onSortOrderChange }) {
           type="radio"
           name="sort"
           value="HTL"
+          checked={state.sortOrder === "HTL"} 
           onChange={(e) => onSortOrderChange(e.target.value)}
         />
         <label>Price-high to low</label>
@@ -178,6 +179,7 @@ function SortOrderSelector({ onSortOrderChange }) {
           type="radio"
           name="sort"
           value="LTH"
+          checked={state.sortOrder === "LTH"} 
           onChange={(e) => onSortOrderChange(e.target.value)}
         />
         <label>Price-low to high</label>
