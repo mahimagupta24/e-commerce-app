@@ -16,7 +16,6 @@ export default function UserAddress({ onSave, editingAddressId }) {
           home_address: "",
           state: "",
           country: "",
-          phoneNo:""
         }
   );
 
@@ -73,13 +72,7 @@ export default function UserAddress({ onSave, editingAddressId }) {
           value={address.pincode}
           onChange={(e) => setAddress({ ...address, pincode: e.target.value })}
         />
-        <input
-         className="text-input address-form-input"
-          type="number"
-          placeholder="Enter Mobile no."
-          value={address.phoneNo}
-          onChange={(e) => setAddress({ ...address, phoneNo: e.target.value })}
-        />
+       
         </div>
         <button onClick={() => handleSaveAddress(address)} type="submit">
           Save
