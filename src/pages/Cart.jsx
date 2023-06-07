@@ -67,9 +67,10 @@ export default function Cart() {
                   <li className="cart-list" key={product._id}>
                     {isWishlistProductPresent(product._id) ? (
                       <Link to="/wishlist">
-                        <span className="wishlist">
+                        <span className="wishlist"  onClick ={()=>removeCartHandler(product._id)}>
                           <i className="fa fa-heart"></i>
                         </span>
+                       
                       </Link>
                     ) : (
                       <span
