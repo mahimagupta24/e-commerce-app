@@ -3,9 +3,6 @@ import "./Address.css";
 import { useNavigate } from "react-router-dom";
 import { AddressContext } from "../context/AddressContext";
 import UserAddress from "./AddressForm";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import Price from "./Price";
 import { CartContext } from "../context/CartContext";
 
 export default function Address() {
@@ -79,7 +76,7 @@ export default function Address() {
         </div>
 
         <div className="address-container">
-          <h1 className="price-breakup">Address summary</h1>
+          <h1 className="price-breakup">Order summary</h1>
         <div className="price-breakup">Total items {qty}</div>
       <div className="price-breakup">Total MRP ₹{totalPrice}</div>
        
