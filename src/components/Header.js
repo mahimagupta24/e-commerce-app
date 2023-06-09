@@ -9,9 +9,15 @@ import { AuthContext } from "../context/AuthContext";
 export default function Header() {
   const navigate = useNavigate()
   const { state:productState,dispatch } = useContext(ProductContext);
-  const { cartProducts } = useContext(CartContext);
-  const { state } = useContext(WishlistContext);
+  const { cartProducts,removeCartProducts } = useContext(CartContext);
+  const { removeWishlistProducts,state } = useContext(WishlistContext);
   const { logOutHandler, token, isLoggedIn } = useContext(AuthContext);
+
+  const removeProductsHandler=()=>{
+    logOutHandler();
+    removeCartProducts();
+    removeWishlistProducts();
+  }
 
   return (
     <>
@@ -46,7 +52,7 @@ export default function Header() {
         <div className="nav-icons">
           {isLoggedIn ? (
             <Link to="/">
-              <button onClick={() => logOutHandler()}>Log out</button>
+              <button onClick={() => removeProductsHandler()}>Log out</button>
             </Link>
           ) : (
             <Link to="/login">

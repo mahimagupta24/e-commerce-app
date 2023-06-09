@@ -19,17 +19,19 @@ root.render(
   <React.StrictMode>
     <Router>
       <ProductProvider>
+      <AuthProvider>
         <CartProvider>
           <WishlistProvider>
             
               <AddressProvider>
-              <AuthProvider>
+              
               <App />
-              </AuthProvider>
+              
               </AddressProvider>
             
           </WishlistProvider>
         </CartProvider>
+        </AuthProvider>
       </ProductProvider>
     </Router>
   </React.StrictMode>,

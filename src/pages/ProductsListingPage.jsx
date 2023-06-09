@@ -11,13 +11,12 @@ import { AuthContext } from "../context/AuthContext";
 
 export default function Products() {
   const navigate = useNavigate();
-  const { addCartItems, cartProducts, isCartProductPresent } =
+  const { handleAddCartItems, cartProducts, isCartProductPresent } =
     useContext(CartContext);
   console.log("cart", cartProducts);
-  const { addWishlistItems, isWishlistProductPresent } =
+  const {  isWishlistProductPresent,handleAddWishlistItems } =
     useContext(WishlistContext);
   const { filteredPriceProducts } = useContext(ProductContext);
-  const { isLoggedIn } = useContext(AuthContext);
 
   const handleProductClick = (id) => {
     navigate(`/product/${id}`);
@@ -34,14 +33,7 @@ export default function Products() {
           {filteredPriceProducts.map((product) => {
             const { _id, img, original_price, price, rating, name } = product;
 
-            const handleAddCartItems = (product) => {
-              isLoggedIn ? addCartItems(product) : navigate("/login");
-            };
-
-            const handleAddWishlistItems = (product) => {
-              isLoggedIn ? addWishlistItems(product) : navigate("/login");
-            };
-
+           
             return (
               <li className="products-list" key={_id}>
                 {isWishlistProductPresent(_id) ? (

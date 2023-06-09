@@ -1,6 +1,9 @@
-import { createContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 import axios from "axios";
-import {toast} from"react-toastify"
+import { toast } from "react-toastify";
+import { AuthContext } from "./AuthContext";
+import { useNavigate } from "react-router-dom";
+
 export const WishlistContext = createContext();
 
 const initialState = {
@@ -11,7 +14,7 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "LOAD_WISHLIST":
       return { ...state, wishListProducts: action.payload };
-      case"CLEAR_WISHLIST":
+    case "CLEAR_WISHLIST":
       return initialState;
     default:
       return state;
@@ -19,6 +22,8 @@ const reducer = (state, action) => {
 };
 export default function WishlistProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
+   const { isLoggedIn } = useContext(AuthContext);
+  const { navigate } = useNavigate();
 
   const addWishlistItems = async (product) => {
     const token = localStorage.getItem("token");
@@ -43,7 +48,7 @@ export default function WishlistProvider({ children }) {
     }
   };
   const removeWishlistHandler = async (productId) => {
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem("token");
     try {
       const resp = await axios.delete(`/api/user/wishlist/${productId}`, {
         headers: {
@@ -62,6 +67,13 @@ export default function WishlistProvider({ children }) {
       (wishListProduct) => wishListProduct?._id === id
     );
 
+  const handleAddWishlistItems = (product) => {
+    isLoggedIn ? addWishlistItems(product) : navigate("/login");
+  };
+
+  const removeWishlistProducts =()=>{
+    dispatch({type:"CLEAR_WISHLIST"})
+  }
   return (
     <WishlistContext.Provider
       value={{
@@ -69,7 +81,10 @@ export default function WishlistProvider({ children }) {
         state,
         dispatch,
         addWishlistItems,
-        removeWishlistHandler
+        removeWishlistHandler,
+         handleAddWishlistItems,
+         removeWishlistProducts
+        
       }}
     >
       {children}

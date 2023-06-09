@@ -9,8 +9,8 @@ import { ProductContext } from "../context/ProductContext";
 import Footer from "../components/Footer";
 
 export default function ProductDetailsPage() {
-  const {addWishlistItems,isWishlistProductPresent} = useContext(WishlistContext)
-  const { addCartItems, isCartProductPresent } =
+  const {handleAddWishlistItems,isWishlistProductPresent} = useContext(WishlistContext)
+  const { handleAddCartItems, isCartProductPresent } =
     useContext(CartContext);
   const { productId } = useParams();
   const {product, setProduct} = useContext(ProductContext);
@@ -49,7 +49,7 @@ export default function ProductDetailsPage() {
               <button>Go to cart</button>
             </Link>
           ) : (
-            <button onClick={() =>addCartItems(product)}>
+            <button onClick={() =>handleAddCartItems(product)}>
               Add to cart
             </button>
             
@@ -62,7 +62,7 @@ export default function ProductDetailsPage() {
                 ) : (
                   <button
                     
-                    onClick={() => addWishlistItems(product)}
+                    onClick={() => handleAddWishlistItems(product)}
                   >
                    Add to wishlist
                   </button>

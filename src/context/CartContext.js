@@ -1,13 +1,17 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import {toast} from "react-toastify"
 import axios from "axios";
+import { AuthContext } from "./AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export const CartContext = createContext();
 
 export default function CartProvider({ children }) {
   const [cartProducts, setCartProducts] = useState([]);
-  
-
+ 
+  const navigate = useNavigate()
+   const { isLoggedIn } = useContext(AuthContext);
+   console.log(isLoggedIn)
   // const {token,loginHandler} = useContext(AuthContext)
 
   const addCartItems = async (product) => {
@@ -64,10 +68,17 @@ export default function CartProvider({ children }) {
   const qty = cartProducts.reduce((acc, curr) => acc + curr.qty, 0);
   const grandTotal = totalPrice - discount;
   console.log(grandTotal);
-  
+
+  const handleAddCartItems = (product) => {
+    isLoggedIn ? addCartItems(product) : navigate("/login");
+  };
+
+  const removeCartProducts = ()=>{
+    setCartProducts([])
+  }
   return (
     <CartContext.Provider
-      value={{ cartProducts, setCartProducts, addCartItems,isCartProductPresent ,removeCartHandler,discount,setDiscount,qty,grandTotal,totalPrice}}
+      value={{handleAddCartItems,cartProducts, setCartProducts, addCartItems,isCartProductPresent ,removeCartHandler,discount,setDiscount,qty,grandTotal,totalPrice,removeCartProducts}}
     >
       {children}
     </CartContext.Provider>

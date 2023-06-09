@@ -1,14 +1,11 @@
 import { useState, createContext, useEffect, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { CartContext } from "./CartContext";
 import { WishlistContext } from "./WishlistContext";
 
 export const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
   const navigate = useNavigate();
-  const { setCartProducts } = useContext(CartContext);
-  const { dispatch } = useContext(WishlistContext);
   const [token, setToken] = useState("");
 
   console.log(token);
@@ -40,9 +37,7 @@ export default function AuthProvider({ children }) {
   const logOutHandler = () => {
     localStorage.removeItem("token");
     setToken("");
-    setCartProducts([]);
-    dispatch({ type: "CLEAR_WISHLIST" });
-    navigate("/")
+    navigate("/");
   };
 
   const checkUserStatus = () => {
@@ -51,8 +46,6 @@ export default function AuthProvider({ children }) {
       setToken(encodedToken);
     }
   };
-
-  const isLoggedIn = token.length !== 0;
 
   const signUpHandler = async ({ email, password, firstName, lastName }) => {
     try {
@@ -75,6 +68,9 @@ export default function AuthProvider({ children }) {
       console.log(e);
     }
   };
+
+  const isLoggedIn = token.length !== 0;
+  console.log(isLoggedIn);
 
   return (
     <AuthContext.Provider
