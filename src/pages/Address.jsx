@@ -89,6 +89,8 @@ export default function Address() {
          <h2 className="price-breakup">Deliver to</h2>
         <div className="price-breakup">{selectedAddress.fullName}</div>
         <div className="price-breakup">{selectedAddress.home_address}</div>
+        <div className="price-breakup">{selectedAddress.state},{selectedAddress.country}</div>
+        <div className="price-breakup">{selectedAddress.pincode}</div>
         
         <button className="checkout-btn" onClick={()=>navigate("/order")}>
           Place order
