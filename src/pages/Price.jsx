@@ -24,7 +24,7 @@ export default function Price() {
   return (
     <div className="price-card">
       <div className="coupon">
-        <p className="coupon-heading">Have a coupon?
+        <p className="coupon-heading"><p className="coupon-para">Have a coupon?</p>
         <button className="coupon-btn" onClick={handleCouponButton}>
           Apply coupon
         </button>

@@ -31,7 +31,8 @@
    margin-left:3rem;
   background-color: grey;
   color:white;
-  padding:2px;
+  padding:8px;
+  border-radius: 8px;
   
 }
 .btn{

@@ -40,5 +40,9 @@
     width:60vh
   
   }
-  
+  .modal-input{
+    display:flex;
+    flex-direction: column;
+    gap:1rem
+  }
   

@@ -11,7 +11,10 @@
      height:100%;  */
      /* bottom: 0; */
     /* position: fixed; */
-
+.filter-container{
+  padding: 16px;
+  height: 100vh
+}
  
 .filter-header{
     display:flex;
@@ -23,6 +26,7 @@
     background-color:white;
    text-decoration:underline ;
    cursor: pointer;
+   font-size: large;
 }
 .price-main{
     display:flex;

@@ -7,7 +7,7 @@ export default function Filters() {
   return (
     <div className="filter-container">
       <div className="filter-header">
-        <h5>Filters</h5>
+        <h3>Filters</h3>
         <button
           onClick={() => {
             dispatch({ type: "CLEAR_FILTERS" });
@@ -45,7 +45,7 @@ export default function Filters() {
 function PriceSelector({ onPriceChange }) {
   return (
     <div className="price-container">
-      <h5>Price</h5>
+      <h3>Price</h3>
       <div className="price-range">
         <label>500</label>
         <label>1000</label>
@@ -75,7 +75,7 @@ function CategorySelector({ onCategoryChange }) {
   
   return (
     <div>
-      <h5>Category</h5>
+      <h3>Category</h3>
       <div>
         <input  style={{ accentColor: "grey"}}
           type="checkbox"
@@ -109,7 +109,7 @@ function CategorySelector({ onCategoryChange }) {
 function RatingSelector({ onRatingChange, state }) {
   return (
     <div>
-      <h5>Rating</h5>
+      <h3>Rating</h3>
       <div>
         <input
          style={{ accentColor: "grey"}}
@@ -161,7 +161,7 @@ function RatingSelector({ onRatingChange, state }) {
 function SortOrderSelector({ onSortOrderChange,state }) {
   return (
     <div>
-      <h5>Sort by</h5>
+      <h3>Sort by</h3>
       <div>
         <input
          style={{ accentColor: "grey"}}

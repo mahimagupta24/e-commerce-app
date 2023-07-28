@@ -19,14 +19,27 @@
       list-style: none;
       width:15rem;
  }
- .cart-btn{
+ /* .cart-btn{
   padding:2px;
+ } */
+ .cart-remove-btn{
+  cursor: pointer;
+   margin-bottom:2rem;
+   margin-left:3rem;
+  background-color: grey;
+  color:white;
+  padding:8px;
+  border-radius:4px;
+  font-weight: 500;
  }
   .qty-btn{
     margin-bottom:1rem;
     border:none;
-     margin-left:3rem;
+     /* margin-left:3rem; */
     background-color: white;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
   }
   .btn{
     margin-bottom:2rem;
@@ -57,31 +70,35 @@ display: flex;
 justify-content: space-evenly;
   }
   .coupon-heading{
-    font-size:large;
+    font-size:larger;
     display: flex;
     margin-left:10px;
+    align-items: center;
     
   }
   .price-card>div{
 margin:1.5rem 0 ;
   }
-  .coupon{
+  /* .coupon{
     display:flex;
    
-  }
+  } */
   .coupon-btn{
     margin-right: 10px;;
-    padding:2px;
-    font-size: large;
-
+    padding:8px;
+    font-size: medium;
+    border-radius: 8px;
     
+  }
+  .coupon-para{
+padding:4px
   }
   .checkout-btn{
     margin-left:12px;
     width: 90%;
     font-size: large;
-    margin-top: 2rem;
-    border-radius:8px
+    border-radius:8px;
+    padding:4px
   }
   .price-description{
     text-align:center;

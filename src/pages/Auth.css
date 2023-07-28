@@ -11,36 +11,53 @@
     box-shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2) ;
   
     justify-content: center;
-    padding-left:7rem;
+    padding:1.5rem;
     
 }
 .auth-container input{
     width: 15rem;
+    padding:8px;
+    border-radius: 8px;
 }
 .login-heading{
     padding-left:1.3rem
 
 }
+.login-para{
+    display: flex;
+    gap:6px
+}
 .details{
     display: flex;
     flex-direction: column;
-    width:50%;  
     gap:2rem;
     align-items: center;
 }
 .address{
     display: flex;
     flex-direction: column;
+    gap:10px;
 }
 .password{
     display: flex;
     flex-direction: column;
+    gap:10px;
 }
 #login-btn{
     margin-bottom: 12px;
     width:15rem;
+    padding:8px;
+    border-radius:8px;
 }
-
+.login-btn{
+    padding:8px;
+    border-radius:8px;
+}
 .account-btn{
     margin-bottom: 12px;
+    padding:8px;
+    border-radius: 8px;
+}
+.auth-heading{
+    text-align: center;
 }

@@ -35,7 +35,7 @@ export default function UserAddress({ onSave, editingAddressId }) {
     <div className="address-form-container">
        <form onSubmit={submitHandler} className="address-form">
       {editingAddressId === null ? <h4>Add address</h4> : <h4>Edit address</h4>}
-     <div>
+     <div className="modal-input">
         <input
           className="text-input address-form-input"
           type="text"

@@ -86,6 +86,7 @@ export default function Address() {
         <div className="price-breakup">Total Price ₹{grandTotal}</div>
          <br></br>
          <hr></hr>
+         <div>
          <h2 className="price-breakup">Deliver to</h2>
         <div className="price-breakup">{selectedAddress.fullName}</div>
         <div className="price-breakup">{selectedAddress.home_address}</div>
@@ -95,6 +96,7 @@ export default function Address() {
         <button className="checkout-btn" onClick={()=>navigate("/order")}>
           Place order
         </button>
+        </div>
         </div>
         {showAddress && (
           <UserAddress

@@ -46,11 +46,11 @@ export default function Wishlist() {
                   </div>
                   {isCartProductPresent(product._id) ? (
                     <Link to="/cart">
-                      <button className="cart-btn">Go to cart</button>
+                      <button className="wishlist-cart-btn">Go to cart</button>
                     </Link>
                   ) : (
                     <button
-                      className="cart-btn"
+                      className="wishlist-cart-btn"
                       onClick={() => {
                         addCartItems(product);
                         removeWishlistHandler(product._id)

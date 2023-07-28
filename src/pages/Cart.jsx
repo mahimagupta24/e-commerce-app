@@ -102,7 +102,7 @@ export default function Cart() {
                       </p>
                     </div>
                     <button
-                      className="cart-btn"
+                      className="cart-remove-btn"
                       onClick={() => removeCartHandler(product._id)}
                     >
                       Remove from cart

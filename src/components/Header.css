@@ -21,12 +21,14 @@
 }
 .nav-icons{
     display:flex;
-    gap:1rem;
+    gap:2rem;
     /* flex-wrap: wrap; */
     justify-content: flex-end;
+    align-items: center;
 }
 .login-btn{
     width:25%;
+
 }
 .notification{
     position: relative;
@@ -44,4 +46,9 @@
     cursor: pointer;
     color:grey
     
+}
+.nav-login-btn{
+    padding:8px;
+    border-radius: 8px;
+
 }

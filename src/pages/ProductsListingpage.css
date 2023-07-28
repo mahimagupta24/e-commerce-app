@@ -15,6 +15,10 @@
 
 .product-list{
     list-style: none;
+    
+}
+.products-list{
+    height: fit-content;
 }
 li{
  box-shadow: rgba(90, 90, 90, 0.35) 0px 5px 15px;
@@ -36,16 +40,17 @@ li{
      margin-left:3rem;
     background-color: grey;
     color:white;
-    padding:2px;
-    border-radius:2px;
+    padding:8px;
+    border-radius:4px;
     font-weight: 500;
 }
 .wishlist-icon{
     position: relative;
    cursor: pointer;
     color:grey;
-    top:-4px;
+    /* top:-4px; */
     font-size: 1.2rem;
+    padding:8px;
 }
 .product-desc{
     text-align: center;
@@ -54,8 +59,9 @@ li{
     color:red;
     position: relative;
    cursor: pointer;
-   top:-4px;
+   /* top:-4px; */
     font-size: 1.2rem;
+    padding:8px
 
 }
 .star{
@@ -71,4 +77,15 @@ li{
         text-decoration: line-through;
         color: grey;
     
+}
+
+.wishlist-cart-btn{
+    width:50%;
+    margin-bottom:2rem;
+    margin-left:3rem;
+   background-color: grey;
+   color:white;
+   padding:8px;
+   border-radius:4px;
+   font-weight: 500;
 }

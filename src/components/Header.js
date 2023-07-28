@@ -52,11 +52,11 @@ export default function Header() {
         <div className="nav-icons">
           {isLoggedIn ? (
             <Link to="/">
-              <button onClick={() => removeProductsHandler()}>Log out</button>
+              <button className="nav-login-btn" onClick={() => removeProductsHandler()}>Log out</button>
             </Link>
           ) : (
             <Link to="/login">
-              <button>Login</button>
+              <button className="nav-login-btn">Login</button>
             </Link>
           )}
           <Link className="link-tag"to="/wishlist">

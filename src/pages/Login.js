@@ -50,9 +50,9 @@ export default function Login() {
             ,password:e.target.value})} />
           </div>
           
-           <button type="submit" required={true}>Login</button>
+           <button className="login-btn"type="submit" required={true}>Login</button>
          <button type="submit"required={true}onClick={onTestLogin}id="login-btn">Login as a guest</button>
-    <p>Dont have an account <Link to ="/signup">sign-up</Link></p>
+     <p className="login-para">Dont have an account<Link to ="/signup">sign-up</Link></p>
         </form>
       </div>
     </div>
