@@ -108,7 +108,7 @@ export default function Cart() {
                       Remove from cart
                     </button>
                     <div className="qty-btn">
-                      <button
+                      <button disabled ={product.qty===1}
                         onClick={() =>
                           changeQuantityHandler(product._id, "decrement")
                         }

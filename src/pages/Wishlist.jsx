@@ -36,12 +36,14 @@ export default function Wishlist() {
                     alt="clothes"
                   />
                   <div className="product-desc">
-                    <p>{product.name}</p>
-                    <p className="price">
+                    <p><b>
+                      {product.name}</b>
+                        <p>
                       <span> ₹{product.price}</span>
                       <span className="original-price">
                         ₹{product.original_price}
                       </span>
+                      </p>
                     </p>
                   </div>
                   {isCartProductPresent(product._id) ? (
@@ -53,7 +55,7 @@ export default function Wishlist() {
                       className="wishlist-cart-btn"
                       onClick={() => {
                         addCartItems(product);
-                        removeWishlistHandler(product._id)
+                        removeWishlistHandler(product._id);
                       }}
                     >
                       Move to cart
@@ -67,7 +69,6 @@ export default function Wishlist() {
           <h1>Your wishlist is empty😑</h1>
         )}
       </div>
-     
     </div>
   );
 }
