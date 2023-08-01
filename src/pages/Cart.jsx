@@ -108,7 +108,7 @@ export default function Cart() {
                       Remove from cart
                     </button>
                     <div className="qty-btn">
-                      <button disabled ={product.qty===1}
+                      <button className="increase-qty" disabled ={product.qty===1}
                         onClick={() =>
                           changeQuantityHandler(product._id, "decrement")
                         }
@@ -116,7 +116,7 @@ export default function Cart() {
                         <i className="fa fa-minus"></i>
                       </button>
                       <span className="qty"> {product.qty}</span>
-                      <button
+                      <button className="decrease-qty"
                         onClick={() =>
                           changeQuantityHandler(product._id, "increment")
                         }

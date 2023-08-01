@@ -53,7 +53,7 @@ function PriceSelector({ onPriceChange }) {
       </div>
 
       <input
-        style={{ accentColor: "grey", width: "60%" }}
+        style={{ accentColor: "#A076F9", width: "60%" }}
         type="range"
         min="500"
         max="1500"
@@ -77,7 +77,7 @@ function CategorySelector({ onCategoryChange }) {
     <div>
       <h3>Category</h3>
       <div>
-        <input  style={{ accentColor: "grey"}}
+        <input  style={{ accentColor: "#A076F9"}}
           type="checkbox"
           checked={state.selectedCategories.includes("men")}
           value="men"
@@ -87,7 +87,7 @@ function CategorySelector({ onCategoryChange }) {
       </div>
       <div>
         <input
-          type="checkbox"  style={{ accentColor: "grey"}}
+          type="checkbox"  style={{ accentColor: "#A076F9"}}
           checked={state.selectedCategories.includes("women")}
           value="women"
           onChange={() => handleCategoryChange("women")}
@@ -96,7 +96,7 @@ function CategorySelector({ onCategoryChange }) {
       </div>
       <div>
         <input
-          type="checkbox" style={{ accentColor: "grey"}}
+          type="checkbox" style={{ accentColor: "#A076F9"}}
           checked={state.selectedCategories.includes("kids")}
           value="kids"
           onChange={() => handleCategoryChange("kids")}
@@ -112,7 +112,7 @@ function RatingSelector({ onRatingChange, state }) {
       <h3>Rating</h3>
       <div>
         <input
-         style={{ accentColor: "grey"}}
+         style={{ accentColor: "#A076F9"}}
           type="radio"
           checked={state.selectedRating === "4"}
           name="rate"
@@ -124,7 +124,7 @@ function RatingSelector({ onRatingChange, state }) {
       <div>
         <input
           type="radio"
-          style={{ accentColor: "grey"}}
+          style={{ accentColor: "#A076F9"}}
           checked={state.selectedRating === "3"}
           name="rate"
           value="3"
@@ -134,7 +134,7 @@ function RatingSelector({ onRatingChange, state }) {
       </div>
       <div>
         <input
-         style={{ accentColor: "grey"}}
+         style={{ accentColor: "#A076F9"}}
           type="radio"
           checked={state.selectedRating === "2"}
           name="rate"
@@ -146,7 +146,7 @@ function RatingSelector({ onRatingChange, state }) {
       <div>
         <input
           type="radio"
-          style={{ accentColor: "grey"}}
+          style={{ accentColor: "#A076F9"}}
           checked={state.selectedRating === "1"}
           name="rate"
           value="1"
@@ -164,7 +164,7 @@ function SortOrderSelector({ onSortOrderChange,state }) {
       <h3>Sort by</h3>
       <div>
         <input
-         style={{ accentColor: "grey"}}
+         style={{ accentColor: "#A076F9"}}
           type="radio"
           name="sort"
           value="HTL"
@@ -175,7 +175,7 @@ function SortOrderSelector({ onSortOrderChange,state }) {
       </div>
       <div>
         <input
-         style={{ accentColor: "grey"}}
+         style={{ accentColor: "#A076F9"}}
           type="radio"
           name="sort"
           value="LTH"

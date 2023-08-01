@@ -20,7 +20,8 @@
     border-radius: 8px;
 }
 .login-heading{
-    padding-left:1.3rem
+    padding-left:1.3rem;
+    color: #A076F9;
 
 }
 .login-para{
@@ -48,16 +49,30 @@
     width:15rem;
     padding:8px;
     border-radius:8px;
+    background-color: #A076F9;
+    color:white;
+    border:none;
+    cursor: pointer;
 }
 .login-btn{
     padding:8px;
     border-radius:8px;
+    background-color: #A076F9;
+    color:white;
+    border:none;
+    cursor: pointer;
 }
 .account-btn{
     margin-bottom: 12px;
     padding:8px;
     border-radius: 8px;
+    background-color: #A076F9;
+    color:white;
+    border: none;
+    cursor: pointer;
+    
 }
 .auth-heading{
     text-align: center;
+    color:#A076F9;
 }

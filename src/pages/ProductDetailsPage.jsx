@@ -57,10 +57,10 @@ export default function ProductDetailsPage() {
           <div>
            {isWishlistProductPresent(product?._id) ? (
                   <Link to="/wishlist">
-                  <button>Go to wishlist</button>
+                  <button className="wish-btn">Go to wishlist</button>
                   </Link>
                 ) : (
-                  <button
+                  <button className="wish-btn"
                     
                     onClick={() => handleAddWishlistItems(product)}
                   >

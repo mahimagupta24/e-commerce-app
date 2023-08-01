@@ -7,7 +7,7 @@
     text-align: center;
   bottom: 0;
   width: 100%;
-  background-color: #f2f2f2;
+  background-color:#A076F9;
   padding: 10px;
   margin-top:8rem;
 }
@@ -17,10 +17,11 @@
  
 }
 .name{
-  font-size:1rem
+  font-size:1rem;
+  color:white
 }
 .link{
   margin-right:20px;
-  color:grey
+  color:white
   
 }

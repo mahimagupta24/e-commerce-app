@@ -14,7 +14,43 @@
     list-style: none;
     text-align: center;
     cursor: pointer;
+    transition: transform 0.3s; 
 }
 .category-card img{
   object-fit:contain;
 }
+
+.category-card:hover {
+    transform: scale(1.1);
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); Increase the size of the card when hovered */
+}
+
+.img-container {
+    position: relative;
+    margin-top:6rem;
+    /* display: inline-block; */
+}
+
+.img-container img{
+    object-fit: cover;
+}
+
+/* .img-container img {
+    display: block;
+    height: 400px;
+    width: 100%;
+} */
+
+.img-container button {
+    position: absolute;
+    bottom: 20px; /* Adjust the distance from the bottom as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #A076F9;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+

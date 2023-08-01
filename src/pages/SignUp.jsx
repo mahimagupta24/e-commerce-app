@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
+import Header from "../components/Header";
 
 export default function SignUp() {
   const { signUpHandler } = useContext(AuthContext);
@@ -12,6 +13,8 @@ export default function SignUp() {
    
   };
   return (
+    <div>
+      <Header/>
     <div className="auth-main">
       <div className="auth-container">
         <h2 className="auth-heading">SIGN UP</h2>
@@ -53,6 +56,7 @@ export default function SignUp() {
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 }

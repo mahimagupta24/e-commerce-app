@@ -1,14 +1,24 @@
+
+/* .header-wrapper{
+    width:100%;
+    min-width:1205px;
+} */
 .header{
     display:flex;
     justify-content: space-evenly;
     align-items:center;
-    color:#9D9D9D;
-    background-color: #f2f2f2;
+    color: #f0f0f0;
+    background-color:#A076F9
+    /* #ECC3E3 */
+    /* position: relative;
+    top:0;
+    left:0 */
+    
 }
 .search-container{
     display: flex;
-    border: 2px solid;
-    width: 20%;
+    border: .2rem solid;
+    width: 22%;
     border-radius:.7rem;
     background-color:white;
     padding:0.5rem;
@@ -26,13 +36,14 @@
     justify-content: flex-end;
     align-items: center;
 }
-.login-btn{
+/* .login-btn{
     width:25%;
 
-}
+} */
 .notification{
     position: relative;
     top:-15px;
+    color:white
    
     
 }
@@ -44,11 +55,32 @@
     font-size:1.5rem;
     top:-3px;
     cursor: pointer;
-    color:grey
+    color:white
     
 }
 .nav-login-btn{
-    padding:8px;
-    border-radius: 8px;
+    padding:.6rem;
+    border-radius: .6rem;
+    border:none;
+    cursor: pointer;
 
+}
+
+@media (max-width: 768px) {
+    .header {
+      flex-direction: column; 
+      padding: 1rem; 
+    }
+    .search-bar{
+        width: 100%;
+    }
+    .nav-icons {
+        justify-content: center; /* Center the navigation icons on smaller screens */
+        margin-top: 1rem; /* Add some spacing between the search bar and navigation icons */
+      }
+    
+      .login-btn {
+        width: 100%; /* Make the login button take the full width on smaller screens */
+        margin-top: 1rem; /* Add some spacing between the search bar and login button */
+      }
 }

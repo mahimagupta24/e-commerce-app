@@ -29,7 +29,8 @@
 .cart-btn{
    margin-bottom:2rem;
    margin-left:3rem;
-  background-color: grey;
+  background-color: #A076F9;
+  border:white;
   color:white;
   padding:8px;
   border-radius: 8px;
@@ -38,7 +39,7 @@
 .btn{
   margin-bottom:2rem;
   margin-left:3rem;
- background-color: grey;
+ background-color: #A076F9;
  color:white;
  padding:2px;
  
@@ -49,4 +50,11 @@
   flex-direction: column;
   justify-content: center;
 
+}
+
+@media (max-width: 768px) {
+  .wishlist-card{
+    display: flex;
+    grid-template-columns: repeat(1,500px);
+  }
 }

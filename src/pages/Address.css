@@ -28,7 +28,7 @@
     gap: 1rem;
   }
   .address-card-btn {
-    background-color: var(--background-color);
+    background-color: #A076F9;
     border: none;
     cursor: pointer;
     font-weight: 500;
@@ -37,25 +37,31 @@
 .edit-btn{
     margin-left:8px;
     cursor: pointer;
-    background-color: white;
+    color: white;
+    background-color: #A076F9;
     padding:8px;
-    border-radius:4px
+    border-radius:4px;
+    border:none
 
 }
 .remove-btn{
     cursor: pointer;
-    background-color: white;
+    color: white;
+    background-color: #A076F9;
     padding:8px;
-    border-radius:4px
+    border-radius:4px;
+    border:none
 }
 .add-btn{
    margin-left:5rem;
     margin-top:24px;
     font-size: large;
     cursor: pointer;
-    border:1px solid black;
+    border:none;
     border-radius:12px;
     padding:8px;
+    background-color: #A076F9;
+    color:white;
 }
 /* .place-order-btn{
     margin-left:1rem;
@@ -81,3 +87,5 @@
      .address-details{
 display:flex;
           }
+
+        

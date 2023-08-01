@@ -47,7 +47,7 @@ export default function Home() {
     <div>
       <Header />
       {isLoading && <p>Loading...</p>}
-      <h1 style={{textAlign:"center",marginBottom:"3rem"}}>Categories</h1>
+      <h1 style={{textAlign:"center",marginBottom:"3rem",color:"#A076F9"}}>Categories</h1>
       <ul className="main-container">
         {!isLoading &&
           categories.map((category) => {
@@ -66,19 +66,20 @@ export default function Home() {
                   width="320px"
                   height="200px"
                 />
-                <h4>{categoryName} collection</h4>
-                <p>{description}</p>
+                <h4 style={{color:"#A084E8"}}>{categoryName} collection</h4>
+                <p style={{color:"#A076F9"}}>{description}</p>
               </li>
             );
           })}
       </ul>
-      <div className="img"onClick={clickHandler}>
+      <div className="img-container">
         <img 
           src="https://images.pexels.com/photos/3965545/pexels-photo-3965545.jpeg"
            height="400px"
           width="100%"
           alt="fashion"
         /> 
+        <button onClick={clickHandler}>Shop Now</button>
       </div>
       <Footer />
     </div>

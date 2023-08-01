@@ -9,7 +9,7 @@ export default function Footer(){
          <a  className="link"target="blank"href="https://www.linkedin.com/in/mahimagupta2401/"><i className="fa fa-linkedin"></i></a>
          <a className="link" target="blank"href="https://github.com/mahimagupta24/"><i className="fa fa-github"></i></a>
          </div>
-         <p>© copyright 2023 </p>
+         <p style={{color:"white"}}>© copyright 2023 </p>
         
     </footer>
 }
